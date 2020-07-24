@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Content
 from .forms import ContentForm
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def home(request):
@@ -21,3 +22,7 @@ def new(request):
         form = ContentForm()
     
     return render(request, 'main/new.html', {'form':form})
+
+def detail(request, index):
+    post = get_object_or_404(Content, pk=index)
+    return render(request, 'main/detail.html', {'post':post})

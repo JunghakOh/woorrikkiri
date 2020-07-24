@@ -1,10 +1,11 @@
-<h1>안녕하세요, 우리끼리입니다 : )</h1>
+<h1>안녕하세요, 우리끼리입니다 : )</h1><br>
 
-<a href="{% url 'new' %}">질문하러가기</a>
+<a href="{% url 'new' %}">질문하러가기</a><br><br>
 
 {% for post in posts_list %}
-    <h3> {{ post.title }} </h3>
+    <a href="{% url 'detail' index=post.pk %}">{{ post.title }}</a><br>
+    <!--<h3> {{ post.title }} </h3>-->
     <p> {{ post.pub_date }} </p>
-    <p> {{ post.body|linebreaks }} </p>
+   <!-- <p> {{ post.body|linebreaks }} </p>-->
     <hr>
 {% endfor %}
