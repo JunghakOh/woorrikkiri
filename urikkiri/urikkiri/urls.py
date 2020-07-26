@@ -22,4 +22,6 @@ urlpatterns = [
     path('', main.views.home, name="home"),
     path('new/', main.views.new, name="new"),
     path('detail/<int:index>', main.views.detail, name="detail"),
+    path('edit/<int:index>', main.views.edit, name="edit"),
+    path('detail/<int:pk>/delete', main.views.delete, name="delete"),
 ]

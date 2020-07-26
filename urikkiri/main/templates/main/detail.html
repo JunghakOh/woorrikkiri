@@ -9,3 +9,7 @@
         <h1>{{ post.title }}</h1>
         <p>{{ post.body|linebreaks }}</p>
 </div>
+
+<a href="{% url 'home' %}">홈으로</a><br><br>
+<a href="{% url 'edit' index=post.pk %}">수정하기</a><br>
+<a href="{% url 'delete' pk=post.pk %}">삭제하기</a><br>
