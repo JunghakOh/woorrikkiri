@@ -10,6 +10,20 @@
         <p>{{ post.body|linebreaks }}</p>
 </div>
 
+
+<hr>
+<h3>여기서부터 댓글입니다</h3>
+<a class="btn btn-default" href="{% url 'add_comment' pk=post.pk %}">Add comment</a>
+{% for comment in post.comments.all %}
+    <div class="comment">
+        <div class="date">{{ comment.created_date }}</div>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+
 <a href="{% url 'home' %}">홈으로</a><br><br>
 <a href="{% url 'edit' index=post.pk %}">수정하기</a><br>
 <a href="{% url 'delete' pk=post.pk %}">삭제하기</a><br>

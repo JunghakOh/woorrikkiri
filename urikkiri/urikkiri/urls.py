@@ -24,4 +24,5 @@ urlpatterns = [
     path('detail/<int:index>', main.views.detail, name="detail"),
     path('edit/<int:index>', main.views.edit, name="edit"),
     path('detail/<int:pk>/delete', main.views.delete, name="delete"),
+    path('detail/<int:pk>/comment', main.views.add_comment, name='add_comment'),
 ]
