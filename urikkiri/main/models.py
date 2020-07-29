@@ -8,8 +8,15 @@ class Content(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField(default=timezone.now)
     body = models.TextField(default='')
+    file = models.FileField(upload_to='documents/%Y, %m/', blank=True)
 
 class Comment(models.Model):
+    objects = models.Manager()
+    post = models.ForeignKey('Content', on_delete=models.CASCADE)
+    text = models.TextField(default='')
+    created_date = models.DateTimeField(default=timezone.now)
+
+class Answer(models.Model):
     post = models.ForeignKey('main.Content', on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=200)
     text = models.TextField()

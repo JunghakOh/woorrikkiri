@@ -17,12 +17,18 @@ from django.contrib import admin
 from django.urls import path
 import main.views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main.views.home, name="home"),
     path('new/', main.views.new, name="new"),
-    path('detail/<int:index>', main.views.detail, name="detail"),
-    path('edit/<int:index>', main.views.edit, name="edit"),
+    path('detail/<int:pk>', main.views.detail, name="detail"),
+    path('edit/<int:pk>', main.views.edit, name="edit"),
     path('detail/<int:pk>/delete', main.views.delete, name="delete"),
-    path('detail/<int:pk>/comment', main.views.add_comment, name='add_comment'),
+    path('detail/<int:pk>/comment/<int:comment_pk>/delete/',main.views.delete_comment, name="delete_comment"),
+    path('detail/<int:pk>/comment/', main.views.add_comment, name='add_comment'),
 ]
+
+urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
