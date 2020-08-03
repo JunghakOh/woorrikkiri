@@ -1,9 +1,0 @@
-<h1>질문을 올려주세요</h1>
-
-<form method="POST" class="post-form" enctype="multipart/form-data"> {% csrf_token %}
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
-
-<a href="{% url 'home' %}">홈으로</a><br><br>
