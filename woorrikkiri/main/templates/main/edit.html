@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load static %}
+
+<h1>질문내용 수정하기</h1>
+    <form method="POST" class="post-form" enctype='multipart/form-data'>{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+
+{% endblock %}

@@ -17,11 +17,24 @@ from django.contrib import admin
 from django.urls import path
 import main.views
 import accounts.views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main.views.home, name="home"),
+    path('main/new/', main.views.new, name="new"),
+    path('main/ask/', main.views.ask, name="ask"),
+    path('main/detail/<int:pk>', main.views.detail, name="detail"),
+    path('main/edit/<int:index>', main.views.edit, name="edit"),
+    path('main/detail/<int:pk>/delete', main.views.delete, name="delete"),
+    path('main/detail/<int:pk>/comment/<int:comment_pk>/delete/',main.views.delete_comment, name="delete_comment"),
+    path('main/mypage/', main.views.mypage, name="mypage"),
+    path('main/about/', main.views.about, name="about"),
+    path('main/faq/', main.views.faq, name="faq"),
     path('accounts/signup/', accounts.views.signup, name="signup"),
     path('accounts/signin/', accounts.views.signin, name="signin"),
     path('accounts/signout/', accounts.views.signout, name="signout"),
 ]
+
+urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
