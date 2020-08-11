@@ -29,3 +29,10 @@ class User(AbstractUser):
     gender = models.CharField("성별", max_length=1, choices=CHOICES_GENDER)
 
     objects = UserManager()
+
+class Profile(models.Model):
+    objects = models.Manager()
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    username =  models.CharField(max_length=40, blank =True)
+    introduction = models.TextField(blank=True)
+    profile_photo = models.FileField(blank=True)

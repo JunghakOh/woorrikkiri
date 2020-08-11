@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Content, Comment
-from .forms import ContentForm, CommentForm
+from .models import Content, Comment, FAQ
+from .forms import ContentForm, CommentForm, FAQForm
 from django.shortcuts import get_object_or_404
-
 
 
 # Create your views here.
@@ -69,11 +68,14 @@ def delete_comment(request, pk, comment_pk):
     comment.delete()
     return redirect('detail', pk=pk)
 
-def mypage(request):
-    return render(request, 'main/mypage.html')
 
 def about(request):
     return render(request, 'main/about.html')
 
 def faq(request):
-    return render(request, 'main/faq.html')
+    faq = FAQ.objects.all
+    return render(request, 'main/faq.html', {'faq_list':faq})
+
+def faq_detail(request, pk):
+    faq = get_object_or_404(FAQ, pk=pk)
+    return render(request, 'main/faq_detail.html', {'faq':faq})
