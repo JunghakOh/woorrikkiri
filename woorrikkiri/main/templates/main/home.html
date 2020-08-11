@@ -3,14 +3,15 @@
 {% load static %}
 
 <h1>안녕하세요, 우리끼리입니다 : )</h1>
-<a href="{% url 'signup' %}">회원가입</a>
-<a href="{% url 'signin' %}">로그인</a>
+
 
 {% if user.is_authenticated %}
 <p>환영합니다, {{ user.username }}님, 행복한 하루 보내세요 : )</p>
 <a href="{% url 'signout' %}">로그아웃</a>
 {% else %}
-<p>환영합니다, 로그인하신 후에 일기를 작성해주세요!</p>
+<p>환영합니다, 로그인하신 후에 질문을 작성해주세요!</p><br>
+<a href="{% url 'signup' %}">회원가입</a>
+<a href="{% url 'signin' %}">로그인</a>
 {% endif %}
 
 <a href="{% url 'new' %}">질문하기</a>

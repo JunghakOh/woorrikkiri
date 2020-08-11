@@ -1,0 +1,10 @@
+<h1>{{ faq.title }}</h1>
+
+<div class="posts">
+    {% if faq.pub_date %}
+        <div class="date">
+            {{ faq.pub_date }}
+        </div>
+    {% endif %}
+    <p>{{ faq.body|linebreaks }}</p>
+</div>
