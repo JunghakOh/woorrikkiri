@@ -22,3 +22,10 @@ class FAQ(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField(default=timezone.now)
     body = models.TextField(default='')
+
+class Answer(models.Model):
+    objects = models.Manager()
+    post = models.ForeignKey('Content', on_delete=models.CASCADE)
+    body = models.TextField(default='')
+    pub_date = models.DateTimeField(default=timezone.now)
+    file = models.FileField(upload_to='documents/%Y, %m/', blank=True)

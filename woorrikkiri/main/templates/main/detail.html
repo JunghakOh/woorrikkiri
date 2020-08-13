@@ -20,6 +20,24 @@
 
 </div>
 
+<h1>답변을 달아주세요</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ answer_form.as_p }}
+    <button type="submit">답변 달기</button>
+</form>
+
+{% for answer in answer_list %}
+    <h5>{{ answer.created_date }}</h5>
+    <p>{{ answer.body|linebreaks }}</p>
+{% endfor %}
+
+{% if answer.file %}
+    <img src="{{answer.image.url}}" height=400><br>
+    이미지 다운: <a href="{{ answer.file.url }}" download>{{ answer.file.name }}</a>
+{% endif %}
+
 <h3>댓글을 달아주세요</h3>
 
 <form method="POST">

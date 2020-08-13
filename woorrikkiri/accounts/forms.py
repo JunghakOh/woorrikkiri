@@ -20,9 +20,7 @@ class LoginForm(forms.ModelForm):
         model = User
         fields = ['username', 'password',]
 
-
-
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['username', 'introduction', 'profile_photo',]
+        fields = ['introduction', 'profile_photo',]
