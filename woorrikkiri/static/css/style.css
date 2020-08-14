@@ -15,4 +15,13 @@
     font-weight: normal;
     font-style: normal;
 }
-            
+
+/* 기본설정값 제거 */
+p{
+    margin:0 !important;
+    padding:0 !important;
+}
+a:hover, a:focus, a:active, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
