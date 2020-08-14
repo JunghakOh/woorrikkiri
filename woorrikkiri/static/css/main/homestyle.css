@@ -1,0 +1,64 @@
+/* home.html */
+
+/* navbar */
+.navbar{
+    background-color: white;
+    border-bottom: 1.5px solid #f0f0f0;
+}
+.basic{
+    padding: 8px 24px;
+}
+.navbar-nav{
+    justify-content: flex-end !important;
+    display: flex;
+}
+.nav-left{
+    display: flex;
+}
+.loginbox{
+    display: flex;
+}
+.navbar>img{
+    width:70px;
+}
+.navbar>.title{
+    color:#d4463b;
+    font-weight: 800;
+    font-size:25px;
+}
+.navbar>.title:hover{
+    color:#d4463b;
+}
+
+/* main */
+main{
+    margin:50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #4b4b4b;
+}
+main>.title {
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: 600;
+    text-align: center;
+    color: #d4463b;
+    margin: 20px;
+}
+main>.btn-wrapper>.btn {
+    width: 250px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: #fff;
+    padding: 0;
+    font-size: 35px;
+    background: #d4463b;
+    margin: 0 auto;
+}
+main>img{
+    width:300px;
+}
