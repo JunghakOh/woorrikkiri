@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Content, Comment, FAQ, Answer
-from .forms import ContentForm, CommentForm, FAQForm, AnswerForm
+from .models import Content, Comment, FAQ
+from .forms import ContentForm, CommentForm, FAQForm
 from django.shortcuts import get_object_or_404
 
 
@@ -30,27 +30,18 @@ def ask(request):
 
 def detail(request, pk):
     post = get_object_or_404(Content, pk=pk) 
-    comment_list = Comment.objects.filter(post=post)
-    answer_list = Answer.objects.filter(post=post)
+    comment_list = Comment.objects.filter(post=post) 
     if request.method == "POST":
         comment_form = CommentForm(request.POST) 
-        answer_form = AnswerForm(request.POST, request.FILES)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False) 
             comment.published_date = timezone.now() 
             comment.post = post
             comment.save()
             return redirect('detail', pk=pk)
-        if answer_form.is_valid():
-            answer = answer_form.save(commit=False)
-            answer.published_date = timezone.now()
-            answer.post = post
-            answer.save()
-            return redirect('detail', pk=pk)
     else:
         comment_form = CommentForm()
-        answer_form = AnswerForm()
-    return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer_list':answer_list, 'answer_form':answer_form})
+    return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form})
 
 
 def edit(request, index):
@@ -88,6 +79,3 @@ def faq(request):
 def faq_detail(request, pk):
     faq = get_object_or_404(FAQ, pk=pk)
     return render(request, 'main/faq_detail.html', {'faq':faq})
-
-def payment(request):
-    return render(request, 'main/payment.html')

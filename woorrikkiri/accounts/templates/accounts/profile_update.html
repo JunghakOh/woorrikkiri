@@ -4,8 +4,6 @@
 
 <h1>Profile Update</h1>
 
-<h1>ID : {{ user.username }}</h1>
-
 <form method="POST" class="profile_form" enctype='multipart/form-data'>
     {% csrf_token %}
     {{ profile_form.as_p }}

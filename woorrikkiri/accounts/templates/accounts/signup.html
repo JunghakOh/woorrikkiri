@@ -1,12 +1,6 @@
-{% extends 'main/base.html' %}
-{% block content %}
-{% load static %}
-
 <h1>회원가입</h1>
 <form method="POST">
     {% csrf_token %}
     {{ signup_form.as_p }}
     <button type="submit">Sign Up</button>
 </form>
-
-{% endblock %}
