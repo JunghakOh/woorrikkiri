@@ -9,7 +9,8 @@
 {% if user.is_authenticated %}
 <p>ID : {{ user.username }}</p>
 <p>한줄소개 : {{ profile.introduction }}</p>
-<a href="{% url 'profile_update' %}">프로필 편집</a>
+<a href="{% url 'profile_update' %}">프로필 편집</a><br>
+<a href="{% url 'payment' %}">포인트 충전하기</a>
 
 {% else %}
 <p>먼저 로그인해주세요 : )</p>
