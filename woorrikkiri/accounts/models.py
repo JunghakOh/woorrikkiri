@@ -2,9 +2,6 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
-# Create your models here.
-
-
 class UserManager(BaseUserManager):
     def create_superuser(self, *args, **kwargs):
         return super().create_superuser(gender=self.model.GENDER_OTHER, *args, **kwargs)
