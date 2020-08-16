@@ -52,10 +52,10 @@ def profile_update(request):
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST, request.FILES)
         if profile_form.is_valid():
-            profile = profile_form.save()
-            profile.username = request.username
+            profile = profile_form.save(commit=False)
+            profile.user = request.user
             profile.save()
-            return redirect('home')
+            return redirect('mypage')
     else:
         profile_form = ProfileForm()
     return render(request, 'accounts/profile_update.html', {'profile_form':profile_form})

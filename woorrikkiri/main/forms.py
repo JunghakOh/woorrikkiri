@@ -1,5 +1,5 @@
 from django import forms
-from .models import Content, Comment, FAQ
+from .models import Content, Comment, FAQ, Answer
 
 class ContentForm(forms.ModelForm):
     class Meta:
@@ -15,3 +15,8 @@ class FAQForm(forms.ModelForm):
     class Meta:
         model = FAQ
         fields = ['title', 'body',]
+
+class AnswerForm(forms.ModelForm):
+    class Meta:
+        model = Answer
+        fields = ['body', 'file', ]

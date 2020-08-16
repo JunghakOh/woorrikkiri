@@ -38,6 +38,7 @@ urlpatterns = [
     path('accounts/signup/', accounts.views.signup, name="signup"),
     path('accounts/signin/', accounts.views.signin, name="signin"),
     path('accounts/signout/', accounts.views.signout, name="signout"),
+    path('main/payment/', main.views.payment, name="payment"),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
