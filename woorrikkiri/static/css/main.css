@@ -29,6 +29,7 @@ section{
     padding: 20px 30px;
     font-size: 35px;
     background: #d4463b;
+    color:white;
 }
 .b_btn:hover {
     color: #fff;
