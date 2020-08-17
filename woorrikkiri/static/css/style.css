@@ -1,9 +1,9 @@
 /* 전체 공유 css */
 *{
     box-sizing: border-box;
-    /* font-family: 'Noto Sans KR', sans-serif;    */
-    /* font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; */
-    font-family: 'TmoneyRoundWindExtraBold';
+    font-family: 'Noto Sans KR', sans-serif; 
+    color: #4b4b4b;   
+    /* font-family: 'TmoneyRoundWindExtraBold'; */
 }
 
 /* font */
@@ -15,13 +15,92 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+   }
+   
+   @font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 700;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
+   }
+   
+   @font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 300;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+   }
+   
+   .nanumbarungothic * {
+    font-family: 'NanumBarunGothic', sans-serif;
+   }
+               
 
-/* 기본설정값 제거 */
-p{
-    margin:0 !important;
-    padding:0 !important;
+/* color */
+.h_color{ /* 강조색 */
+    color:#d4463b;
 }
-a:hover, a:focus, a:active, a:visited {
-    text-decoration: none;
-    color: inherit;
+.s_color{ /* 서브색 */
+    color: #979797;
+}
+.w_color{
+    color:white;
+}
+
+/* font 설정 */
+.m_text{
+    font-size: 14px;
+    font-weight: bold;
+}
+.s_text{
+    font-size: 10px;
+}
+.xxl_title{
+    font-size: 40px;
+    font-family: 'TmoneyRoundWindExtraBold';
+    letter-spacing: 3px;
+}
+.l_title{
+    font-size:20px;
+    font-family: 'TmoneyRoundWindExtraBold';
+    letter-spacing: 3px;
+}
+.s_title{
+    color:#d4463b;
+    font-size: 15px;
+}
+
+/* base.html - navbar */
+header{
+    border: 1px solid rgba(0,0,0,0.1);
+}
+header .nav_container{
+    max-width: 1200px;
+    height: 55px;
+    margin:0 auto;
+    padding:0 20px;
+    display: flex;    
+    align-items: center;   
+}
+header .hor_category{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    margin:0 30px;
+    align-items: center;
+}
+.navbar{
+    width: 100%;
+    display: flex;
+}
+.nav-item{
+    margin-right: 30px;
 }
