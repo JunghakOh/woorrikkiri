@@ -1,6 +1,36 @@
 
 import os
+#------------------------popbill
+import sys
+import imp
+imp.reload(sys)
 
+try:
+    sys.setdefaultencoding('UTF8')
+except Exception as E:
+    pass
+
+    #생략
+    #...
+    #...
+
+    # 링크아이디
+LinkID = "METIS"
+
+    # 발급받은 비밀키, 유출에 주의하시기 바랍니다.
+SecretKey = "apoNJCz9zsS7xj7HYJ86Y6+vNBzMi+4T9jbJfHqRIGk="
+
+    # 연동환경 설정값, 개발용(True), 상업용(False)
+IsTest = True
+
+    # 인증토큰 IP제한기능 사용여부, 권장(True)
+IPRestrictOnOff = True
+
+    # 팝빌 API 서비스 고정 IP 사용여부(GA), true-사용, false-미사용, 기본값(false)
+UseStaticIP = False
+
+
+#----------------------------
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
