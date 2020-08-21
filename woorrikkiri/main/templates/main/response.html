@@ -1,0 +1,23 @@
+<!-- 결제 모듈 작동여부 확인용 by junghak -->
+<html xmlns=" http://www.w3.org/1999/xhtml ">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Popbill API Test.</title>
+</head>
+<body>
+<div id="content">
+    <p class="heading1">Response</p>
+    <fieldset class="fieldset1">
+        <legend>수집 요청</legend>
+        <ul>
+            {% if code is None %}
+            <li> 작업아이디(JobID) : {{ result }} </li>
+            {% else %}
+            <li> 오류 코드(code) : {{ code }} </li>
+            <li> 오류 메시지(message) : {{ message }} </li>
+            {% endif %}
+        </ul>
+    </fieldset>
+</div>
+</body>
+</html> 
