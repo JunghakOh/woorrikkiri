@@ -1,6 +1,25 @@
-<h2>로그인</h2>
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="로그인" />
-</form>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<section>
+    <div class="main_container">
+        <div class="center_box">
+            <div class="login_box">
+                <div class="xxl_title h_color">로그인</div>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="input_box">
+                        <input type="text" name="username" maxlength="150" required="" id="id_username" placeholder="아이디">
+                        <input type="text" name="password" maxlength="128" required="" id="id_password" placeholder="비밀번호">
+                    </div>
+                    <button class="login_btn" type="submit" value="로그인">
+                        <div class="w_color">로그인</div>    
+                    </button>
+                </form>
+            </div>    
+        </div>
+    </div>
+</section>
+
+{% endblock %}

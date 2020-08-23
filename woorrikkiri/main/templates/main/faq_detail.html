@@ -1,10 +1,18 @@
-<h1>{{ faq.title }}</h1>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
 
-<div class="posts">
-    {% if faq.pub_date %}
-        <div class="date">
-            {{ faq.pub_date }}
+<section>
+    <div class="main_container">
+        <h1>{{ faq.title }}</h1>
+
+        <div class="posts">
+            {% if faq.pub_date %}
+            <div class="date">
+                {{ faq.pub_date }}
+            </div>
+            {% endif %}
+            <p>{{ faq.body|linebreaks }}</p>
         </div>
-    {% endif %}
-    <p>{{ faq.body|linebreaks }}</p>
-</div>
+    </div>
+</section>

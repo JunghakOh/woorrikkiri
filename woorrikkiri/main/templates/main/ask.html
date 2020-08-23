@@ -2,14 +2,17 @@
 {% block content %}
 {% load static %}
 
-<h1>질문 목록</h1><br>
-
-<a href="{% url 'new' %}">새 질문</a><br><br>
-
-{% for post in posts_list %}
-    <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a><br>
-    <p> {{ post.pub_date }}</p>
-    <hr>
-{% endfor %}
-
+<section>
+    <div class="main_container">
+        <h1>질문 목록</h1><br>
+    
+        <a href="{% url 'new' %}">새 질문</a><br><br>
+        
+        {% for post in posts_list %}
+            <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a><br>
+            <p> {{ post.pub_date }}</p>
+            <hr>
+        {% endfor %}
+    </div>    
+</section>
 {% endblock %}

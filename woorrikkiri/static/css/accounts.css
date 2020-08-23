@@ -1,3 +1,4 @@
+/* mypage.html */
 .mypage_container{
     width:100%;
     display: flex;
@@ -38,4 +39,40 @@ article{
     border-radius: 10px;
     padding:5px;
     margin:3px;
+}
+
+
+/* login.html */
+.login_box{
+    width: 500px;
+    background: white;
+    border-radius: 30px;
+    border: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 60px;
+    box-shadow: 1px 1px 50px 0 #dcdddd;
+}
+.login_box .input_box{
+    padding:20px;
+
+}
+.login_box input{
+    border:none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    width:100%;
+    padding: 10px 0;
+    margin:20px 0;
+}
+
+.login_btn{
+    width: 90%;
+    height: 40px;
+    border-radius: 15px;
+    background-color:#d4463b;
+    border:none;
+    font-size: 20px;
+    box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
+}
+.center_box{
+    padding-top: 60px;
 }
