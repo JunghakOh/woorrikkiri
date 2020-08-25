@@ -1,4 +1,5 @@
-// signup - select
+// signup - select //
+
 var x, i, j, l, ll, selElmnt, a, b, c;
 /* Look for any elements with the class "gender_select": */
 x = document.getElementsByClassName("gender_select");
@@ -79,3 +80,14 @@ function closeAllSelect(elmnt) {
 /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
+
+
+// vertical navbar //
+const ham = document.querySelector('.ham_container');
+const ver_cate = document.querySelector('.ver_category_box');
+const blind = document.querySelector('.blind');
+
+ham.addEventListener('click', function(){
+    ver_cate.classList.toggle('display');
+    blind.classList.toggle('display');
+});

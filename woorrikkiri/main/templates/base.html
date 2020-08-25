@@ -1,5 +1,6 @@
 {% load static %}
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,10 +9,10 @@
   <link rel="stylesheet" href="{% static 'css/reset.css' %}">
   {% block head %}
   {% endblock %}
-  <script type="text/javascript" src="script2.js"></script>
 </head>
 
 <body>
+  <div class="blind"></div>
   <header>
     <div class="nav_container">
       <div class="logo_container">
@@ -55,6 +56,39 @@
 
       </div>
 
+      <div class="ver_category m_text">
+        <div class="ham_container"><img src="{% static 'img/Ham_icon.png' %}" alt="메뉴"></div>
+        <div class="ver_category_box">
+          <ul class="navbar">
+            <li class="nav-item">
+              <a href="{% url 'about' %}">서비스 소개</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'ask' %}">질문 리스트</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'faq' %}">FAQ</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{% url 'mypage' %}">마이 페이지</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'signout' %}">로그아웃</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="{% url 'signin' %}">로그인</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'signup' %}">회원가입</a>
+            </li>
+            {% endif %}
+          </ul>
+
+
+        </div>
+      </div>
 
     </div>
   </header>
