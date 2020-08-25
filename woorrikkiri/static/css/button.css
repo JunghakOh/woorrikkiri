@@ -1,0 +1,62 @@
+.btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.m_btn:hover{
+    background: #d4463b;
+    color:white;
+}
+
+
+.login_btn{
+    width: 100%;
+    height: 40px;
+    border-radius: 15px;
+    background-color:#d4463b;
+    border:none;
+    font-size: 20px;
+    box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
+}
+
+.m_btn {
+    height: 40px;
+    background: white;
+    border-radius: 15px;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    font-size: 35px;
+    box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
+}
+
+.b_btn {
+    width: 250px;
+    height: 80px;
+    border-radius: 15px;
+    padding: 20px 30px;
+    font-size: 35px;
+    background: #d4463b;
+    color:white;
+}
+.b_btn:hover {
+    color: #fff;
+    background: #a13931;
+}
+.m_btn{
+    border-radius: 15px;
+    border: 1px solid #d4463b;
+    padding: 10px 30px;
+    box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
+}
+.m_btn:hover{
+    color: #fff;
+    background: #d4463b;
+}
