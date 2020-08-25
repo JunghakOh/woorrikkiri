@@ -54,6 +54,9 @@
 .w_color{
     color:white;
 }
+input::placeholder{
+    color:#979797;
+}
 
 /* font 설정 */
 .m_text{
@@ -123,3 +126,4 @@ header .hor_category{
 .nav-item{
     margin-right: 30px;
 }
+

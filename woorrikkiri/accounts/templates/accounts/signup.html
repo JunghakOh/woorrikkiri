@@ -1,16 +1,56 @@
-{% extends 'base.html' %}
+{% extends 'accounts_base.html' %}
 {% block content %}
 {% load static %}
 
 <section>
     <div class="main_container">
-        <h1>회원가입</h1>
-        <form method="POST">
-            {% csrf_token %}
-            {{ signup_form.as_p }}
-            <button type="submit">Sign Up</button>
-        </form>
-        
+        <div class="center_box">
+            <div class="login_box">
+                <div class="xxl_title h_color">회원가입</div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="id_pwd_box">
+                        <input type="text" class="margin_box" name="username" maxlength="150"autofocus="" required="" id="id_username" placeholder="아이디"> 
+                        <!-- <span class="helptext">150자 이하 문자, 숫자 그리고 @/./+/-/_만 가능합니다.</span> -->
+                        <input type="password" class="margin_box" name="password1" required="" id="id_password1" placeholder="비밀번호">
+                        <input type="password" class="margin_box" name="password2" required="" id="id_password2" placeholder="비밀번호 확인">
+                    <!-- <ul>
+                        <li>다른 개인정보와 비슷한 비밀번호는 사용할 수 없습니다.</li>
+                        <li>비밀번호는 최소 8자 이상이어야 합니다.</li>
+                        <li>비밀번호는 일상적으로 사용되는 비밀번호일 수 없습니다.</li>
+                        <li>비밀번호는 전부 숫자로 할 수 없습니다.</li>
+                    </ul> -->    
+                    </div>
+                    <div class="info_box">
+                        <div class="name_gender_box">
+                            <input class="half_box margin_box" type="text" name="name" maxlength="10" required="" id="id_name" placeholder="이름">
+                            <div class="gender_select margin_box">
+                                <select>
+                                <option value="" selected="">성별</option>
+                                  <option value="m">남성</option>
+                                  <option value="f">여성</option>
+                                  <option value="o">기타</option>
+                                </select>
+                            </div>    
+                        </div>
+                        <input type="email" class="margin_box" name="email" maxlength="254" id="id_email" placeholder="이메일">
+                        <input class="half_box margin_box" type="text" name="school" maxlength="15" required="" id="id_school" placeholder="학교">
+                        <input class="half_box margin_box" type="text" name="student_num" maxlength="30" required="" id="id_student_num" placeholder="학번">
+                        <input type="text" class="margin_box" name="phone_num" maxlength="20" required="" id="id_phone_num" placeholder="전화번호">
+                        <input type="text" class="margin_box" name="account_num" required="" id="id_account_num" placeholder="계좌번호">
+                        <div class="mento_check">
+                            <label for="id_is_mento">멘토인 경우 체크해주세요</label>
+                            <input type="checkbox" name="is_mento" id="id_is_mento">
+                        </div>    
+                    </div>
+                    <button class="login_btn" type="submit">
+                        <div class="w_color">회원가입</div>    
+                    </button>
+                    <span class="s_color">가입을 하시면 우리끼리의 이용약관에 동의하게 됩니다.</span>
+                    <span class="h_color m_text" ><a href="{% url 'signin' %}">이미 회원이신가요?</a></span>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
 

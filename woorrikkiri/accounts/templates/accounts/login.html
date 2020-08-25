@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'accounts_base.html' %}
 {% block content %}
 {% load static %}
 
@@ -10,12 +10,13 @@
                 <form method="post" action="">
                     {% csrf_token %}
                     <div class="input_box">
-                        <input type="text" name="username" maxlength="150" required="" id="id_username" placeholder="아이디">
-                        <input type="text" name="password" maxlength="128" required="" id="id_password" placeholder="비밀번호">
+                        <input type="text" class="margin_box" name="username" maxlength="150" required="" id="id_username" placeholder="아이디">
+                        <input type="text" class="margin_box" name="password" maxlength="128" required="" id="id_password" placeholder="비밀번호">
                     </div>
-                    <button class="login_btn" type="submit" value="로그인">
+                    <button class="login_btn" type="submit">
                         <div class="w_color">로그인</div>    
                     </button>
+                    <span class="h_color m_text" ><a href="{% url 'signup' %}">아직 회원이 아니신가요?</a></span>
                 </form>
             </div>    
         </div>
