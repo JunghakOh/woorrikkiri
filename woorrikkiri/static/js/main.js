@@ -91,3 +91,10 @@ ham.addEventListener('click', function(){
     ver_cate.classList.toggle('display');
     blind.classList.toggle('display');
 });
+
+window.onload = function(){ 
+    window.addEventListener('resize', function(){ 
+        ver_cate.classList.remove('display');
+        blind.classList.remove('display');
+    }); 
+}

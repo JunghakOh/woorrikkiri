@@ -15,11 +15,10 @@
   <div class="blind"></div>
   <header>
     <div class="nav_container">
-      <div class="logo_container">
-        <a href="{% url 'home' %}"><img src="{% static 'img/logo_name.jpg' %}" alt="우리끼리"></a>
-      </div>
-
-      <div class="hor_category m_text">
+      <a href="{% url 'home' %}">
+        <div class="logo_container"><img src="{% static 'img/logo_name.jpg' %}" alt="우리끼리"></div>
+      </a>
+      <div class="hor_category l_text">
         <div class="main_category">
           <ul class="navbar">
             <li class="nav-item">
@@ -56,7 +55,7 @@
 
       </div>
 
-      <div class="ver_category m_text">
+      <div class="ver_category l_text">
         <div class="ham_container"><img src="{% static 'img/Ham_icon.png' %}" alt="메뉴"></div>
         <div class="ver_category_box">
           <ul class="navbar">

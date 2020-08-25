@@ -59,6 +59,10 @@ input::placeholder{
 }
 
 /* font 설정 */
+.l_text{
+    font-size: 16px;
+    font-weight: bold;
+}
 .m_text{
     font-size: 14px;
     font-weight: bold;
@@ -90,7 +94,7 @@ section{
     background-color: #d4453b07;
 }
 .main_container{
-    padding:20px;
+    padding:50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,7 +108,6 @@ img{
     width:100%;
 }
 
-
 /* base.html - navbar */
 header{
     border: 1px solid rgba(0,0,0,0.1);
@@ -116,6 +119,9 @@ header .nav_container{
     padding:0 20px;
     display: flex;    
     align-items: center;   
+}
+.logo_container{
+    width:100px;
 }
 header .hor_category{
     width:100%;
