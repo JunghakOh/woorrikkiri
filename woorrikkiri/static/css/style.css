@@ -90,6 +90,10 @@ input::placeholder{
     font-size: 15px;
 }
 
+/************ 기본 설정 *************/
+.display {
+    display: block;
+}
 section{
     background-color: #d4453b07;
 }
@@ -153,11 +157,20 @@ header .hor_category{
     background: rgba(0,0,0,0.3);
     display: none;
 }
-.display {
-    display: block;
+
+/* footer */
+footer{
+    width:100%;
+    height: 200px;
+
+    background:#4b4b4b;
+}
+.info_box{
+    color:white;
 }
 
-/* 반응형 */
+
+/************ 반응형 *************/
 @media ( max-width: 700px ) {
     .ham_container{
         display: block;

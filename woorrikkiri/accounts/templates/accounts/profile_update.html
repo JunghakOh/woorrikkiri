@@ -2,22 +2,20 @@
 {% block content %}
 {% load static %}
 
-<section>
-    <div class="main_container">
-        <h1>Profile Update</h1>
 
-        <h1>ID : {{ user.username }}</h1>
-        
-        <form method="POST" class="profile_form" enctype='multipart/form-data'>
-            {% csrf_token %}
-            {{ profile_form.as_p }}
-            <button type="submit">Save</button>
-        </form>
-        
-        <a href="{% url 'change_password' %}">비밀번호 변경</a>
-        <h1>이전 페이지로</h1>
-    </div>
-</section>
+<h1>Profile Update</h1>
+
+<h1>ID : {{ user.username }}</h1>
+
+<form method="POST" class="profile_form" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ profile_form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+<a href="{% url 'change_password' %}">비밀번호 변경</a>
+<h1>이전 페이지로</h1>
+
 
 
 {% endblock %}

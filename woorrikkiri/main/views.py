@@ -92,7 +92,13 @@ def search(request):
 def home(request):
     posts = Content.objects.all
     return render(request, 'main/home.html', {'posts_list':posts})
+    
+def agreement(request):
+    return render(request, 'agreement.html')
 
+def private_info(request):
+    return render(request, 'private_info.html')
+    
 def new(request):
     if request.method == 'POST':
         form = ContentForm(request.POST, request.FILES)

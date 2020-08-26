@@ -93,8 +93,23 @@
     </div>
   </header>
 
-  {% block content %}
-  {% endblock %}
+  <section>
+    <div class="main_container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <footer>
+      <div class="footer_container">
+        <div class="info_box">
+          <span><a href="{% url 'agreement' %}">이용약관</a></span>
+          <span><a href="{% url 'private_info' %}">개인정보처리방침</a></span>
+        </div>        
+
+      </div>
+    </footer>
+  </section>
+
+
 
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>

@@ -2,15 +2,13 @@
 {% block content %}
 {% load static %}
 
-<section>
-    <div class="main_container">
-        <h1>FAQ</h1>
 
-        {% for faq in faq_list %}
-        <a href="{% url 'faq_detail' pk=faq.pk %}">{{ faq.title }}</a><br>
-            <p> {{ faq.pub_date }}</p>
-        {% endfor %}        
-    </div>
-</section>
+<h1>FAQ</h1>
+
+{% for faq in faq_list %}
+<a href="{% url 'faq_detail' pk=faq.pk %}">{{ faq.title }}</a><br>
+<p> {{ faq.pub_date }}</p>
+{% endfor %}
+
 
 {% endblock %}

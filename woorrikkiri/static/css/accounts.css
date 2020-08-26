@@ -112,10 +112,8 @@
 .info_box .half_box{
     width: 49%;
 }
-.login_box span{
-    font-size:12px;
-    padding:10px;
-    display: block;
+.info_box{
+    padding:10px 0;
 }
 
 
@@ -182,7 +180,6 @@
     display: flex;
     width: 100%;
     padding: 10px 0;
-    margin: 20px 0;
     justify-content: center;
     align-items: center;
 }

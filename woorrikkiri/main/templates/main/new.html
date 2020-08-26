@@ -2,19 +2,15 @@
 {% block content %}
 {% load static %}
 
-<section>
-    <div class="main_container">
-        <h1>질문하는 페이지</h1>
+<h1>질문하는 페이지</h1>
 
-        <form method="POST" class="post-form" enctype='multipart/form-data'>
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Save</button>
-        </form>
-        
-        <a href="{% url 'home' %}">홈으로</a>
-        
-    </div>
-</section>
+<form method="POST" class="post-form" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+<a href="{% url 'home' %}">홈으로</a>
+
 
 {% endblock %}
