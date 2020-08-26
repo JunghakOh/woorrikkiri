@@ -1,21 +1,22 @@
-{% extends 'base.html' %}
+{% extends 'main_base.html' %}
 {% block content %}
 {% load static %}
+
 
 <h1>질문내용 자세히 보기</h1>
 
 <div class="posts">
     {% if post.pub_date %}
-        <div class="date">
-            {{ post.pub_date }}
-        </div>
+    <div class="date">
+        {{ post.pub_date }}
+    </div>
     {% endif %}
     <h1>{{ post.title }}</h1>
     <p> {{ post.body|linebreaks }}</p>
 
     {% if post.file %}
-        <img src="{{post.image.url}}" height=400><br>
-        이미지 다운: <a href="{{ post.file.url }}" download>{{ post.file.name }}</a>
+    <img src="{{post.image.url}}" height=400><br>
+    이미지 다운: <a href="{{ post.file.url }}" download>{{ post.file.name }}</a>
     {% endif %}
 
 </div>
@@ -29,13 +30,13 @@
 </form>
 
 {% for answer in answer_list %}
-    <h5>{{ answer.created_date }}</h5>
-    <p>{{ answer.body|linebreaks }}</p>
+<h5>{{ answer.created_date }}</h5>
+<p>{{ answer.body|linebreaks }}</p>
 {% endfor %}
 
 {% if answer.file %}
-    <img src="{{answer.image.url}}" height=400><br>
-    이미지 다운: <a href="{{ answer.file.url }}" download>{{ answer.file.name }}</a>
+<img src="{{answer.image.url}}" height=400><br>
+이미지 다운: <a href="{{ answer.file.url }}" download>{{ answer.file.name }}</a>
 {% endif %}
 
 <h3>댓글을 달아주세요</h3>
@@ -47,14 +48,13 @@
 </form>
 
 {% for comment in comment_list %}
-    <h5>{{ comment.created_date }}</h5>
-    <p>{{ comment.text|linebreaks }}</p>
-    <a href="{% url 'delete_comment' pk=post.pk comment_pk=comment.pk %}">댓글 삭제</a><br><br>
+<h5>{{ comment.created_date }}</h5>
+<p>{{ comment.text|linebreaks }}</p>
+<a href="{% url 'delete_comment' pk=post.pk comment_pk=comment.pk %}">댓글 삭제</a><br><br>
 {% endfor %}
 
 <a href="{% url 'edit' index=post.pk %}">수정하기</a><br>
 <a href="{% url 'delete' pk=post.pk %}">삭제하기</a>
-
 
 
 {% endblock %}

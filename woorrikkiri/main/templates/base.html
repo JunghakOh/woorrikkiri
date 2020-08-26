@@ -1,5 +1,4 @@
 {% load static %}
-
 <html>
 
 <head>
@@ -8,16 +7,19 @@
   <title>우리끼리</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'css/button.css' %}">
+  {% block head %}
+  {% endblock %}
 </head>
 
 <body>
+  <div class="blind"></div>
   <header>
     <div class="nav_container">
-      <div class="logo_container">
-        <a href="{% url 'home' %}"><img src="{% static 'img/logo_name.jpg' %}" alt="우리끼리"></a>
-      </div>
-
-      <div class="hor_category m_text">
+      <a href="{% url 'home' %}">
+        <div class="logo_container"><img src="{% static 'img/logo_name.jpg' %}" alt="우리끼리"></div>
+      </a>
+      <div class="hor_category l_text">
         <div class="main_category">
           <ul class="navbar">
             <li class="nav-item">
@@ -29,7 +31,7 @@
             <li class="nav-item">
               <a href="{% url 'faq' %}">FAQ</a>
             </li>
-          </ul>  
+          </ul>
         </div>
 
         <div class="account_category">
@@ -54,12 +56,60 @@
 
       </div>
 
-      
+      <div class="ver_category l_text">
+        <div class="ham_container"><img src="{% static 'img/Ham_icon.png' %}" alt="메뉴"></div>
+        <div class="ver_category_box">
+          <ul class="navbar">
+            <li class="nav-item">
+              <a href="{% url 'about' %}">서비스 소개</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'ask' %}">질문 리스트</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'faq' %}">FAQ</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{% url 'mypage' %}">마이 페이지</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'signout' %}">로그아웃</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="{% url 'signin' %}">로그인</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'signup' %}">회원가입</a>
+            </li>
+            {% endif %}
+          </ul>
+
+
+        </div>
+      </div>
+
     </div>
   </header>
 
-  {% block content %}
-  {% endblock %}
+  <section>
+    <div class="main_container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <footer>
+      <div class="footer_container">
+        <div class="info_box">
+          <span><a href="{% url 'agreement' %}">이용약관</a></span>
+          <span><a href="{% url 'private_info' %}">개인정보처리방침</a></span>
+        </div>        
+
+      </div>
+    </footer>
+  </section>
+
+
 
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>

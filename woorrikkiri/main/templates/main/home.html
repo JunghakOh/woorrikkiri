@@ -1,17 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'main_base.html' %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/main.css' %}">
-<section>
-    <div class="main_container">
-        <div class="xxl_title title">대학생 지식공유 플랫폼</div>
-        <div class="main_img">
-            <img src="{% static 'img/logo_big.jpg'%}">
-        </div>
-        <div class="btn-wrapper b_btn w_color">
-            <a href="{% url 'new' %}" class="xxl_title">질문하기</a>
-        </div>
-    </div>
-</section>
+
+
+<div class="xxl_title title">대학생 지식공유 플랫폼</div>
+<div class="main_img">
+    <img src="{% static 'img/logo_big.jpg'%}">
+</div>
+<div class="btn-wrapper b_btn btn w_color">
+    <a href="{% url 'new' %}" class="xxl_title">질문하기</a>
+</div>
 
 {% endblock %}
