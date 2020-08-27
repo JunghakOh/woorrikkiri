@@ -1,0 +1,41 @@
+<html xmlns=" http://www.w3.org/1999/xhtml ">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Popbill API Test.</title>
+</head>
+<body>
+<div id="content">
+    <p class="heading1">Response</p>
+        <fieldset class="fieldset1">
+            <legend>거래내역 수집 결과 조회</legend>
+            <ul>
+                <li> code (요청에 대한 응답 상태코드) : {{ response.code }}</li>
+                <li> message (요청에 대한 응답 메시지) : {{ response.message }}</li>
+                <li> total (총 검색결과 건수) : {{ response.total }}</li>
+                <li> perPage (페이지당 검색개수) : {{ response.perPage }}</li>
+                <li> pageNum (페이지 번호) : {{ response.pageNum }}</li>
+                <li> pageCount (페이지 개수) : {{ response.pageCount }}</li>
+                <li> lastScrapDT (최종 조회일시) : {{ response.lastScrapDT }}</li>
+            
+                {% for tradeInfo in response.list %}
+                    <fieldset class="fieldset2">
+                        <legend> 거래내역 [ {{ forloop.counter }} ]</legend>
+                        <ul>
+                            <li> tid (거래내역 아이디) : {{ tradeInfo.tid }}</li>
+                            <li> trdate (거래일자) : {{ tradeInfo.trdate }}</li>
+                            <li> trserial (거래일자별 거래내역 순번) : {{ tradeInfo.trserial }}</li>
+                            <li> trdt (거래일시) : {{ tradeInfo.trdt }}</li>
+                            <li> accIn (입금액) : {{ tradeInfo.accIn }}</li>
+                            <li> accOut (출금액) : {{ tradeInfo.accOut }}</li>
+                            <li> balance (잔액) : {{ tradeInfo.balance }}</li>
+                            <li> remark1 (비고1) : {{ tradeInfo.remark1 }}</li>
+                            <li> remark2 (비고2) : {{ tradeInfo.remark2 }}</li>
+                            <li> remark3 (비고3) : {{ tradeInfo.remark3 }}</li>
+                            <li> memo (메모) : {{ tradeInfo.memo }}</li>
+                        </ul>
+                     </fieldset>
+                  {% endfor %}
+            </ul>
+</div>
+</body>
+</html> 
