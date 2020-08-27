@@ -92,7 +92,7 @@ input::placeholder{
 
 /************ 기본 설정 *************/
 .display {
-    display: block;
+    display: block !important; 
 }
 section{
     background-color: #d4453b07;
@@ -161,14 +161,27 @@ header .hor_category{
 /* footer */
 footer{
     width:100%;
-    height: 200px;
-
     background:#4b4b4b;
 }
 .info_box{
     color:white;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin:10px 0;
 }
-
+.footer_container .main_box{
+    margin:10px 0;
+}
+.footer_container{
+    max-width: 1200px;
+    height: 160px;
+    margin:0 auto;
+    padding:20px;
+    display: flex;    
+    flex-direction: column;
+    /* align-items: center;    */
+}
 
 /************ 반응형 *************/
 @media ( max-width: 700px ) {
