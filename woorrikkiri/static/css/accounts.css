@@ -109,10 +109,10 @@
 
 
 /* signup.html */
-.info_box .half_box{
+.signup_info_box .half_box{
     width: 49%;
 }
-.info_box{
+.signup_info_box{
     padding:10px 0;
 }
 

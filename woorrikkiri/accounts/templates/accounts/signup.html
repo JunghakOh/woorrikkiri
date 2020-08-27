@@ -23,12 +23,12 @@
                         <li>비밀번호는 전부 숫자로 할 수 없습니다.</li>
                     </ul> -->
             </div>
-            <div class="info_box">
+            <div class="signup_info_box">
                 <div class="name_gender_box">
                     <input class="half_box margin_box" type="text" name="name" maxlength="10" required="" id="id_name"
                         placeholder="이름">
                     <div class="gender_select margin_box">
-                        <select>
+                        <select name="gender">
                             <option value="" selected="">성별</option>
                             <option value="m">남성</option>
                             <option value="f">여성</option>
@@ -54,7 +54,7 @@
                 <div class="w_color">회원가입</div>
             </button>
             <div class="info">
-                <div class="info_box">
+                <div class="signup_info_box">
                     <span class="s_color s_text">
                         가입을 하시면 우리끼리의 <span class="h_color"><a href="{% url 'agreement' %}">이용약관</a></span>과
                         <span class="h_color"><a href="{% url 'private_info' %}">개인정보처리방침</a></span>에 동의하게 됩니다.</span>
