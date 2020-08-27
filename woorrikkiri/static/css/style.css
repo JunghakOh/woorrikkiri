@@ -57,8 +57,15 @@
 input::placeholder{
     color:#979797;
 }
+input:focus {
+    outline:none;
+}
 
 /* font 설정 */
+.ll_text{
+    font-size:20px;
+    font-weight: bold;
+}
 .l_text{
     font-size: 16px;
     font-weight: bold;
