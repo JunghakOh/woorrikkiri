@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, UserManager as BaseUserManager
 
 class UserManager(BaseUserManager):
     def create_superuser(self, *args, **kwargs):
