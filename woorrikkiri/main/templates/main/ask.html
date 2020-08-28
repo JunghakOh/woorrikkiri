@@ -21,6 +21,7 @@
                             href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></span>
                     <span class="question_content s_text">{{ post.body }}</span>
                     <span class="s_text s_color">{{ post.pub_date }}</span>
+                    <span class="s_text s_color">작성자 : {{ post.writer }}</span>
                 </div>
             </li>
             {% endfor %}

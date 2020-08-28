@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Content, Comment, FAQ, Answer
 from .forms import ContentForm, CommentForm, FAQForm, AnswerForm
 from django.shortcuts import get_object_or_404
+from accounts.models import User
 
 #---------------------popbill------by junghak
 # -*- coding: utf-8 -*-
@@ -104,7 +105,7 @@ def new(request):
         form = ContentForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.writer = request.user
             post.published_date = timezone.now()
             post.save()
             return redirect('home')
@@ -118,7 +119,9 @@ def ask(request):
     return render(request, 'main/ask.html', {'posts_list':posts})
 
 def detail(request, pk):
-    post = get_object_or_404(Content, pk=pk) 
+    post = get_object_or_404(Content, pk=pk)
+    #post = super().save(Content, commit=False, pk=pk)
+    post.writer = request.user
     comment_list = Comment.objects.filter(post=post)
     answer_list = Answer.objects.filter(post=post)
     if request.method == "POST":
