@@ -4,7 +4,7 @@
 
 
 <div class="center_box">
-    <div class="sign_box">
+    <div class="login_box">
         <div class="xxl_title h_color">회원가입</div>
         <form method="POST">
             {% csrf_token %}
@@ -23,7 +23,7 @@
                         <li>비밀번호는 전부 숫자로 할 수 없습니다.</li>
                     </ul> -->
             </div>
-            <div class="sign_info_box">
+            <div class="signup_info_box">
                 <div class="name_gender_box">
                     <input class="half_box margin_box" type="text" name="name" maxlength="10" required="" id="id_name"
                         placeholder="이름">
@@ -50,11 +50,11 @@
                     <input type="checkbox" name="is_mento" id="id_is_mento">
                 </div>
             </div>
-            <button class="sign_btn" type="submit">
+            <button class="login_btn" type="submit">
                 <div class="w_color">회원가입</div>
             </button>
             <div class="info">
-                <div class="sign_info_box">
+                <div class="signup_info_box">
                     <span class="s_color s_text">
                         가입을 하시면 우리끼리의 <span class="h_color"><a href="{% url 'agreement' %}">이용약관</a></span>과
                         <span class="h_color"><a href="{% url 'private_info' %}">개인정보처리방침</a></span>에 동의하게 됩니다.</span>

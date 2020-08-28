@@ -81,7 +81,7 @@
 .margin_box{
     margin: 20px 0;
 }
-.sign_box{
+.login_box{
     width: 500px;
     background: white;
     border-radius: 30px;
@@ -91,11 +91,11 @@
     /* padding-bottom: 30px; */
     box-shadow: 1px 1px 50px 0 #dcdddd;
 }
-.sign_box .input_box{
+.login_box .input_box{
     padding:20px;
 
 }
-.id_pwd_box>input, .sign_info_box>input{
+.login_box input{
     border:none;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     width:100%;
@@ -108,11 +108,11 @@
 }
 
 
-/* sign.html */
-.sign_info_box .half_box{
+/* signup.html */
+.signup_info_box .half_box{
     width: 49%;
 }
-.sign_info_box{
+.signup_info_box{
     padding:10px 0;
 }
 

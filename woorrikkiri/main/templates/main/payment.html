@@ -1,32 +1,12 @@
 {% extends 'main_base.html' %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
 
-    <div class="sign_box">
 
-        <div class="page_title xxl_title h_color">포인트 충전하기</div>
-
-        <div class="pay_container">
-            <span class="l_title">금액</span>
-            <div class="money_container">
-                <div class="money_box">
-                    <input type="text" class="money_amount ll_text" id= "money_amount" value="0">
-                </div>
-                <div class="btn-wrapper p_btn">+5000원</div>    
-            </div>
-
-            <div class="pay_method">
-                <span class="l_title">결제수단</span>
-                <div class="pay_list">카카오페이</div>
-            </div>
-
-            <button class="sign_btn" type="submit">
-                <div class="w_color">충전하기</div>
-            </button>
-
-        </div>
-
-    </div>
+<div class="page_title xxl_title h_color">포인트 충전하기</div>
+<div class="btn-wrapper">
+    <div class="b_btn">5000원</div>
+    <div class="b_btn">10000원</div>
+</div>
 
 {% endblock %}
