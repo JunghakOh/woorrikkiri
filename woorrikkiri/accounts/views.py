@@ -39,7 +39,7 @@ def signin(request):
             return HttpResponse('로그인 실패. 다시 시도 해보세요.')
     else:
         form = LoginForm()
-        return render(request, 'accounts/login.html', {'form': form})
+        return render(request, 'accounts/signin.html', {'form': form})
 
 def signout(request):
     auth.logout(request)
