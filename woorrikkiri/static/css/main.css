@@ -49,3 +49,14 @@
 .pay_list{
     padding:10px;
 }
+
+/* agreeement: 이용약관 */
+.agreement_container .l_title{
+    margin:30px 0 10px;   
+}
+.agreement_container .b_text{
+    padding:20px 0;
+}
+.agreement_container .text_h{
+    margin-bottom: 30px;
+}
