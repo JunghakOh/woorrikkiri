@@ -22,7 +22,7 @@ class Content(models.Model):
     subjects = models.CharField("과목", max_length=1, choices=CHOICES_SUBJECTS)
     body = models.TextField(default='')
     file = models.FileField(upload_to='documents/%Y, %m/', blank=True)
-
+    
 class Comment(models.Model):
     objects = models.Manager()
     post = models.ForeignKey('Content', on_delete=models.CASCADE)

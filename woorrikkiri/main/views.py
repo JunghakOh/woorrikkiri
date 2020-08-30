@@ -125,7 +125,7 @@ def detail(request, pk):
     comment_list = Comment.objects.filter(post=post)
     answer_list = Answer.objects.filter(post=post)
     if request.method == "POST":
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST) 
         answer_form = AnswerForm(request.POST, request.FILES)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False) 
@@ -183,4 +183,3 @@ def faq_detail(request, pk):
 
 def payment(request):
     return render(request, 'main/payment.html')
-

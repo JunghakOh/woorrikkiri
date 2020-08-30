@@ -24,6 +24,7 @@ class User(AbstractUser):
     student_num = models.CharField("학번", max_length=30, null=True, blank=True)
     is_mento = models.BooleanField("멘토인 경우 체크해주세요", default=False)
     gender = models.CharField("성별", max_length=1, choices=CHOICES_GENDER)
+
     objects = UserManager()
 
 class Profile(models.Model):
