@@ -95,7 +95,7 @@
     padding:20px;
 
 }
-.id_pwd_box>input, .sign_info_box>input{
+.id_pwd_box input, .sign_info_box input, .input_box input{
     border:none;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     width:100%;
