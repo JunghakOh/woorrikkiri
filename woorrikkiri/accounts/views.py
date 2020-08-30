@@ -76,3 +76,10 @@ def change_password(request):
     return render(request, 'accounts/change_password.html', {
         'form': form
     })
+
+@login_required
+def user_delete(request):
+    if request.method == 'POST':
+        request.user.delete()
+        return redirect('home')
+    return render(request, 'accounts/user_delete.html')
