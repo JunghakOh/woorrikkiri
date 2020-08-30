@@ -25,15 +25,9 @@
 <h1>답변을 달아주세요</h1>
 
 <form method="POST">
-    {% csrf_token %}    
-    {% if user.is_mento %}
-    <div class="answer">
-        {{ answer_form.as_p }}
-    </div>
-    <button type="submit">Save</button>
+    {% csrf_token %}
+    {{ answer_form.as_p }}
     <button type="submit">답변 달기</button>
-    {% endif %}
-
 </form>
 
 {% for answer in answer_list %}

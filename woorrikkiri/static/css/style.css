@@ -57,19 +57,11 @@
 input::placeholder{
     color:#979797;
 }
+input:focus {
+    outline:none;
+}
 
 /* font 설정 */
-.l_text{
-    font-size: 16px;
-    font-weight: bold;
-}
-.m_text{
-    font-size: 14px;
-    font-weight: bold;
-}
-.s_text{
-    font-size: 10px;
-}
 .xxl_title{
     font-size: 40px;
     font-family: 'TmoneyRoundWindExtraBold';
@@ -85,10 +77,25 @@ input::placeholder{
     font-family: 'TmoneyRoundWindExtraBold';
     letter-spacing: 3px;
 }
-.s_title{
-    color:#d4463b;
-    font-size: 15px;
+.ll_text{
+    font-size:20px;
 }
+.l_text{
+    font-size: 16px;
+}
+.m_text{
+    font-size: 14px;
+}
+.s_text{
+    font-size: 10px;
+}
+.b_text{
+    font-weight: bold;
+}
+.text_h{
+    line-height:120%;
+}
+
 
 /************ 기본 설정 *************/
 .display {
