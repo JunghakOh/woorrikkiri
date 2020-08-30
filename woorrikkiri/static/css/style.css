@@ -191,7 +191,7 @@ footer{
 }
 
 /************ 반응형 *************/
-@media ( max-width: 700px ) {
+@media ( max-width: 750px ) {
     .ham_container{
         display: block;
     }
