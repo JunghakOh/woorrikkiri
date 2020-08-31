@@ -138,7 +138,7 @@ header .hor_category{
     width:100%;
     display: flex;
     justify-content: space-between;
-    margin:0 30px;
+    margin-left: 30px;
     align-items: center;
 }
 .hor_category .navbar{
