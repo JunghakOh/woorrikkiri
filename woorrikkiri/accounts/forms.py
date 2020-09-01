@@ -2,6 +2,7 @@ from django import forms
 from .models import User, Profile
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
+from main.models import Content, Comment, Answer, FAQ
 
 class UserRegisterForm(UserCreationForm):
     name = forms.CharField(max_length=10)

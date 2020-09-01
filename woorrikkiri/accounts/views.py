@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from django import forms
 from .forms import UserRegisterForm, LoginForm, ProfileForm
+from main.forms import ContentForm, CommentForm, AnswerForm
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib import auth
@@ -12,6 +13,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from main.models import Content, Comment, Answer, FAQ
 
 
 # Create your views here.
@@ -45,8 +47,11 @@ def signout(request):
     auth.logout(request)
     return render(request, 'main/home.html')
 
+@login_required
 def mypage(request):
-    return render(request, 'accounts/mypage.html')
+    posts = Content.objects.all
+        #post_list = post.filter(name=request.user.name)            
+    return render(request, 'accounts/mypage.html', {'posts_list':posts})
 
 def profile_update(request):
     if request.method == 'POST':
