@@ -10,9 +10,15 @@
     </div>
     <div class="question_container">
         <span class="xl_title q_title">질문 목록</span>
+        {% if user.is_authenticated %}
         <div class="btn-wrapper h_color m_btn btn">
             <a href="{% url 'new' %}" class="xl_text">질문하기</a>
         </div>
+        {% else %}
+        <div class="btn-wrapper h_color m_btn btn">
+            <a href="{% url 'signup' %}" class="xl_text">질문하기</a>
+        </div>
+        {% endif %}
         <ol>
             {% for post in posts_list %}
             <li>
