@@ -154,7 +154,7 @@ def edit(request, index):
             post.author = request.user
             post.published_date = timezone.now
             post.save()
-            return redirect('detail', index=post.pk)
+            return redirect('detail', pk=post.pk)
     else:
         form = ContentForm(instance=post)
     return render(request, 'main/edit.html', {'form': form})

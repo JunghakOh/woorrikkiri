@@ -7,8 +7,15 @@
 <div class="main_img">
     <img src="{% static 'img/logo_big.jpg'%}">
 </div>
+{% if user.is_authenticated %}
 <div class="btn-wrapper b_btn btn w_color">
     <a href="{% url 'new' %}" class="xxl_title">질문하기</a>
 </div>
+{% else %}
+<div class="btn-wrapper b_btn btn w_color">
+    <a href="{% url 'signup' %}" class="xxl_title">질문하기</a>
+</div>
+{% endif %}
+
 
 {% endblock %}
