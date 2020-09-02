@@ -17,11 +17,11 @@ class User(AbstractUser):
     )
 
     created_on = models.DateTimeField("등록일자", auto_now_add=True)
-    account_num = models.CharField("계좌번호", max_length=30, null=True, blank=True)
+    #account_num = models.CharField("계좌번호", max_length=30, null=True, blank=True)
     phone_num = models.CharField("전화번호", max_length=30, null=True, blank=True)
     name = models.CharField("이름", max_length=10)
     school = models.CharField("학교", max_length=15)
-    student_num = models.CharField("학번", max_length=30, null=True, blank=True)
+    #student_num = models.CharField("학번", max_length=30, null=True, blank=True)
     is_mento = models.BooleanField("멘토인 경우 체크해주세요", default=False)
     gender = models.CharField("성별", max_length=1, choices=CHOICES_GENDER)
 
