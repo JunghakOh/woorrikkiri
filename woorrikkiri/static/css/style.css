@@ -3,6 +3,7 @@
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif; 
     color: #4b4b4b;   
+    /* font-family: 'TmoneyRoundWindExtraBold'; */
 }
 
 /* font */
@@ -137,7 +138,7 @@ header .hor_category{
     width:100%;
     display: flex;
     justify-content: space-between;
-    margin-left: 30px;
+    margin:0 30px;
     align-items: center;
 }
 .hor_category .navbar{
@@ -190,7 +191,7 @@ footer{
 }
 
 /************ 반응형 *************/
-@media ( max-width: 750px ) {
+@media ( max-width: 700px ) {
     .ham_container{
         display: block;
     }

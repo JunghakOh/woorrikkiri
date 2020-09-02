@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>우리끼리 | 질문은 어디서 해? 우리끼리 하면되지!</title>
+  <title>우리끼리</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'css/reset.css' %}">
   <link rel="stylesheet" href="{% static 'css/button.css' %}">
@@ -16,16 +16,16 @@
   <header>
     <div class="nav_container">
       <a href="{% url 'home' %}">
-        <div class="logo_container"><img src="{% static 'img/nav_logo.png' %}" alt="우리끼리"></div>
+        <div class="logo_container"><img src="{% static 'img/logo_name.jpg' %}" alt="우리끼리"></div>
       </a>
       <div class="hor_category l_text">
-        <div class="main_category b_text">
+        <div class="main_category">
           <ul class="navbar">
             <li class="nav-item">
               <a href="{% url 'about' %}">서비스 소개</a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'ask' %}">질문 모두보기</a>
+              <a href="{% url 'ask' %}">질문 리스트</a>
             </li>
             <li class="nav-item">
               <a href="{% url 'faq' %}">FAQ</a>
@@ -33,7 +33,7 @@
           </ul>
         </div>
 
-        <div class="account_category b_text">
+        <div class="account_category">
           <ul class="navbar">
             {% if user.is_authenticated %}
             <li class="nav-item">
@@ -55,8 +55,8 @@
 
       </div>
 
-      <div class="ver_category l_text b_text">
-        <div class="ham_container"><img src="{% static 'img/ham_btn.png' %}" alt="메뉴"></div>
+      <div class="ver_category l_text">
+        <div class="ham_container"><img src="{% static 'img/Ham_icon.png' %}" alt="메뉴"></div>
         <div class="ver_category_box">
           <ul class="navbar">
             <li class="nav-item">
@@ -100,7 +100,7 @@
     <footer>
       <div class="footer_container">
         <div class="info_box">
-          <span class="m_text w_color"><a href="https://www.notion.so/ef00bf513c92447791f0cd540694ff3b">이용약관</a></span>
+          <span class="m_text w_color"><a href="{% url 'agreement' %}">이용약관</a></span>
           <span class="m_text w_color"><a href="{% url 'private_info' %}">개인정보처리방침</a></span>
         </div>
         <div class="main_box">
