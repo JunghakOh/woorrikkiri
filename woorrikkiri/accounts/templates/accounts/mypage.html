@@ -11,14 +11,14 @@
                     {% if profile.img %}
                     <img src="{{ user.img }}" alt="프로필이미지">
                     {% else %}
-                    <img src="{% static 'img/main_logo.png' %}" alt="프로필이미지">
+                    <img src="{% static 'img/logo_big.jpg' %}" alt="프로필이미지">
                     {% endif %}
                 </div>
-                <a href="{% url 'profile_update' %}" class="m_text s_color edit"><img src="{% static 'img/setting.png' %}" alt="프로필편집"></a><br>
+                <a href="{% url 'profile_update' %}" class="m_text s_color edit">프로필 편집</a><br>
             </div>
             <div class="id_box">
                 <div class="user_id">
-                    <span class="l_title">{{ user.name }}</span> <!-- 사용자 이름 -->
+                    <span class="xxl_title">{{ user.name }}</span> <!-- 사용자 이름 -->
                     <span class="l_text">{{ user.username }}</span> <!-- 아이디 -->
                 </div>
             </div>
@@ -30,15 +30,10 @@
                 {% endif %}
             </div>
         </div>
-        <div class="point_containter">
-            <div class="current_point b_text">
-                ⓟ 0 포인트
+        <div class="point_btn_container">
+            <div class="btn-wrapper m_btn h_color">
+                <a href="{% url 'payment' %}" class="l_text">포인트 충전하기</a>
             </div>
-            <div class="point_btn_container">
-                <div class="btn-wrapper m_btn h_color">
-                    <a href="{% url 'payment' %}" class="l_text">포인트 충전하기</a>
-                </div>
-            </div>    
         </div>
     </div>
     <div class="question_container">
