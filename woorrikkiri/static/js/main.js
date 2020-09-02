@@ -98,3 +98,15 @@ window.onload = function(){
         blind.classList.remove('display');
     }); 
 }
+
+
+// payment //
+var money_amount = document.querySelector("#money_amount");
+const plus_5000 = document.querySelector("#plus_5000");
+
+plus_5000.addEventListener('click', function(){
+    let money = parseFloat(money_amount.innerText);
+    money += 5000;
+    money_amount.innerHTML = money;
+})
+

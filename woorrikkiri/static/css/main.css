@@ -33,15 +33,18 @@
     height: 40px;
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 10px 0 0 10px;
-    padding:0 12px;
-    display: flex;
-    align-items: center;
+    padding:10px;
+
 }
 .money_amount{
     width:90%;
     height:90%;
     background: transparent;
     border: 0px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .pay_method{
     padding: 20px 0;
