@@ -65,6 +65,8 @@
     border: 0.5px solid rgba(0, 0, 0, 0.1);
     padding: 10px;
     font-size: 20px;
+    cursor: pointer;
+    -webkit-user-select: none;
 }
 .p_btn:active{
     color: #fff;

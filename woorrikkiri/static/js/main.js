@@ -103,10 +103,29 @@ window.onload = function(){
 // payment //
 var money_amount = document.querySelector("#money_amount");
 const plus_5000 = document.querySelector("#plus_5000");
+const x_btn = document.querySelector("#x_btn");
 
 plus_5000.addEventListener('click', function(){
     let money = parseFloat(money_amount.innerText);
-    money += 5000;
-    money_amount.innerHTML = money;
-})
+    money += 5;
+    if (money > 1000){
+        alert("금액이 너무 큽니다.");
+        money_amount.innerHTML = "0";
+    }else{
+        money_amount.innerHTML = money+",000";
+    }
+});
 
+x_btn.addEventListener('click', function(){
+    money_amount.innerHTML = "0";
+});
+
+
+// faq //
+const q_title = document.querySelector("#faq_title");
+const q_content = document.querySelector("#faq_content");
+
+q_title.addEventListener('click', function(){
+    q_content.classList.toggle('display');
+    console.log('크르기');
+});
