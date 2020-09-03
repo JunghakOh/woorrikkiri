@@ -8,8 +8,8 @@
         <ul>
             {% for faq in faq_list %}
             <li class="faq_q_box">
-                <div class="q_title l_text b_text" id="faq_title">Q. {{ faq.title }}</div>
-                <div class="q_content" id="faq_content">{{ faq.body }}</div> 
+                <div class="q_title l_text b_text" data-name="faq_title" name="{{ faq.id }}">Q. {{ faq.title }}</div>
+                <div class="q_content" id="faq_content_{{ faq.id }}">{{ faq.body }}</div> 
             </li>
             {% endfor %}        
         </ul>

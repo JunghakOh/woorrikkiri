@@ -1,5 +1,4 @@
 // signup - select //
-
 var x, i, j, l, ll, selElmnt, a, b, c;
 /* Look for any elements with the class "gender_select": */
 x = document.getElementsByClassName("gender_select");
@@ -87,45 +86,62 @@ const ham = document.querySelector('.ham_container');
 const ver_cate = document.querySelector('.ver_category_box');
 const blind = document.querySelector('.blind');
 
-ham.addEventListener('click', function(){
+ham.addEventListener('click', function () {
     ver_cate.classList.toggle('display');
     blind.classList.toggle('display');
 });
 
-window.onload = function(){ 
-    window.addEventListener('resize', function(){ 
+window.onload = function () {
+    window.addEventListener('resize', function () {
         ver_cate.classList.remove('display');
         blind.classList.remove('display');
-    }); 
+    });
 }
 
 
 // payment //
+window.onload=function(){
 var money_amount = document.querySelector("#money_amount");
 const plus_5000 = document.querySelector("#plus_5000");
 const x_btn = document.querySelector("#x_btn");
 
-plus_5000.addEventListener('click', function(){
-    let money = parseFloat(money_amount.innerText);
-    money += 5;
-    if (money > 1000){
-        alert("금액이 너무 큽니다.");
-        money_amount.innerHTML = "0";
-    }else{
-        money_amount.innerHTML = money+",000";
-    }
-});
 
-x_btn.addEventListener('click', function(){
-    money_amount.innerHTML = "0";
-});
+    plus_5000.addEventListener('click', function () {
+        let money = parseFloat(money_amount.innerText);
+        money += 5;
+        if (money > 1000) {
+            alert("금액이 너무 큽니다.");
+            money_amount.innerHTML = "0";
+        } else {
+            money_amount.innerHTML = money + ",000";
+        }
+    });
+    x_btn.addEventListener('click', function () {
+        money_amount.innerHTML = "0";
+    });
+    
+}
+
 
 
 // faq //
-const q_title = document.querySelector("#faq_title");
-const q_content = document.querySelector("#faq_content");
+const delegation = document.querySelector('.faq_box');
 
-q_title.addEventListener('click', function(){
-    q_content.classList.toggle('display');
-    console.log('크르기');
-});
+function delegationFunc(e) {
+    let elem = e.target;
+    while (!elem.getAttribute('data-name')) {
+        elem = elem.addEventListener
+
+        if (elem.nodeName === 'BODY') {
+            elem = null
+            return;
+        };
+    };
+    if (elem.matches('[data-name="faq_title"]')) {
+        var pk = elem.getAttribute('name');
+        const faq_content = document.querySelector("#faq_content_"+pk);
+        faq_content.classList.toggle('display');
+    }
+};
+
+delegation.addEventListener('click', delegationFunc);

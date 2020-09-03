@@ -181,9 +181,5 @@ def faq(request):
     faq = FAQ.objects.all
     return render(request, 'main/faq.html', {'faq_list':faq})
 
-def faq_detail(request, pk):
-    faq = get_object_or_404(FAQ, pk=pk)
-    return render(request, 'main/faq_detail.html', {'faq':faq})
-
 def payment(request):
     return render(request, 'main/payment.html')

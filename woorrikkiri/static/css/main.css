@@ -65,24 +65,25 @@
     width:80%;
     margin: 0 auto;
 }
-.faq_title{
+.faq_container .faq_title{
     border-bottom: 1px solid rgba(0,0,0,0.5);
     padding-bottom:20px;
 }
-.faq_q_box{
+.faq_container .faq_q_box{
     width:100%;
 }
-.q_title{
+.faq_container .q_title{
     padding: 20px;
     border-bottom: 1px solid rgba(0,0,0,0.07);
 }
-.q_content{
+.faq_container .q_content{
     display: none;
     background: rgba(0,0,0,0.07);
     width:100%;
     padding:20px;
     border-radius: 0 0 10px 10px;
-    white-space:pre;
+    white-space: pre-line;
+    line-height: 130%;
 }
 
 
