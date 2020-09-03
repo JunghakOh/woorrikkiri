@@ -6,15 +6,15 @@ from main.models import Content, Comment, Answer, FAQ
 
 class UserRegisterForm(UserCreationForm):
     name = forms.CharField(max_length=10)
-    student_num = forms.CharField(max_length=30)
+    #student_num = forms.CharField(max_length=30)
     school = forms.CharField(max_length=15)
     phone_num = forms.CharField(max_length=20)
-    account_num = forms.CharField()
+    #account_num = forms.CharField()
 
     class Meta(UserCreationForm.Meta):
         model = User
         models = get_user_model()
-        fields = ['username', 'name', 'email', 'school', 'student_num', 'phone_num', 'gender', 'account_num', 'is_mento',]
+        fields = ['username', 'name', 'email', 'school', 'phone_num', 'gender', 'is_mento',]
         
 class LoginForm(forms.ModelForm):
     class Meta:

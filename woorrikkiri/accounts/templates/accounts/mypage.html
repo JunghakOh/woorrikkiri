@@ -1,6 +1,7 @@
 {% extends 'accounts_base.html' %} {% block content %} {% load static %} 
 {% if user.is_authenticated %}
 <div class="mypage_container">
+<<<<<<< HEAD
 	<div class="profile_container">
 		<div class="profile_box">
 			<div class="profile_img">
@@ -53,6 +54,62 @@
 					<span class="question_content s_text">도저히 못 풀겠습니다...</span>
 				</div>
 			</li>
+=======
+    <div class="profile_container">
+        <div class="profile_box">
+            <div class="profile_img">
+                <div class="profile_img_box">
+                    {% if profile.img %}
+                    <img src="{{ user.img }}" alt="프로필이미지">
+                    {% else %}
+                    <img src="{% static 'img/logo_big.jpg' %}" alt="프로필이미지">
+                    {% endif %}
+                </div>
+                <a href="{% url 'profile_update' %}" class="m_text s_color edit">프로필 편집</a><br>
+            </div>
+            <div class="id_box">
+                <div class="user_id">
+                    <span class="xxl_title">{{ user.name }}</span> <!-- 사용자 이름 -->
+                    <span class="l_text">{{ user.username }}</span> <!-- 아이디 --><br>
+                    <span class="l_text">포인트 : {{ user.point }}</span> <!-- 포인트 -->
+                </div>
+            </div>
+            <div class="profile_intro">
+                {% if profile.introduction %}
+                {{ profile.introduction }}
+                {% else %}
+                한 줄 소개가 없습니다.
+                {% endif %}
+            </div>
+        </div>
+        <div class="point_btn_container">
+            <div class="btn-wrapper m_btn h_color">
+                <a href="{% url 'payment' %}" class="l_text">포인트 충전하기</a>
+            </div>
+        </div>
+    </div>
+    <div class="question_container">
+        <span class="xl_title q_title">지난 질문들</span>
+        <ol>
+            <li>
+                <div class="question_box">
+                    <span class="question_title m_text">파이썬 질문</span>
+                    <span class="question_content s_text">도저히 못 풀겠습니다...</span>
+                </div>
+            </li>
+            <li>
+                <div class="question_box">
+                    <span class="question_title m_text">파이썬 질문</span>
+                    <span class="question_content s_text">도저히 못 풀겠습니다...</span>
+                </div>
+            </li>
+            <li>
+                <div class="question_box">
+                    <span class="question_title m_text">파이썬 질문</span>
+                    <span class="question_content s_text">도저히 못 풀겠습니다...</span>
+                </div>
+            </li>
+>>>>>>> 50db01c720062c2af96834d2e38bec1f1c6744ef
 
 			{% for post in posts_list %} {% if user == post.writer %}
 			<li>
