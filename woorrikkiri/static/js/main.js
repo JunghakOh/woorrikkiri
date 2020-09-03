@@ -83,12 +83,21 @@ document.addEventListener("click", closeAllSelect);
 
 // vertical navbar //
 const ham = document.querySelector('.ham_container');
+const x_btn = document.querySelector('.x_container');
 const ver_cate = document.querySelector('.ver_category_box');
 const blind = document.querySelector('.blind');
 
 ham.addEventListener('click', function () {
     ver_cate.classList.toggle('display');
     blind.classList.toggle('display');
+    x_btn.classList.toggle('display');
+    ham.classList.toggle('display');
+});
+
+x_btn.addEventListener('click', function () {
+    ver_cate.classList.toggle('display');
+    blind.classList.toggle('display');
+    x_btn.classList.toggle('display');
 });
 
 window.onload = function () {
@@ -103,7 +112,7 @@ window.onload = function () {
 window.onload=function(){
 var money_amount = document.querySelector("#money_amount");
 const plus_5000 = document.querySelector("#plus_5000");
-const x_btn = document.querySelector("#x_btn");
+const money_x_btn = document.querySelector("#x_btn");
 
 
     plus_5000.addEventListener('click', function () {
@@ -116,7 +125,7 @@ const x_btn = document.querySelector("#x_btn");
             money_amount.innerHTML = money + ",000";
         }
     });
-    x_btn.addEventListener('click', function () {
+    money_x_btn.addEventListener('click', function () {
         money_amount.innerHTML = "0";
     });
     
