@@ -1,23 +1,23 @@
 <!--{% extends "main_base.html" %}-->
 {% block contents %}
-    <div id="content">
-        <p class="heading1">팝빌 계좌조회 API Django Example.</p>
-        <br/>
-        <fieldset class="fieldset1">
-            <legend>수집 상태 확인</legend>
-            <fieldset class="fieldset2">
-                <legend>jobID (작업아이디) : {{ response.jobID }}</legend>
-                <ul>
-                    <li> jobState (수집상태) : {{ response.jobState }}</li>
-                    <li> startDate (시작일자) : {{ response.startDate }}</li>
-                    <li> endDate (종료일자) : {{ response.endDate }}</li>
-                    <li> errorCode (오류코드) : {{ response.errorCode }}</li>
-                    <li> errorReason (오류메시지) : {{ response.errorReason }}</li>
-                    <li> jobStartDT (작업 시작일시) : {{ response.jobStartDT }}</li>
-                    <li> jobEndDT (작업 종료일시) : {{ response.jobEndDT }}</li>
-                    <li> regDT (수집 요청일시) : {{ response.regDT }}</li>
-                </ul>
-            </fieldset>
-        </fieldset>
-    </div>
+<div id="content">
+	<p class="heading1">팝빌 계좌조회 API Django Example.</p>
+	<br />
+	<fieldset class="fieldset1">
+		<legend>수집 상태 확인</legend>
+		<fieldset class="fieldset2">
+			<legend>jobID (작업아이디) : {{ response.jobID }}</legend>
+			<ul>
+				<li>jobState (수집상태) : {{ response.jobState }}</li>
+				<li>startDate (시작일자) : {{ response.startDate }}</li>
+				<li>endDate (종료일자) : {{ response.endDate }}</li>
+				<li>errorCode (오류코드) : {{ response.errorCode }}</li>
+				<li>errorReason (오류메시지) : {{ response.errorReason }}</li>
+				<li>jobStartDT (작업 시작일시) : {{ response.jobStartDT }}</li>
+				<li>jobEndDT (작업 종료일시) : {{ response.jobEndDT }}</li>
+				<li>regDT (수집 요청일시) : {{ response.regDT }}</li>
+			</ul>
+		</fieldset>
+	</fieldset>
+</div>
 {% endblock contents %}

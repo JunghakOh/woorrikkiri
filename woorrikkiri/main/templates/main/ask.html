@@ -1,38 +1,33 @@
-{% extends 'main_base.html' %}
-{% block content %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
-
+{% extends 'main_base.html' %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}" />
 
 <div class="ask_container">
-    <div class="side_box">
-        <span>메뉴메뉴</span>
-    </div>
-    <div class="question_container">
-        <span class="xl_title q_title">질문 목록</span>
-        {% if user.is_authenticated %}
-        <div class="btn-wrapper h_color m_btn btn">
-            <a href="{% url 'new' %}" class="xl_text">질문하기</a>
-        </div>
-        {% else %}
-        <div class="btn-wrapper h_color m_btn btn">
-            <a href="{% url 'signup' %}" class="xl_text">질문하기</a>
-        </div>
-        {% endif %}
-        <ol>
-            {% for post in posts_list %}
-            <li>
-                <div class="question_box">
-                    <span class="question_title m_text"><a
-                            href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></span>
-                    <span class="question_content s_text">{{ post.body }}</span>
-                    <span class="s_text s_color">{{ post.pub_date }}</span>
-                    <span class="s_text s_color">작성자 : {{ post.writer }}</span>
-                </div>
-            </li>
-            {% endfor %}
-        </ol>
-    </div>
-
+	<div class="side_box">
+		<span>메뉴메뉴</span>
+	</div>
+	<div class="question_container">
+		<div class="xl_title">질문 목록</div>
+		{% if user.is_authenticated %}
+		<div class="btn-wrapper h_color m_btn btn">
+			<a href="{% url 'new' %}" class="xl_text">질문하기</a>
+		</div>
+		{% else %}
+		<div class="btn-wrapper h_color m_btn btn">
+			<a href="{% url 'signup' %}" class="xl_text">질문하기</a>
+		</div>
+		{% endif %}
+		<ol>
+			{% for post in posts_list %}
+			<li>
+				<div class="question_box">
+					<span class="question_title m_text"><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></span>
+					<span class="question_content s_text">{{ post.body }}</span>
+					<span class="s_text s_color">{{ post.pub_date }}</span>
+					<span class="s_text s_color">작성자 : {{ post.writer }}</span>
+				</div>
+			</li>
+			{% endfor %}
+		</ol>
+	</div>
 </div>
 {% endblock %}

@@ -1,14 +1,19 @@
 {% extends 'main_base.html' %}
-{% block content %}
 {% load static %}
+{% block content %}
 
-
-<h1>FAQ</h1>
-
-{% for faq in faq_list %}
-<a href="{% url 'faq_detail' pk=faq.pk %}">{{ faq.title }}</a><br>
-<p> {{ faq.pub_date }}</p>
-{% endfor %}
-
+<div class="faq_container">
+    <div class="xl_title faq_title">자주묻는 질문</div>
+    <div class="faq_box">
+        <ul>
+            {% for faq in faq_list %}
+            <li class="faq_q_box">
+                <div class="q_title l_text b_text" data-name="faq_title" name="{{ faq.id }}">Q. {{ faq.title }}</div>
+                <div class="q_content" id="faq_content_{{ faq.id }}">{{ faq.body }}</div> 
+            </li>
+            {% endfor %}        
+        </ul>
+    </div>    
+</div>
 
 {% endblock %}
