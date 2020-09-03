@@ -109,10 +109,10 @@ window.onload = function () {
 
 
 // payment //
-window.onload=function(){
-var money_amount = document.querySelector("#money_amount");
-const plus_5000 = document.querySelector("#plus_5000");
-const money_x_btn = document.querySelector("#x_btn");
+window.onload = function () {
+    var money_amount = document.querySelector("#money_amount");
+    const plus_5000 = document.querySelector("#plus_5000");
+    const money_x_btn = document.querySelector("#x_btn");
 
 
     plus_5000.addEventListener('click', function () {
@@ -128,29 +128,60 @@ const money_x_btn = document.querySelector("#x_btn");
     money_x_btn.addEventListener('click', function () {
         money_amount.innerHTML = "0";
     });
-    
+
 }
 
 
 
 // faq //
-const delegation = document.querySelector('.faq_box');
+window.onload = function () {
+    const delegation = document.querySelector('.faq_box');
 
-function delegationFunc(e) {
-    let elem = e.target;
-    while (!elem.getAttribute('data-name')) {
-        elem = elem.addEventListener
+    function delegationFunc(e) {
+        let elem = e.target;
+        while (!elem.getAttribute('data-name')) {
+            elem = elem.addEventListener
 
-        if (elem.nodeName === 'BODY') {
-            elem = null
-            return;
+            if (elem.nodeName === 'BODY') {
+                elem = null
+                return;
+            };
         };
+        if (elem.matches('[data-name="faq_title"]')) {
+            var pk = elem.getAttribute('name');
+            const faq_content = document.querySelector("#faq_content_" + pk);
+            faq_content.classList.toggle('display');
+        }
     };
-    if (elem.matches('[data-name="faq_title"]')) {
-        var pk = elem.getAttribute('name');
-        const faq_content = document.querySelector("#faq_content_"+pk);
-        faq_content.classList.toggle('display');
-    }
-};
 
-delegation.addEventListener('click', delegationFunc);
+    delegation.addEventListener('click', delegationFunc);
+}
+
+// new //
+var coffee_count = document.querySelector("#coffee_count");
+var point_count = document.querySelector("#point_count");
+const plus_btn = document.querySelector('#plus');
+const minus_btn = document.querySelector('#minus');
+
+plus_btn.addEventListener('click', function () {
+    var c_count = parseFloat(coffee_count.innerText);
+    var p_count = parseFloat(point_count.innerText);
+    
+    c_count += 1;
+    p_count += 2900;
+    coffee_count.innerHTML = c_count;
+    point_count.innerHTML = p_count;
+});
+minus_btn.addEventListener('click', function () {
+    var c_count = parseFloat(coffee_count.innerText);
+    var p_count = parseFloat(point_count.innerText);
+
+    if (c_count === 0) {
+        alert('0잔 이하를 선택할 수 없습니다.');
+    } else {
+        c_count -= 1;
+        p_count -= 2900;
+        coffee_count.innerHTML = c_count;
+        point_count.innerHTML = p_count;
+    }
+});

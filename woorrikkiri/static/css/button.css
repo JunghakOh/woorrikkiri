@@ -1,10 +1,9 @@
 /* 버튼 공통 */
 .btn{
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    width: 100%;
+    align-items: center;
+    cursor: pointer;
 }
 .btn-wrapper {
     display: flex;
@@ -71,4 +70,17 @@
 .p_btn:active{
     color: #fff;
     background: #a13931;
+}
+
+/* new - 질문하기 커피 추가 */
+.coffee_btn{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start !important;
+    border-radius: 50%;
+    background-color:#d4463b;
+    border:none;
+    font-size: 20px;
+    box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
 }
