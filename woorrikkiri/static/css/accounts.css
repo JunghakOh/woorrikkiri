@@ -1,212 +1,208 @@
 /* mypage.html */
-.mypage_container {
-	width: 100%;
-	min-width: 350px;
-	display: flex;
-	justify-content: space-between;
+.mypage_container{
+    width:100%;
+    min-width: 350px;
+    display: flex;
+    justify-content: space-between;
 }
-.profile_container {
-	width: 20%;
-	min-width: 255px;
-	margin-bottom: 30px;
+.profile_container{
+    width:25%;
+    min-width: 255px;
+    margin-bottom: 30px;
 }
-.question_container {
-	width: 78%;
+.question_container{
+    width:73%;
 }
-.profile_box {
-	margin-bottom: 30px;
+.profile_img{
+    display: flex;
+    align-items: flex-end;
 }
-.profile_img {
-	display: flex;
-	align-items: flex-end;
+.profile_img_box{
+    width:70%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0.5px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
 }
-.profile_img_box {
-	width: 170px;
-	height: 170px;
-	border-radius: 50%;
-	overflow: hidden;
-	border: 0.5px solid rgba(0, 0, 0, 0.05);
-	box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04), inset 0 1px 0 hsla(0, 0%, 100%, 0.25);
+.profile_img img{
+    width:100%;
 }
-.profile_img img {
-	width: 100%;
+.id_box{
+    padding-top:10px;
 }
-.edit {
-	width: 20px;
+.profile_intro{
+    padding-top:10px;
 }
-
-.id_box {
-	padding-top: 10px;
-}
-.profile_intro {
-	padding-top: 10px;
+.point_btn_container{
+    padding-top:30px;
 }
 
-.current_point {
-	padding: 10px;
+
+.q_title{
+    padding:20px 0 ;
 }
-.question_container > span {
-	margin-left: 10px;
+.question_container > span{
+    margin-left: 10px;
 }
 
-.question_container ol {
-	width: 100%;
-	padding: 20px 0;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
+.question_container ol{
+    width: 100%;
+    padding:20px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-.question_container li {
-	width: 50%;
-	padding: 0 5px;
-	margin-bottom: 5px;
+.question_container li{
+    width:50%;
+    padding: 0 5px;
+    margin-bottom: 5px;
 }
-.question_box {
-	width: 100%;
-	height: 100px;
-	background: white;
-	border: 0.5px solid rgba(0, 0, 0, 0.1);
-	border-radius: 10px;
-	padding: 15px;
-	margin: 3px;
+.question_box{
+    width: 100%;
+    height:100px;
+    background:white;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding:15px;
+    margin:3px;
 }
-.question_box span {
-	display: block;
+.question_box span{
+    display: block;
 }
-.question_box .question_content {
-	padding: 15px 0;
-}
-
-/* signin.html */
-.input_box .margin_box {
-	margin: 10px 0 20px 0;
-}
-.margin_box {
-	margin: 20px 0;
-}
-.sign_box {
-	width: 500px;
-	background: white;
-	border-radius: 30px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	text-align: center;
-	padding: 60px;
-	/* padding-bottom: 30px; */
-	box-shadow: 1px 1px 50px 0 #dcdddd;
-}
-.sign_box .input_box {
-	padding: 20px;
-}
-.id_pwd_box input,
-.sign_info_box input,
-.input_box input {
-	border: none;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	width: 100%;
-	padding: 10px 0;
+.question_box .question_content{
+    padding: 15px 0;
 }
 
-.center_box {
-	padding: 60px 0;
+
+/* login.html */
+.input_box .margin_box{
+    margin: 10px 0 20px 0;
+}
+.margin_box{
+    margin: 20px 0;
+}
+.sign_box{
+    width: 500px;
+    background: white;
+    border-radius: 30px;
+    border: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 60px;
+    /* padding-bottom: 30px; */
+    box-shadow: 1px 1px 50px 0 #dcdddd;
+}
+.sign_box .input_box{
+    padding:20px;
+
+}
+.id_pwd_box>input, .sign_info_box>input{
+    border:none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    width:100%;
+    padding: 10px 0;
 }
 
-/* signup.html */
-.sign_info_box .half_box {
-	width: 49%;
+
+.center_box{
+    padding: 60px 0;
 }
-.sign_info_box {
-	padding: 10px 0;
+
+
+/* sign.html */
+.sign_info_box .half_box{
+    width: 49%;
 }
+.sign_info_box{
+    padding:10px 0;
+}
+
 
 /* 성별선택 */
-.name_gender_box {
-	display: flex;
+.name_gender_box{
+    display:flex;
 }
 .gender_select {
-	position: relative;
-	font-family: Arial;
-	margin-left: 10px;
-	width: 60px;
-	font-size: 13px;
-	text-align: left;
-	padding-top: 5px;
+    position: relative;
+    font-family: Arial;
+    margin-left:10px;
+    width:60px;
+    font-size:13px;
+    text-align: left;
+    padding-top:5px;
 }
 .gender_select select {
-	display: none; /*hide original SELECT element:*/
+    display: none; /*hide original SELECT element:*/
 }
 .select-selected {
-	background-color: transparent;
+    background-color: transparent;
 }
-.select-selected:after {
-	/* 선택 삼각형 */
-	position: absolute;
-	content: '';
-	top: 19px;
-	right: 10px;
-	width: 0;
-	height: 0;
-	border: 6px solid transparent;
-	border-color: rgba(0, 0, 0, 0.1) transparent transparent transparent;
+.select-selected:after { /* 선택 삼각형 */
+    position: absolute;
+    content: "";
+    top: 19px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: rgba(0,0,0,0.1) transparent transparent transparent;
 }
 /* 선택 삼각형 방향 바꾸기 */
 .select-selected.select-arrow-active:after {
-	border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-	top: 10px;
+    border-color: transparent transparent rgba(0,0,0,0.1) transparent;
+    top: 10px;
 }
 /*style the items (options), including the selected item:*/
-.select-items div,
-.select-selected {
-	color: #979797;
-	padding: 8px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	cursor: pointer;
-	user-select: none;
+.select-items div,.select-selected {
+    color: #979797;
+    padding: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+    cursor: pointer;
+    user-select: none;
 }
 /*style items (options):*/
 .select-items {
-	position: absolute;
-	background-color: #ffffff;
-	top: 100%;
-	left: 0;
-	right: 0;
-	z-index: 99;
+    position: absolute;
+    background-color: #ffffff;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
 }
 /*hide the items when the select box is closed:*/
 .select-hide {
-	display: none;
+    display: none;
 }
-.select-items div:hover,
-.same-as-selected {
-	background-color: rgba(0, 0, 0, 0.1);
-}
-
-.mento_check {
-	display: flex;
-	width: 100%;
-	padding: 10px 0;
-	justify-content: center;
-	align-items: center;
-}
-.mento_check input {
-	margin: 0;
-	width: 50px;
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 700px) {
-	.mypage_container,
-	.question_container ol {
-		display: block;
-	}
-	.profile_container {
-		width: 90%;
-		margin: 0 auto;
-	}
-	.question_container li,
-	.question_container {
-		width: 100%;
-	}
-	.question_container {
-		justify-content: center;
-		padding-top: 30px;
-	}
+.mento_check{
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    justify-content: center;
+    align-items: center;
+}
+.mento_check input{
+    margin:0;
+    width:50px;
+}
+
+
+@media ( max-width: 700px ){
+    .mypage_container, .question_container ol{
+        display: block;
+    }
+    .profile_container{
+        width:90%;
+        margin:0 auto;
+    }
+    .question_container li, .question_container{
+        width:100%;
+    }
+    .question_container{
+        justify-content: center;
+        padding-top:30px;
+    }
+
 }

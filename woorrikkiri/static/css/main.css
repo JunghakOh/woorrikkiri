@@ -33,25 +33,15 @@
     height: 40px;
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 10px 0 0 10px;
-    padding:10px;
+    padding:0 12px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 .money_amount{
     width:90%;
     height:90%;
     background: transparent;
     border: 0px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    cursor: default;
-}
-.x_btn{
-    width:12px;
-    cursor:pointer;
 }
 .pay_method{
     padding: 20px 0;
@@ -60,103 +50,7 @@
     padding:10px;
 }
 
-/* faq */
-.faq_container{
-    width:80%;
-    margin: 0 auto;
-}
-.faq_container .faq_title{
-    border-bottom: 1px solid rgba(0,0,0,0.5);
-    padding-bottom:20px;
-}
-.faq_container .faq_q_box{
-    width:100%;
-}
-.faq_container .q_title{
-    padding: 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.07);
-}
-.faq_container .q_content{
-    display: none;
-    background: rgba(0,0,0,0.07);
-    width:100%;
-    padding:20px;
-    border-radius: 0 0 10px 10px;
-    white-space: pre-line;
-}
-
-/* new */
-.new_container{
-    width:90%;
-    max-width: 800px;
-	background: white;
-	border-radius: 30px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	text-align: center;
-	padding: 20px 40px;
-    box-shadow: 1px 1px 50px 0 #dcdddd;
-
-}
-.new_container .xl_title{
-    margin-bottom: 20px;
-}
-.new_container .q_title{
-    width: 100%;
-    height: 40px;
-    line-height: 24px;
-    padding-left: 12px;
-    font-size: 16px;
-    border-radius: 3px;
-    border: 1px solid #e1e4e7;
-    -webkit-appearance: none;
-    display: -moz-inline-stack;
-    zoom: 1;
-    *display: inline;
-    display: inline-block;
-    vertical-align: top;
-    transition: all .2s ease;
-    margin: 10px;
-}
-.new_container .q_content{
-    width: 100%;
-    height: 200px;
-    line-height: 24px;
-    padding-left: 12px;
-    font-size: 16px;
-    border-radius: 3px;
-    border: 1px solid #e1e4e7;
-    -webkit-appearance: none;
-    display: -moz-inline-stack;
-    zoom: 1;
-    *display: inline;
-    display: inline-block;
-    vertical-align: top;
-    transition: all .2s ease;
-    margin: 10px;
-    padding: 10px;
-}
-.new_container .q_extra, .new_container .q_coffee{
-    margin-bottom: 20px;
-}
-.new_container .btn_wrapper{
-    width:30%;
-    margin:0 auto;
-}
-.q_coffee .btn_wrapper{
-    width: 30px;
-    height: 30px;
-}
-.new_container .payment{
-    margin: 10px;
-}
-.new_container .q_coffee{
-    display: flex;
-    width: 240px;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-/* agreeement: 이용약관
+/* agreeement: 이용약관 */
 .agreement_container .l_title{
     margin:30px 0 10px;   
 }
@@ -165,4 +59,4 @@
 }
 .agreement_container .text_h{
     margin-bottom: 30px;
-} */
+}

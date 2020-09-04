@@ -94,12 +94,11 @@ def home(request):
     posts = Content.objects.all
     return render(request, 'main/home.html', {'posts_list':posts})
     
-# 이용약관 / 개인정보 처리 방침
-# def agreement(request):
-#     return render(request, 'agreement.html')
+def agreement(request):
+    return render(request, 'agreement.html')
 
-# def private_info(request):
-#     return render(request, 'private_info.html')
+def private_info(request):
+    return render(request, 'private_info.html')
     
 def new(request):
     if request.method == 'POST':
@@ -174,12 +173,13 @@ def delete_comment(request, pk, comment_pk):
 def about(request):
     return render(request, 'main/about.html')
 
-def about_team(request):
-    return render(request, 'main/about_team.html')
-
 def faq(request):
     faq = FAQ.objects.all
     return render(request, 'main/faq.html', {'faq_list':faq})
+
+def faq_detail(request, pk):
+    faq = get_object_or_404(FAQ, pk=pk)
+    return render(request, 'main/faq_detail.html', {'faq':faq})
 
 def payment(request):
     return render(request, 'main/payment.html')
