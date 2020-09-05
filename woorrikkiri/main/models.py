@@ -15,7 +15,6 @@ class Content(models.Model):
         (SUBJECTS_GC, '고급응용 C프로그래밍'),
     )
 
-
     objects = models.Manager()
     title = models.CharField(max_length=200)
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = "작성자", on_delete = models.CASCADE)
