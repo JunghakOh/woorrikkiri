@@ -1,6 +1,14 @@
 {% extends 'main_base.html' %}
-{% load static %}
 {% block content %}
+{% load static %}
+
+
+<h1>FAQ</h1>
+
+{% for faq in faq_list %}
+<a href="{% url 'faq_detail' pk=faq.pk %}">{{ faq.title }}</a><br>
+<p> {{ faq.pub_date }}</p>
+{% endfor %}
 
 <div class="faq_container">
     <div class="xl_title faq_title">자주묻는 질문</div>
@@ -16,4 +24,5 @@
     </div>    
 </div>
 <script type="text/javascript" src="{% static 'js/faq.js' %}"></script>
+
 {% endblock %}

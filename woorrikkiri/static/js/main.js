@@ -1,8 +1,8 @@
 // vertical navbar //
 const ham = document.querySelector('.ham_container');
-const x_btn = document.querySelector('.x_container');
 const ver_cate = document.querySelector('.ver_category_box');
 const blind = document.querySelector('.blind');
+
 
 // vertical navbar //
 ham.addEventListener('click', function () {
@@ -13,10 +13,6 @@ ham.addEventListener('click', function () {
 });
 
 x_btn.addEventListener('click', function () {
-    ver_cate.classList.toggle('display');
-    blind.classList.toggle('display');
-    x_btn.classList.toggle('display');
-});
 
 window.addEventListener('resize', function () {
     ver_cate.classList.remove('display');
