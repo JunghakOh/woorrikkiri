@@ -1,28 +1,22 @@
-{% extends 'accounts_base.html' %}
-{% block content %}
-{% load static %}
-
+{% extends 'accounts_base.html' %} {% block content %} {% load static %}
 
 <div class="center_box">
-    <div class="sign_box">
-        <div class="xxl_title h_color">로그인</div>
-        <form method="post" action="">
-            {% csrf_token %}
-            <div class="input_box">
-                <input type="text" class="margin_box" name="username" maxlength="150" required="" id="id_username"
-                    placeholder="아이디">
-                <input type="text" class="margin_box" name="password" maxlength="128" required="" id="id_password"
-                    placeholder="비밀번호">
-            </div>
-            <button class="sign_btn" type="submit">
-                <div class="w_color">로그인</div>
-            </button>
-            <div class="sign_info_box">
-                <span class="h_color m_text"><a href="{% url 'signup' %}">아직 회원이 아니신가요? 회원가입하기</a></span>
-            </div>
-        </form>
-    </div>
+	<div class="sign_box">
+		<div class="xxl_title h_color">로그인</div>
+		<form method="post" action="">
+			{% csrf_token %}
+			<div class="input_box">
+				<input type="text" class="margin_box" name="username" maxlength="150" required="" id="id_username" placeholder="아이디" />
+				<input type="password" class="margin_box" name="password" maxlength="128" required="" id="id_password" placeholder="비밀번호" />
+			</div>
+			<button class="sign_btn" type="submit">
+				<div class="w_color">로그인</div>
+			</button>
+			<div class="sign_info_box">
+				<span class="m_text">아직 회원이 아니신가요? <span class="h_color b_text"><a href="{% url 'signup' %}">회원 가입하기</a></span></span>
+			</div>
+		</form>
+	</div>
 </div>
-
 
 {% endblock %}
