@@ -20,4 +20,3 @@ function delegationFunc(e) {
 if (delegation) {
     delegation.addEventListener('click', delegationFunc);
 };
-

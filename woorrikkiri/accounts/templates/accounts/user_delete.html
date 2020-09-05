@@ -1,11 +1,9 @@
-{% extends 'accounts_base.html' %}
-{% block content %}
-{% load static %}
+{% extends 'accounts_base.html' %} {% block content %} {% load static %}
 
 <h1>탈퇴하기</h1>
 <form method="POST">
-    {% csrf_token %}
-    <p>정말로 탈퇴하시겠습니까?</p>
-    <input type="submit" value="탈퇴"/>
+	{% csrf_token %}
+	<p>정말로 탈퇴하시겠습니까?</p>
+	<input type="submit" value="탈퇴" />
 </form>
 {% endblock %}
