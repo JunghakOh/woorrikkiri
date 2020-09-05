@@ -127,6 +127,7 @@ env.bak/
 venv.bak/
 woorrivenv/
 myvenv/
+woorivenv2/
 
 # Spyder project settings
 .spyderproject
@@ -209,3 +210,4 @@ dmypy.json
 # pytype static type analyzer
 
 # End of https://www.toptal.com/developers/gitignore/api/django,python
+.prettierrc
