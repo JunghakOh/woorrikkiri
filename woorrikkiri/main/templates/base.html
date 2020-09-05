@@ -1,121 +1,118 @@
 {% load static %}
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>우리끼리</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
-  <link rel="stylesheet" href="{% static 'css/button.css' %}">
-  {% block head %}
-  {% endblock %}
-</head>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>우리끼리</title>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/button.css' %}" />
+		{% block head %} {% endblock %}
+	</head>
 
-<body>
-  <div class="blind"></div>
-  <header>
-    <div class="nav_container">
-      <a href="{% url 'home' %}">
-        <div class="logo_container"><img src="{% static 'img/logo_name.jpg' %}" alt="우리끼리"></div>
-      </a>
-      <div class="hor_category l_text">
-        <div class="main_category">
-          <ul class="navbar">
-            <li class="nav-item">
-              <a href="{% url 'about' %}">서비스 소개</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'ask' %}">질문 리스트</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'faq' %}">FAQ</a>
-            </li>
-          </ul>
-        </div>
+	<body>
+		<div class="blind"></div>
+		<header>
+			<div class="nav_container b_text">
+				<a href="{% url 'home' %}">
+					<div class="logo_container"><img src="{% static 'img/nav_logo.png' %}" alt="우리끼리" /></div>
+				</a>
+				<div class="hor_category l_text">
+					<div class="main_category">
+						<ul class="navbar">
+							<li class="nav-item">
+								<a href="{% url 'about' %}">서비스 소개</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'ask' %}">질문 모두보기</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'about_team' %}">팀 소개</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'faq' %}">FAQ</a>
+							</li>
+						</ul>
+					</div>
 
-        <div class="account_category">
-          <ul class="navbar">
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a href="{% url 'mypage' %}">마이 페이지</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'signout' %}">로그아웃</a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-              <a href="{% url 'signin' %}">로그인</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'signup' %}">회원가입</a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
+					<div class="account_category">
+						<ul class="navbar">
+							{% if user.is_authenticated %}
+							<li class="nav-item">
+								<a href="{% url 'mypage' %}">마이 페이지</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'signout' %}">로그아웃</a>
+							</li>
+							{% else %}
+							<li class="nav-item">
+								<a href="{% url 'signin' %}">로그인</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'signup' %}">회원가입</a>
+							</li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
 
-      </div>
+				<div class="ver_category l_text">
+					<div class="ham_container"><img src="{% static 'img/Ham_icon.png' %}" alt="메뉴" /></div>
+					<div class="ver_category_box">
+						<ul class="navbar">
+							<li class="nav-item">
+								<a href="{% url 'about' %}">서비스 소개</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'ask' %}">질문 모두보기</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'about_team' %}">팀 소개</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'faq' %}">FAQ</a>
+							</li>
+							{% if user.is_authenticated %}
+							<li class="nav-item">
+								<a href="{% url 'mypage' %}">마이 페이지</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'signout' %}">로그아웃</a>
+							</li>
+							{% else %}
+							<li class="nav-item">
+								<a href="{% url 'signin' %}">로그인</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'signup' %}">회원가입</a>
+							</li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
 
-      <div class="ver_category l_text">
-        <div class="ham_container"><img src="{% static 'img/Ham_icon.png' %}" alt="메뉴"></div>
-        <div class="ver_category_box">
-          <ul class="navbar">
-            <li class="nav-item">
-              <a href="{% url 'about' %}">서비스 소개</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'ask' %}">질문 리스트</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'faq' %}">FAQ</a>
-            </li>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a href="{% url 'mypage' %}">마이 페이지</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'signout' %}">로그아웃</a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-              <a href="{% url 'signin' %}">로그인</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'signup' %}">회원가입</a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </header>
-
-  <section>
-    <div class="main_container">
-      {% block content %}
-      {% endblock %}
-    </div>
-    <footer>
-      <div class="footer_container">
-        <div class="info_box">
-          <span class="m_text w_color"><a href="{% url 'agreement' %}">이용약관</a></span>
-          <span class="m_text w_color"><a href="{% url 'private_info' %}">개인정보처리방침</a></span>
-        </div>
-        <div class="main_box">
-          <span class="s_text w_color">
-            사업자 메티스 | 대표 : 오정학 | 사업자등록번호 : 663-08-01510 | 주소 : 서울시 양천구 신정로7길75<br><br> 
-            CS대표(고객센터):  010 7141 5697 | 이메일 :  jieon0520a@gmail.com<br><br>
-            <br><br><br>
-            Copyright & copy : 2020 Metis
-          </span>
-        </div>
-
-
-      </div>
-    </footer>
-  </section>
+		<section>
+			<div class="main_container">{% block content %} {% endblock %}</div>
+			<footer>
+				<div class="footer_container">
+					<div class="info_box">
+						<span class="m_text w_color"><a href="https://www.notion.so/ef00bf513c92447791f0cd540694ff3b">이용약관</a></span>
+						<span class="m_text w_color"><a href="https://www.notion.so/871797c0071a41a3a187f46ea7de3e0d">개인정보처리방침</a></span>
+					</div>
+					<div class="main_box">
+						<span class="s_text w_color">
+							사업자 메티스 | 대표 : 오정학 | 사업자등록번호 : 663-08-01510 | 주소 : 서울시 양천구 신정로7길75<br /><br />
+							CS대표(고객센터): 010 7141 5697 | 이메일 : jieon0520a@gmail.com<br /><br />
+							<br />
+							Copyright & copy : 2020 Metis
+						</span>
+					</div>
+				</div>
+			</footer>
+		</section>
 		<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 		<script type="text/javascript" src="{% static 'js/select.js' %}"></script>
-</body>
-
+	</body>
 </html>
