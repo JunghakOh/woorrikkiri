@@ -1,7 +1,6 @@
 {% extends 'main_base.html' %} {% block content %} {% load static %}
-
+<div class="xl_title page_title">질문하기</div>
 <div class="new_container">
-	<div class="xl_title">질문하기</div>
 	<form method="POST" class="post-form" enctype="multipart/form-data">
 		{% csrf_token %}
 		<input type="text" class="q_title" name="title" maxlength="200" required="" id="id_title" placeholder="제목을 입력하세요" />

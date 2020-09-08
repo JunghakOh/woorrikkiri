@@ -1,54 +1,82 @@
 {% extends 'main_base.html' %} {% block content %} {% load static %}
+<div class="detail">
+	<div class="l_title cate_title">질문</div>
+	<div class="detail_container">
+		<div class="subject m_text s_color">{% if post.subjects == 'c' %} 컴퓨팅 사고력 {% elif post.subjects == 'b' %} 기초 C언어 {% elif post.subjects == 'g' %} 고급응용 C프로그래밍 {% endif %}</div>
+		<div class="l_title q_title">Q. {{ post.title }}</div>
+		<!-- <h1>작성자 : {{ post.writer }}</h1> -->
+		<div class="q_content">
+			{{ post.body}} {% if post.file %}
 
-<h1>질문내용 자세히 보기</h1>
+			<img src="{{post.file.url}}" />
+			<!-- 이미지 다운: <a href="{{ post.file.url }}" download>{{ post.file.name }}</a> -->
+			{% endif %}
+		</div>
 
-<div class="posts">
-	{% if post.pub_date %}
-	<div class="date">{{ post.pub_date }}</div>
-	{% endif %}
-	<h1>{{ post.title }}</h1>
-	<h1>작성자 : {{ post.writer }}</h1>
-	<p>{{ post.body|linebreaks }}</p>
+		<div class="content_detail">
+			<div class="date s_text s_color">{% if post.pub_date %} {{ post.pub_date }} {% endif %}</div>
+			<div class="content_editor m_text b_text">
+				{% if user == post.writer %}
+				<a href="{% url 'edit' index=post.pk %}">수정하기</a>
+				<a href="{% url 'delete' pk=post.pk %}">삭제하기</a>
+			</div>
+		</div>
+		{% endif %}
+	</div>
 
-	{% if post.file %}
-	<img src="{{post.image.url}}" height="400" /><br />
-	이미지 다운: <a href="{{ post.file.url }}" download>{{ post.file.name }}</a>
-	{% endif %}
+	{% if user.is_mento %}
+	<div class="l_title cate_title">답변달기</div>
+	<div class="detail_container">
+		<form method="POST">
+			{% csrf_token %}
+			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_wrapper">
+				<input type="file" name="file" id="id_file" />
+			</div>
+			<div class="btn_wrapper">
+				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
+			</div>
+		</form>
+	</div>
+	{% endif %} {% if user == post.writer %}
+	<div class="answer_count cate_title l_title">답변 {{ answer_count }}</div>
+	{% for answer in answer_list %}
+	<div class="detail_container">
+		<div class="answer_container">
+			<div class="l_title q_title">{{answer.writer}}</div>
+			<div class="q_content">{{ answer.body}}</div>
+			<div class="date s_text s_color">{{ answer.pub_date }}</div>
+			{% if answer.file %}
+			<div class="img_container">
+				<img src="{{ answer.file.url }}" />
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% endfor %} {% endif %}
+
+	<div class="l_title cate_title">댓글</div>
+	<div class="detail_container">
+		<form method="POST">
+			{% csrf_token %}
+			<div class="comment_container">
+				<input type="text" name="text" class="comment" />
+				<div class="btn_wrapper">
+					<button type="submit" class="m_text b_text">댓글 달기</button>
+				</div>
+			</div>
+		</form>
+		{% for comment in comment_list %}
+		<div class="comment_content">
+			<div class="comment_text">{{ comment.text}}</div>
+			<div class="comment_detail">
+				<span class="date s_text s_color">{{ comment.created_date }}</span>
+				<a class="m_text b_text" href="{% url 'delete_comment' pk=post.pk comment_pk=comment.pk %}">댓글 삭제</a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 </div>
-
-<h1>답변을 달아주세요</h1>
-
-<form method="POST">
-	{% csrf_token %} {% if user.is_mento %}
-	<div class="answer">{{ answer_form.as_p }}</div>
-	<button type="submit">Save</button>
-	<button type="submit">답변 달기</button>
-	{% endif %}
-</form>
-
-{% for answer in answer_list %}
-<h5>{{ answer.created_date }}</h5>
-<p>{{ answer.body|linebreaks }}</p>
-{% endfor %} {% if answer.file %}
-<img src="{{answer.image.url}}" height="400" /><br />
-이미지 다운: <a href="{{ answer.file.url }}" download>{{ answer.file.name }}</a>
-{% endif %}
-
-<h3>댓글을 달아주세요</h3>
-
-<form method="POST">
-	{% csrf_token %}
-	<input type="text" name="text" />
-	<button type="submit">댓글 달기</button>
-</form>
-
-{% for comment in comment_list %}
-<h5>{{ comment.created_date }}</h5>
-<p>{{ comment.text|linebreaks }}</p>
-<a href="{% url 'delete_comment' pk=post.pk comment_pk=comment.pk %}">댓글 삭제</a><br /><br />
-{% endfor %}
-
-<a href="{% url 'edit' index=post.pk %}">수정하기</a><br />
-<a href="{% url 'delete' pk=post.pk %}">삭제하기</a>
 
 {% endblock %}

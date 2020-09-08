@@ -167,6 +167,9 @@ input:focus {
 .text_h {
 	line-height: 120%;
 }
+.page_title{
+	padding-bottom: 20px;
+}
 
 /************ 기본 설정 *************/
 .display {
