@@ -124,6 +124,7 @@ def detail(request, pk):
     post.writer = request.user
     comment_list = Comment.objects.filter(post=post)
     answer_list = Answer.objects.filter(post=post)
+    answer_count = len(answer_list)
     if request.method == "POST":
         comment_form = CommentForm(request.POST) 
         answer_form = AnswerForm(request.POST, request.FILES)
@@ -135,6 +136,7 @@ def detail(request, pk):
             return redirect('detail', pk=pk)
         if answer_form.is_valid():
             answer = answer_form.save(commit=False)
+            answer.writer = request.user
             answer.published_date = timezone.now()
             answer.post = post
             answer.save()
@@ -142,7 +144,7 @@ def detail(request, pk):
     else:
         comment_form = CommentForm()
         answer_form = AnswerForm()
-    return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer_list':answer_list, 'answer_form':answer_form})
+    return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer_list':answer_list, 'answer_form':answer_form, 'answer_count':answer_count})
 
 
 def edit(request, index):

@@ -41,3 +41,5 @@ class Answer(models.Model):
     body = models.TextField(default='')
     pub_date = models.DateTimeField(default=timezone.now)
     file = models.FileField(upload_to='documents/%Y, %m/', blank=True)
+    writer = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = "작성자", on_delete = models.CASCADE)
+
