@@ -23,22 +23,8 @@
 		</div>
 		{% endif %}
 	</div>
-
-	{% if user.is_mento %}
-	<div class="l_title cate_title">답변달기</div>
-	<div class="detail_container">
-		<form method="POST">
-			{% csrf_token %}
-			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
-			<div class="file_wrapper">
-				<input type="file" name="file" id="id_file" />
-			</div>
-			<div class="btn_wrapper">
-				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
-			</div>
-		</form>
-	</div>
-	{% endif %} {% if user == post.writer %}
+	<!-- 답변 목록, 질문자만 볼 수 있음-->
+	{% if user == post.writer %}
 	<div class="answer_count cate_title l_title">답변 {{ answer_count }}</div>
 	{% for answer in answer_list %}
 	<div class="detail_container">
@@ -55,6 +41,23 @@
 	</div>
 
 	{% endfor %} {% endif %}
+	<!-- 답변 하기, 멘토만 가능 (해당 과목 멘토만 가능하게 수정해야함!)-->
+
+	{% if user.is_mento %}
+	<div class="l_title cate_title">답변달기</div>
+	<div class="detail_container">
+		<form method="POST">
+			{% csrf_token %}
+			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_wrapper">
+				<input type="file" name="file" id="id_file" />
+			</div>
+			<div class="btn_wrapper">
+				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
+			</div>
+		</form>
+	</div>
+	{% endif %}
 
 	<div class="l_title cate_title">댓글</div>
 	<div class="detail_container">
