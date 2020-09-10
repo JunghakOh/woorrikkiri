@@ -25,11 +25,16 @@ class User(AbstractUser):
     is_mento = models.BooleanField("멘토인 경우 체크해주세요", default=False)
     gender = models.CharField("성별", max_length=1, choices=CHOICES_GENDER)
     point = models.IntegerField("포인트", default = 0)
+
+    objects = UserManager()
+
+class UserMento(models.Model):
+    objects = models.Manager()
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     mento_computing = models.BooleanField("컴퓨팅사고력 멘토", default=False)
     mento_basicC = models.BooleanField("기초C언어 멘토", default=False)
     mento_GC = models.BooleanField("고급응용C프로그래밍 멘토", default=False)
-
-    objects = UserManager()
+    mento_math = models.BooleanField("응용수학 멘토", default=False)
 
 class Profile(models.Model):
     objects = models.Manager()
