@@ -1,0 +1,19 @@
+/* home.html */
+.reason_1 {
+	background: url('../img/reason.png') no-repeat -51px -21px;
+	width: 167px;
+	height: 167px;
+}
+.reason_2 {
+	background: url('../img/reason.png') no-repeat -314px -32px;
+	width: 171px;
+    /* height: 134px; */
+	height: 167px;
+}
+.reason_3  {
+	background: url('../img/reason.png') no-repeat -622px -30px;
+	width: 114px;
+    /* height: 131px; */
+	height: 167px;
+    
+}
