@@ -1,10 +1,9 @@
 from django import forms
 from .models import Content, Comment, FAQ, Answer, Subject
 
-class ContentForm(forms.Form):
+class ContentForm(forms.ModelForm):
     class Meta:
         model = Content
-        model = Subject
         fields = ['title', 'subjects', 'body', 'file',]
 
 

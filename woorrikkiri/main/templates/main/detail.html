@@ -43,7 +43,55 @@
 	{% endfor %} {% endif %}
 	<!-- 답변 하기, 멘토만 가능 (해당 과목 멘토만 가능하게 수정해야함!)-->
 
-	{% if user.is_mento %}
+	{% if content.subjects == computing and user.mento_computing %}
+	<div class="l_title cate_title">답변달기</div>
+	<div class="detail_container">
+		<form method="POST">
+			{% csrf_token %}
+			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_wrapper">
+				<input type="file" name="file" id="id_file" />
+			</div>
+			<div class="btn_wrapper">
+				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
+			</div>
+		</form>
+	</div>
+	{% endif %}
+
+	{% if content.subjects == basicC and user.mento_basicC %}
+	<div class="l_title cate_title">답변달기</div>
+	<div class="detail_container">
+		<form method="POST">
+			{% csrf_token %}
+			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_wrapper">
+				<input type="file" name="file" id="id_file" />
+			</div>
+			<div class="btn_wrapper">
+				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
+			</div>
+		</form>
+	</div>
+	{% endif %}
+
+	{% if content.subjects == GC and user.mento_GC %}
+	<div class="l_title cate_title">답변달기</div>
+	<div class="detail_container">
+		<form method="POST">
+			{% csrf_token %}
+			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_wrapper">
+				<input type="file" name="file" id="id_file" />
+			</div>
+			<div class="btn_wrapper">
+				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
+			</div>
+		</form>
+	</div>
+	{% endif %}
+
+	{% if content.subjects == math and user.mento_math %}
 	<div class="l_title cate_title">답변달기</div>
 	<div class="detail_container">
 		<form method="POST">
