@@ -2,7 +2,13 @@
 <div class="detail">
 	<div class="l_title cate_title">질문</div>
 	<div class="detail_container">
-		<div class="subject m_text s_color">{% if post.subjects == 'c' %} 컴퓨팅 사고력 {% elif post.subjects == 'b' %} 기초 C언어 {% elif post.subjects == 'g' %} 고급응용 C프로그래밍 {% endif %}</div>
+		<div class="subject m_text s_color">
+			{% if content.subjects == computing %} 컴퓨팅 사고력 
+			{% elif content.subjects == basicC %} 기초 C언어 
+			{% elif content.subjects == GC %} 고급응용 C프로그래밍 
+			{% elif content.subjects == math %} 응용수학
+			{% endif %}
+		</div>
 		<div class="l_title q_title">Q. {{ post.title }}</div>
 		<!-- <h1>작성자 : {{ post.writer }}</h1> -->
 		<div class="q_content">
