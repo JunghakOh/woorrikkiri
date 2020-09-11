@@ -1,5 +1,5 @@
 {% extends 'main_base.html' %} {% block content %} {% load static %}
-<div class="xl_title page_title">질문하기</div>
+<div class="page_title">질문하기</div>
 <div class="new_container">
 	<form method="POST" class="post-form" enctype="multipart/form-data">
 		{% csrf_token %}
@@ -19,13 +19,16 @@
 			<div class="q_coffee">
 				<div class="b_text">질문에 사용할 커피 <span id="coffee_count">0</span> 잔</div>
 				<div class="btn_wrapper">
-                    <div class="coffee_btn w_color btn" id="plus">+</div>
-                </div>
-                <div class="btn_wrapper">
-                    <div class="coffee_btn w_color btn" id="minus">-</div>
+					<div class="coffee_btn w_color btn" id="plus">+</div>
+				</div>
+				<div class="btn_wrapper">
+					<div class="coffee_btn w_color btn" id="minus">-</div>
 				</div>
 			</div>
-			<div class="s_text"><span id="point_count">0</span> 포인트 차감</div>
+			<div class="s_text">
+				잔여포인트 <span id="left_point">{{ user.point }}</span>
+				(<span id="point_count">0</span> 포인트 차감)
+			</div>
 		</div>
 		<div class="btn_wrapper">
 			<button type="submit" class="btn sign_btn w_color">질문하기</button>

@@ -160,6 +160,9 @@ input:focus {
 }
 .page_title{
 	padding-bottom: 20px;
+	font-size: 30px;
+	font-family: 'Binggrae';
+	font-weight: bold;
 }
 
 /************ 기본 설정 *************/
@@ -177,6 +180,7 @@ section {
 	max-width: 1200px;
 	margin: 0 auto;
 	min-height: calc(100vh - 57px);
+	min-width: 650px;
 }
 
 /* 이미지사이즈 */
@@ -194,7 +198,7 @@ img {
 	}
 	.ver_category .ham_container, .ver_category .x_container {
 		width: 30px;
-		margin: 12px 20px 0 0;
+		margin: 15px 20px 0 0;
 		position: absolute;
 		top: 0;
 		right: 0;
