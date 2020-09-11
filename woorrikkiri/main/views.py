@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Content, Comment, FAQ, Answer
-from .forms import ContentForm, CommentForm, FAQForm, AnswerForm
+from .models import Content, Comment, FAQ, Answer, Subject
+from .forms import ContentForm, CommentForm, FAQForm, AnswerForm, SubjectForm
 from django.shortcuts import get_object_or_404
 from accounts.models import User
 
@@ -111,7 +111,6 @@ def new(request):
             return redirect('home')
     else:
         form = ContentForm()
-
     return render(request, 'main/new.html', {'form': form})
 
 def ask(request):
