@@ -44,7 +44,7 @@
     margin:0 auto;
     padding:20px;
 }
-.slogan{
+.home_title .slogan{
     padding-left: 7%;
 }
 .home_main_container .select_box{
@@ -315,9 +315,25 @@
 	text-align: right;
 }
 
+/* about_team */
+.about_team_container .page_title{
+	text-align: center;
+}
+.about_team_container .content{
+	margin: 20px;
+}
+.team_member{
+	display: flex;
+	justify-content: space-between;
+}
+.team_member .mem{
+	text-align: center;
+	width: 23%;
+}
+
 
 /* 반응형 */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
 	.left {
 		height:400px;
 		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -326,7 +342,7 @@
 	.right{
 		display: none;
 	}
-	.slogan, .slogan .xxl_title, .select_box .btn-wrapper{
+	.home_title .slogan, .home_title .xxl_title, .select_box .btn-wrapper{
 		margin:0 auto;
 		padding:0;
 		text-align: center;

@@ -14,9 +14,9 @@
 			</div>
 			<div class="id_box">
 				<div class="user_id">
-					<span class="xxl_title">{{ user.name }}</span>
+					<span class="xl_title h_font">{{ user.name }}</span>
 					<!-- 사용자 이름 -->
-					<span class="l_text">{{ user.username }}</span>
+					<span class="l_title">{{ user.username }}</span>
 					<!-- 아이디 --><br />
 					<div class="current_point b_text">ⓟ {{ user.point }} 포인트</div>
 					<!-- 포인트 -->
@@ -33,7 +33,11 @@
 		</div>
 	</div>
 	<div class="question_container">
-		<div class="page_title">나의 질문</div>
+		{% if user.is_mento %}
+		<div class="page_title">내가 답변한 질문들</div>
+		{% else %}
+		<div class="page_title">내가 한 질문들</div>
+		{% endif %}
 		<ol>
 			{% for post in posts_list %} {% if user == post.writer %}
 			<li>
