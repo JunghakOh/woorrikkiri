@@ -6,7 +6,19 @@ from accounts.models import User
 
 # Create your models here.
 class Content(models.Model):
+    SUBJECTS_COMPUTING = 'computing'
+    SUBJECTS_BASICC = 'basicC'
+    SUBJECTS_GC = 'GC'
+    SUBJECTS_MATH = 'math'
+    CHOICES_SUBJECTS = (
+        (SUBJECTS_COMPUTING, '컴퓨팅 사고력'),
+        (SUBJECTS_BASICC, '기초 C언어'),
+        (SUBJECTS_GC, '고급응용 C프로그래밍'),
+        (SUBJECTS_MATH, '응용수학'),
 
+    )
+
+    subjects = models.CharField("과목", max_length=30, choices=CHOICES_SUBJECTS)
     objects = models.Manager()
     title = models.CharField(max_length=200)
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = "작성자", on_delete = models.CASCADE)
