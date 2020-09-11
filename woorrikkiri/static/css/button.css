@@ -20,12 +20,13 @@
     border-radius: 15px;
     padding: 20px 30px;
     font-size: 35px;
-    background: #d4463b;
-    color:white;
+    background: #fefafa;
+	box-shadow: 1px 1px 20px 0 #ee767a;
+
 }
 .b_btn:hover {
     color: #fff;
-    background: #a13931;
+    background: #ee767a;
 }
 
 /* mypage - 포인트 충전하기 */

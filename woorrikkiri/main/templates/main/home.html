@@ -1,15 +1,78 @@
-{% extends 'main_base.html' %} {% block content %} {% load static %}
+{% extends 'main_base.html' %} {% load static %} {% block content %}
+<div class="home_main">
+	<div class="left"></div>
+	<div class="right"></div>
 
-<div class="xxl_title title">대학생 지식공유 플랫폼</div>
-<div class="main_img">
-	<img src="{% static 'img/main_logo.png'%}" />
+	<div class="home_title_container">
+		<div class="home_title">
+			<div class="slogan">
+				<div class="xxl_title w_color">대학생은 질문 어디서 해?</div>
+				<div class="xxl_title w_color">
+					<span class="h_font b_color title">우리끼리</span>
+					하면 되지!
+				</div>
+			</div>
+			<div class="select_box">
+				<div class="btn-wrapper b_btn btn h_color">
+					{% if user.is_authenticated %}
+					<a href="{% url 'new' %}" class="xxl_title h_font b_text">질문하기</a>
+					{% else %}
+					<a href="{% url 'signin' %}" class="xxl_title h_font b_text">질문하기</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-{% if user.is_authenticated %}
-<div class="btn-wrapper b_btn btn w_color">
-	<a href="{% url 'new' %}" class="xxl_title">질문하기</a>
+
+<div class="home_content">
+	<div class="why_woorri">
+		<div class="title xxl_title b_text h_font">왜 <span class="h_color b_text h_font">우리끼리</span>야?</div>
+		<div class="content_box">
+			<div class="reason">
+				<div class="l_title b_text title">
+					<br />
+					구글링은 한계가 있으니까
+				</div>
+				<div class="img reason_2"></div>
+				<div class="content">
+					구글링만 5시간째... 과제 제출은 오늘 12시 <br />
+					이제 그만 헤메고, 우리끼리에서 <br />
+					그 수업 들어본 선배에게 질문하세요!
+				</div>
+			</div>
+			<div class="reason">
+				<div class="l_title b_text title">
+					우리 학교 문제는 <br />
+					선배가 제일 잘 아니까!
+				</div>
+				<div class="img reason_1"></div>
+				<div class="content">
+					내가 듣는 수업 교수님의 수업 스타일을 <br />
+					가장 잘 알려줄 수 있는 사람은 <br />
+					그 수업을 들어본 사람이겠죠? <br />
+					우리끼리에서는 수업을 들었던 선배가 <br />
+					직접 질문에 답변을 해줄거에요. <br />
+					검증된 멘토가 족집게로 알려주는 우리끼리!
+				</div>
+			</div>
+			
+			<div class="reason">
+				<div class="l_title b_text title">
+					잠깐 시간내서 후배 도와주면 <br />
+					커피한잔 마실 수 있으니까!
+				</div>
+				<div class="img reason_3"></div>
+				<div class="content">
+					붐비는 지하철타고 과외 가는길이라면, <br />
+					과외는 하고싶은데 교과과정이 가물가물하면, <br />
+					내가 들었던 수업의 노하우로, <br />
+					언제 어디서나 편하게 과외 하고 <br />
+					용돈 벌어가세요!
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-{% else %}
-<div class="btn-wrapper b_btn btn w_color">
-	<a href="{% url 'signin' %}" class="xxl_title">질문하기</a>
-</div>
-{% endif %} {% endblock %}
+
+{% endblock %}
