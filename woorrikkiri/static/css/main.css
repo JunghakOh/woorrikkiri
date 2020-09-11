@@ -4,6 +4,7 @@
 	top: 66px;
 	left: 0;
 	width: 100%;
+	min-width: 650px;
 	height: 500px;
 }
 .left {
@@ -34,7 +35,7 @@
     width: 100%;
 	position: absolute;
 	top: 0;
-	padding: 100px 150px;
+	padding: 7% 10%;
 	z-index: 4;
 }
 .home_title{
@@ -44,19 +45,14 @@
     padding:20px;
 }
 .slogan{
-    padding-left: 5%;
-}
-.slogan .title {
-	font-size: 60px;
-    font-weight: bolder;
-    /* color:#ffced1; */
+    padding-left: 7%;
 }
 .home_main_container .select_box{
     margin:10px;
 }
 .select_box{
     margin:50px;
-    padding-left:110px;
+    padding-left:10%;
 }
 .home_content {
     margin-top: 500px;
@@ -317,4 +313,28 @@
 }
 .comment_detail {
 	text-align: right;
+}
+
+
+/* 반응형 */
+@media (max-width: 800px) {
+	.left {
+		height:400px;
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	}
+	.right{
+		display: none;
+	}
+	.slogan, .slogan .xxl_title, .select_box .btn-wrapper{
+		margin:0 auto;
+		padding:0;
+		text-align: center;
+	}
+	.select_box{
+		padding:0;
+	}
+	.home_content{
+		margin-top: 400px;
+	}
 }
