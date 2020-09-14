@@ -30,10 +30,10 @@
 					</div>
 				</div>
 				<input type="email" class="margin_box" name="email" maxlength="254" id="id_email" placeholder="이메일" />
-				<input class="margin_box" type="text" name="school" maxlength="15" required="" id="id_school" placeholder="학교" />
+				<input class="margin_box" type="text" name="school" maxlength="15" required="" id="id_school" placeholder="서강대학교" value="서강대학교" />
 				<!--<input class="half_box margin_box" type="text" name="student_num" maxlength="30" required=""
                     id="id_student_num" placeholder="학번">-->
-				<input type="text" class="margin_box" name="phone_num" maxlength="20" required="" id="id_phone_num" placeholder="전화번호" />
+				<input type="text" class="margin_box" name="phone_num" maxlength="20" required="" id="id_phone_num" placeholder="01012345678" />
 				<!--<input type="text" class="margin_box" name="account_num" required="" id="id_account_num"
                     placeholder="계좌번호">-->
 				<div class="mento_check">
@@ -41,8 +41,14 @@
 					<input type="checkbox" name="is_mento" id="id_is_mento" />
 				</div>
 			</div>
+			{% if messages %}
+			{% for message in messages %}
+				{{ message}}
+			{% endfor %}
+	
+		{% endif %}
 			<button class="sign_btn" type="submit">
-				<div class="w_color">회원가입</div>
+				<div class="w_color" id="button">회원가입</div>
 			</button>
 			<div class="info">
 				<div class="sign_info_box">
@@ -59,5 +65,8 @@
 		</form>
 	</div>
 </div>
+
+<!-- <script type="text/javascript" src="{% static 'js/signup.js' %}"></script> -->
+
 
 {% endblock %}

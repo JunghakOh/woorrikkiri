@@ -15,7 +15,11 @@
 			<div class="select_box">
 				<div class="btn-wrapper b_btn btn h_color">
 					{% if user.is_authenticated %}
-					<a href="{% url 'new' %}" class="xxl_title h_font b_text">질문하기</a>
+						{% if user.is_mento %}
+						<a href="{% url 'ask' %}" class="xxl_title h_font b_text">질문하기</a>
+						{% else %}
+						<a href="{% url 'new' %}" class="xxl_title h_font b_text">질문하기</a>
+						{% endif %}
 					{% else %}
 					<a href="{% url 'signin' %}" class="xxl_title h_font b_text">질문하기</a>
 					{% endif %}

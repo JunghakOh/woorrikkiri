@@ -120,7 +120,6 @@ def ask(request):
 def detail(request, pk):
     post = get_object_or_404(Content, pk=pk)
     #post = super().save(Content, commit=False, pk=pk)
-    post.writer = request.user
     comment_list = Comment.objects.filter(post=post)
     answer_list = Answer.objects.filter(post=post)
     answer_count = len(answer_list)

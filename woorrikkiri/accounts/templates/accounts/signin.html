@@ -9,6 +9,11 @@
 				<input type="text" class="margin_box" name="username" maxlength="150" required="" id="id_username" placeholder="아이디" />
 				<input type="password" class="margin_box" name="password" maxlength="128" required="" id="id_password" placeholder="비밀번호" />
 			</div>
+			{% if messages %}
+			{% for message in messages %}
+				{{ message}}
+			{% endfor %}
+			{% endif %}
 			<button class="sign_btn" type="submit">
 				<div class="w_color">로그인</div>
 			</button>
