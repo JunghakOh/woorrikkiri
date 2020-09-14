@@ -5,6 +5,7 @@
 		<div class="subject m_text s_color">
 			{% if content.subjects == computing %} 컴퓨팅 사고력 {% elif content.subjects == basicC %} 기초 C언어 {% elif content.subjects == GC %} 고급응용 C프로그래밍 {% elif content.subjects == math %}
 			응용수학 {% endif %}
+			{{ post.writer}}
 		</div>
 		<div class="l_title q_title">Q. {{ post.title }}</div>
 		<!-- <h1>작성자 : {{ post.writer }}</h1> -->
@@ -27,9 +28,9 @@
 		</div>
 	</div>
 
+	<div class="answer_count cate_title l_title">답변 {{ answer_count }}</div>
 	{% if user == post.writer %}
 	<!-- 답변 목록, 질문자만 볼 수 있음-->
-	<div class="answer_count cate_title l_title">답변 {{ answer_count }}</div>
 	{% for answer in answer_list %}
 	<div class="detail_container">
 		<div class="answer_container">
@@ -43,8 +44,8 @@
 			{% endif %}
 		</div>
 	</div>
-
-	{% endfor %} {% endif %} 
+	{% endfor %}
+	{% endif %} 
 	{% if content.subjects == computing and user.mento_computing %}
 	<!-- 답변 하기, 멘토만 가능 (해당 과목 멘토만 가능하게 수정해야함!)-->
 
@@ -61,7 +62,7 @@
 			</div>
 		</form>
 	</div>
-	{% endif %} {% if content.subjects == basicC and user.mento_basicC %}
+	{% elif content.subjects == basicC and user.mento_basicC %}
 	<div class="l_title cate_title">답변달기</div>
 	<div class="detail_container">
 		<form method="POST">
@@ -75,7 +76,7 @@
 			</div>
 		</form>
 	</div>
-	{% endif %} {% if content.subjects == GC and user.mento_GC %}
+	{% elif content.subjects == GC and user.mento_GC %}
 	<div class="l_title cate_title">답변달기</div>
 	<div class="detail_container">
 		<form method="POST">
@@ -89,7 +90,7 @@
 			</div>
 		</form>
 	</div>
-	{% endif %} {% if content.subjects == math and user.mento_math %}
+	{% elif content.subjects == math and user.mento_math %}
 	<div class="l_title cate_title">답변달기</div>
 	<div class="detail_container">
 		<form method="POST">

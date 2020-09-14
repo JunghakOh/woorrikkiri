@@ -24,8 +24,12 @@ def signup(request):
             user = signup_form.save()
             Profile.objects.create(user=user) #프로필 생성
             return redirect('home')
+        else:
+            # 메시지 띄우기
+            messages.error(request, "Error")
     else:
         signup_form = UserRegisterForm()
+
     return render(request, 'accounts/signup.html', {'signup_form':signup_form})
 
 def signin(request):
@@ -38,7 +42,10 @@ def signin(request):
             login(request, user)
             return redirect('home')
         else:
-            return HttpResponse('로그인 실패. 다시 시도 해보세요.')
+            messages.error(request, "아이디가없거나비밀번호가일치하지않습니다.")
+            form = LoginForm()
+            return render(request, 'accounts/signin.html', {'form': form})
+
     else:
         form = LoginForm()
         return render(request, 'accounts/signin.html', {'form': form})
