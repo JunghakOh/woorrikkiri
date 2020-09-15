@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Content, Comment, FAQ, Answer, Subject
-from .forms import ContentForm, CommentForm, FAQForm, AnswerForm, SubjectForm
+from .models import Content, Comment, FAQ, Answer, Subject, Point
+from .forms import ContentForm, CommentForm, FAQForm, AnswerForm, SubjectForm, PointForm, ApproveForm
 from django.shortcuts import get_object_or_404
 from accounts.models import User
 
@@ -103,15 +103,27 @@ def home(request):
 def new(request):
     if request.method == 'POST':
         form = ContentForm(request.POST, request.FILES)
+        point_form = PointForm(request.POST)
+        #approve_form = ApproveForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.writer = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('ask')
+            if point_form.is_valid():
+                point_post = point_form.save(commit=False)
+                point_post.post = get_object_or_404(Content, pk=post.pk)
+                #point_form.points = post.coffee #커피 잔 수 * 2900 만큼을 포인트 모델에 기록(거래내역 기록용)  point.points = content.coffee*2
+                point_post.published_date = timezone.now() #거래내역에 결제한 사람, 날짜를 기록 
+                point_post.point_user = request.user
+                #if approve_form.is_valid(): #거래가 완전히 승인되었는지 확인  
+                #request.user.point = post.coffee #기록 후 커피 잔 수 * 2900만큼을 user.point에 반영(뺄셈연산)
+                point_post.save()
+                return redirect('ask')
     else:
         form = ContentForm()
-    return render(request, 'main/new.html', {'form': form})
+        point_form = PointForm()
+    return render(request, 'main/new.html', {'form': form, 'point_form':point_form})
 
 def ask(request):
     posts = Content.objects.all
@@ -145,7 +157,6 @@ def detail(request, pk):
         answer_form = AnswerForm()
     return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer_list':answer_list, 'answer_form':answer_form, 'answer_count':answer_count})
 
-
 def edit(request, index):
     post = get_object_or_404(Content, pk=index)
     if request.method == "POST":
@@ -173,6 +184,7 @@ def delete_comment(request, pk, comment_pk):
 
 def about(request):
     return render(request, 'main/about.html')
+
 def about_team(request):
     return render(request, 'main/about_team.html')
 
