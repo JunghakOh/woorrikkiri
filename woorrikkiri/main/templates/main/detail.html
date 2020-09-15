@@ -28,9 +28,9 @@
 	</div>
 
 	<!-- <div class="answer_count cate_title l_title">답변 {{ answer_count }}</div> -->
-	{% if user == post.writer %}
+
 	<!-- 답변 목록, 질문자만 볼 수 있음-->
-	{% for answer in answer_list %}
+	{% for answer in answer_list %} {% if user == post.writer or user == answer.writer %}
 	<div class="detail_container">
 		<div class="answer_container">
 			<div class="l_title q_title">{{answer.writer}}</div>
@@ -43,13 +43,11 @@
 			{% endif %}
 		</div>
 	</div>
-	{% endfor %} {% endif %}
+	{% endif %} {% endfor %}
 
 	<!-- 이미 답변이 달린 경우 또 할 수 없음-->
 	{% if answer_count == 0 %}
-
 	<!-- 해당 과목 멘토 자격있는 사람만 답변 달 수 있음-->
-
 	{% if content.subjects == computing and user.mento_computing %}
 	<div class="l_title cate_title">답변달기</div>
 	<div class="detail_container">
@@ -107,28 +105,37 @@
 		</form>
 	</div>
 	{% endif %} {% endif %}
-
-	<div class="l_title cate_title">댓글</div>
+	
+	{% for answer in answer_list %}
+	{% if user == post.writer or user == answer.writer %}
+	<div class="l_title cate_title">추가 대화 나누기</div>
 	<div class="detail_container">
-		<form method="POST">
-			{% csrf_token %}
-			<div class="comment_container">
-				<input type="text" name="text" class="comment" />
-				<div class="btn_wrapper">
-					<button type="submit" class="m_text b_text">댓글 달기</button>
+		<!-- 질문자와 답변자만 대화 나눌 수 있음 -->
+			<form method="POST">
+				{% csrf_token %}
+				<div class="comment_container">
+					<input type="text" name="text" class="comment" />
+					<div class="btn_wrapper">
+						<button type="submit" class="m_text b_text">댓글 달기</button>
+					</div>
+				</div>
+			</form>
+
+			{% for comment in comment_list %}
+			<div class="comment_content">
+				<div class="comment_text">{{ comment.text}}</div>
+				<div class="comment_detail">
+					<span class="date s_text s_color">{{ comment.created_date }}</span>
+					{% if user == comment.writer %}
+					<a class="m_text b_text" href="{% url 'delete_comment' pk=post.pk comment_pk=comment.pk %}">댓글 삭제</a>
+					{% endif %}
 				</div>
 			</div>
-		</form>
-		{% for comment in comment_list %}
-		<div class="comment_content">
-			<div class="comment_text">{{ comment.text}}</div>
-			<div class="comment_detail">
-				<span class="date s_text s_color">{{ comment.created_date }}</span>
-				<a class="m_text b_text" href="{% url 'delete_comment' pk=post.pk comment_pk=comment.pk %}">댓글 삭제</a>
-			</div>
-		</div>
-		{% endfor %}
+			{% endfor %} 
 	</div>
+	{% endif %}
+	{% endfor %}
+
 </div>
 
 {% endblock %}
