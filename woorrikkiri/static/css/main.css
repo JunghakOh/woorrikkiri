@@ -89,7 +89,6 @@
 /* ask.html */
 .ask_container {
 	width: 100%;
-	display: flex;
 }
 .side_box {
 	width: 25%;

@@ -146,6 +146,9 @@ input:focus {
 .m_text {
 	font-size: 14px;
 }
+.n_text{
+	font-size:12px;
+}
 .s_text {
 	font-size: 10px;
 }

@@ -16,7 +16,7 @@
 				<div class="btn-wrapper b_btn btn h_color">
 					{% if user.is_authenticated %}
 						{% if user.is_mento %}
-						<a href="{% url 'ask' %}" class="xxl_title h_font b_text">질문하기</a>
+						<a href="{% url 'ask' %}" class="xxl_title h_font b_text">답변하기</a>
 						{% else %}
 						<a href="{% url 'new' %}" class="xxl_title h_font b_text">질문하기</a>
 						{% endif %}

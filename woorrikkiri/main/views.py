@@ -108,7 +108,7 @@ def new(request):
             post.writer = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('home')
+            return redirect('ask')
     else:
         form = ContentForm()
     return render(request, 'main/new.html', {'form': form})

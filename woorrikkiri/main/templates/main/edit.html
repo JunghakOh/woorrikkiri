@@ -1,31 +1,34 @@
 {% extends 'main_base.html' %} {% block content %} {% load static %}
-
+<div class="page_title">질문 수정하기</div>
 <div class="new_container">
-	<div class="xl_title">질문 수정하기</div>
 	<form method="POST" class="post-form" enctype="multipart/form-data">
 		{% csrf_token %}
-		<input type="text" class="q_title" name="title" maxlength="200" required="" id="id_title" value="{{form.title.value}}">
-		<textarea class="q_content" name="body" cols="40" rows="10" required="" id="id_body">{{form.body.value}}</textarea>
+		<input type="text" class="q_title" name="title" maxlength="200" required="" id="id_title" placeholder="제목을 입력하세요" />
+		<textarea class="q_content" placeholder="내용을 입력하세요" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
 		<div class="q_extra">
 			<input type="file" name="file" id="id_file" />
-			<select name="subjects" required="" id="id_subjects" >
+			<select name="subjects" required="" id="id_subjects">
 				<option value="" selected="">과목 선택하기</option>
-				<option value="c">컴퓨팅 사고력</option>
-				<option value="b">기초 C언어</option>
-				<option value="g">고급응용 C프로그래밍</option>
+				<option value="computing">컴퓨팅 사고력</option>
+				<option value="basicC">기초 C언어</option>
+				<option value="GC">고급응용 C프로그래밍</option>
+				<option value="math">응용수학</option>
 			</select>
 		</div>
 		<div class="payment">
 			<div class="q_coffee">
 				<div class="b_text">질문에 사용할 커피 <span id="coffee_count">0</span> 잔</div>
 				<div class="btn_wrapper">
-                    <div class="coffee_btn w_color btn" id="plus">+</div>
-                </div>
-                <div class="btn_wrapper">
-                    <div class="coffee_btn w_color btn" id="minus">-</div>
+					<div class="coffee_btn w_color btn" id="plus">+</div>
+				</div>
+				<div class="btn_wrapper">
+					<div class="coffee_btn w_color btn" id="minus">-</div>
 				</div>
 			</div>
-			<div class="s_text"><span id="point_count">0</span> 포인트 차감</div>
+			<div class="s_text">
+				잔여포인트 <span id="left_point">{{ user.point }}</span>
+				(<span id="point_count">0</span> 포인트 차감)
+			</div>
 		</div>
 		<div class="btn_wrapper">
 			<button type="submit" class="btn sign_btn w_color">질문하기</button>
@@ -33,5 +36,4 @@
 	</form>
 </div>
 <script type="text/javascript" src="{% static 'js/new.js' %}"></script>
-
 {% endblock %}
