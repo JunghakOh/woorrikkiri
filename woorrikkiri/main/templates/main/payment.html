@@ -2,7 +2,11 @@
 <link rel="stylesheet" href="{% static 'css/accounts.css' %}" />
 
 <div class="sign_box">
-	<div class="page_title">포인트 충전하기</div>
+	<div class="page_title">포인트 
+		{% if user.is_mento %} 출금하기
+		{% else %}충전하기
+		{% endif %}
+		</div>
 	<div class="pay_container">
 		<span class="l_title">금액</span>
 		<div class="money_container">
@@ -13,13 +17,24 @@
 			<div class="btn-wrapper p_btn" id="plus_5000">+5,000원</div>
 		</div>
 
+
 		<div class="pay_method">
-			<span class="l_title">결제수단</span>
-			<div class="pay_list">카카오페이</div>
+			{% if user.is_mento %}
+			<div>계좌번호입력하기 </div>
+			{% else %}
+				<span class="l_title">결제수단</span>
+				<div class="pay_list">카카오페이</div>
+			{% endif %}
 		</div>
 
 		<button class="sign_btn" type="submit">
-			<div class="w_color">충전하기</div>
+			<div class="w_color">
+				{% if user.is_mento %}
+				신청하기
+				{% else %}
+				충전하기
+				{% endif %}
+			</div>
 		</button>
 	</div>
 </div>

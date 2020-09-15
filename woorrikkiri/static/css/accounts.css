@@ -44,6 +44,7 @@
 
 .current_point {
 	padding: 10px;
+	text-align: center;
 }
 .question_container > span {
 	margin-left: 10px;

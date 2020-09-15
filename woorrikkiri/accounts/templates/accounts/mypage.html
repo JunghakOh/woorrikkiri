@@ -11,23 +11,36 @@
 					{% endif %}
 				</div>
 				<!-- <a href="{% url 'profile_update' %}" class="m_text s_color edit"><img src="{% static 'img/setting.png' %}" alt="프로필편집" /></a><br /> -->
+				<div>
+					{% if user.is_mento %}멘토
+					{% else %} 멘티
+					{% endif %}
+				</div>
 			</div>
 			<div class="id_box">
 				<div class="user_id">
-					<span class="xl_title h_font">{{ user.name }}</span>
 					<!-- 사용자 이름 -->
+					<span class="xl_title h_font">{{ user.name }}</span>
+					<!-- 아이디 -->
 					<span class="l_title">{{ user.username }}</span>
-					<!-- 아이디 --><br />
-					<div class="current_point b_text">ⓟ {{ user.point }} 포인트</div>
-					<!-- 포인트 -->
 				</div>
 			</div>
-			<div class="profile_intro">{% if profile.introduction %} {{ profile.introduction }} {% else %} 한 줄 소개가 없습니다. {% endif %}</div>
 		</div>
 		<div class="point_containter">
+			<div class="current_point b_text">
+				{% if user.is_mento %} 획득
+				{% else %} 잔여
+				{% endif %}
+				포인트 {{ user.point }} 포인트</div>
 			<div class="point_btn_container">
 				<div class="btn-wrapper m_btn h_color">
-					<a href="{% url 'payment' %}" class="l_text">포인트 충전하기</a>
+					<a href="{% url 'payment' %}" class="l_text">포인트 
+					{% if user.is_mento %}
+						출금하기
+					{% else %}
+					충전하기
+					{% endif %}
+					</a>
 				</div>
 			</div>
 		</div>
