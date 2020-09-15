@@ -3,14 +3,15 @@
 	<div class="l_title cate_title">질문</div>
 	<div class="detail_container">
 		<div class="subject m_text s_color">
-			{% if content.subjects == computing %} 컴퓨팅 사고력 {% elif content.subjects == basicC %} 기초 C언어 {% elif content.subjects == GC %} 고급응용 C프로그래밍 {% elif content.subjects == math %}
-			응용수학 {% endif %} {{ post.writer}}
+			{% if content.subjects == computing %} 컴퓨팅 사고력 {% elif content.subjects == 'basicC' %} 기초 C언어 {% elif content.subjects == 'GC' %} 고급응용 C프로그래밍 {% elif content.subjects == 'math' %}
+			응용수학 {% endif %} 
 		</div>
 		<div class="l_title q_title">Q. {{ post.title }}</div>
 		<!-- <h1>작성자 : {{ post.writer }}</h1> -->
 		<div class="q_content">
-			{{ post.body}} {% if post.file %}
-
+			{{ post.body}} 
+			
+			{% if post.file %}
 			<img src="{{post.file.url}}" />
 			<!-- 이미지 다운: <a href="{{ post.file.url }}" download>{{ post.file.name }}</a> -->
 			{% endif %}
@@ -106,7 +107,6 @@
 	</div>
 	{% endif %} {% endif %}
 	
-	{% for answer in answer_list %}
 	{% if user == post.writer or user == answer.writer %}
 	<div class="l_title cate_title">추가 대화 나누기</div>
 	<div class="detail_container">
@@ -134,7 +134,6 @@
 			{% endfor %} 
 	</div>
 	{% endif %}
-	{% endfor %}
 
 </div>
 
