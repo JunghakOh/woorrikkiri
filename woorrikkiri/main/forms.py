@@ -1,10 +1,10 @@
 from django import forms
-from .models import Content, Comment, FAQ, Answer, Subject
+from .models import Content, Comment, FAQ, Answer, Subject, Point
 
 class ContentForm(forms.ModelForm):
     class Meta:
         model = Content
-        fields = ['title', 'subjects', 'body', 'file',]
+        fields = ['title', 'subjects', 'coffee', 'body', 'file',]
 
 
 class CommentForm(forms.ModelForm):
@@ -26,3 +26,13 @@ class SubjectForm(forms.ModelForm):
     class Meta:
         model = Subject
         fields = ['subjects', ]
+
+class PointForm(forms.ModelForm):
+    class Meta:
+        model = Point
+        fields = ['points', ]
+
+class ApproveForm(forms.ModelForm):
+    class Meta:
+        model = Point
+        fields = ['approve', ]
