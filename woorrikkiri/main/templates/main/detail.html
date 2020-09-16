@@ -1,10 +1,23 @@
 {% extends 'main_base.html' %} {% block content %} {% load static %}
-<div class="detail">
-	<div class="l_title cate_title">질문</div>
+	<div class="xl_title h_font cate_title">질문</div>
 	<div class="detail_container">
 		<div class="subject m_text s_color">
-			{% if content.subjects == computing %} 컴퓨팅 사고력 {% elif content.subjects == 'basicC' %} 기초 C언어 {% elif content.subjects == 'GC' %} 고급응용 C프로그래밍 {% elif content.subjects == 'math' %}
-			응용수학 {% endif %} 
+			{% if post.subjects == 'computing' %} 컴퓨팅 사고력 
+			{% elif post.subjects == 'basicC' %} 기초 C언어 
+			{% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 
+			{% elif post.subjects == 'basicEngineering' %} 기초공학설계 
+			{% elif post.subjects == 'univMath' %} 대학수학 
+			{% elif post.subjects == 'principlesodEconomics1' %} 경제학원론1 
+			{% elif post.subjects == 'principlesodEconomics2' %} 경제학원론2
+			{% endif %} 
+			<div class="coffee s_text"> 
+				{% if user.is_mento %}
+				이 질문을 통해 얻을 수 있는 커피
+				{% else %}
+				이 질문에 사용된 커피
+				{% endif %}
+				<span class="b_text m_text h_font h_color"> {{ post.coffee }}잔</span>
+			</div>
 		</div>
 		<div class="l_title q_title">Q. {{ post.title }}</div>
 		<!-- <h1>작성자 : {{ post.writer }}</h1> -->
@@ -17,7 +30,7 @@
 			{% endif %}
 		</div>
 		<div class="content_detail">
-			<div class="date s_text s_color">{% if post.pub_date %} {{ post.pub_date }} {% endif %}</div>
+			<div class="date s_text s_color">{% if post.pub_date %} {{ post.pub_date | date:"Y-m-d"}} | {{ post.pub_date | timesince }}전 {% endif %}</div>
 
 			{% if user == post.writer and answer_count == 0 %}
 			<div class="content_editor m_text b_text">
@@ -28,87 +41,78 @@
 		</div>
 	</div>
 
-	<!-- <div class="answer_count cate_title l_title">답변 {{ answer_count }}</div> -->
-
 	<!-- 답변 목록, 질문자만 볼 수 있음-->
-	{% for answer in answer_list %} {% if user == post.writer or user == answer.writer %}
-	<div class="detail_container">
-		<div class="answer_container">
-			<div class="l_title q_title">{{answer.writer}}</div>
-			<div class="q_content">{{ answer.body}}</div>
-			<div class="date s_text s_color">{{ answer.pub_date }}</div>
-			{% if answer.file %}
-			<div class="img_container">
-				<img src="{{ answer.file.url }}" />
+	{% for answer in answer_list %} 
+		{% if user == post.writer or user == answer.writer %}
+		<div class="xl_title h_font cate_title">답변</div>
+		<div class="detail_container">
+			<div class="answer_container">
+				<div class="l_title q_title">{{answer.writer}}멘토</div>
+				<div class="q_content">{{ answer.body}}</div>
+				<div class="date s_text s_color">{{ post.pub_date | date:"Y-m-d"}} | {{ post.pub_date | timesince }}전</div>
+				{% if answer.file %}
+				<div class="img_container">
+					<img src="{{ answer.file.url }}" />
+				</div>
+				{% endif %}
 			</div>
-			{% endif %}
 		</div>
-	</div>
-	{% endif %} {% endfor %}
+		{% else %}
+		<div class="">답변이 달린 질문입니다.</div>
+		{% endif %} 
+	{% endfor %}
 
 	<!-- 이미 답변이 달린 경우 또 할 수 없음-->
 	{% if answer_count == 0 %}
-	<!-- 해당 과목 멘토 자격있는 사람만 답변 달 수 있음-->
-	{% if content.subjects == computing and user.mento_computing %}
-	<div class="l_title cate_title">답변달기</div>
-	<div class="detail_container">
-		<form method="POST">
-			{% csrf_token %}
-			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
-			<div class="file_wrapper">
-				<input type="file" name="file" id="id_file" />
-			</div>
-			<div class="btn_wrapper">
-				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
-			</div>
-		</form>
-	</div>
-	{% elif content.subjects == basicC and user.mento_basicC %}
-	<div class="l_title cate_title">답변달기</div>
-	<div class="detail_container">
-		<form method="POST">
-			{% csrf_token %}
-			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
-			<div class="file_wrapper">
-				<input type="file" name="file" id="id_file" />
-			</div>
-			<div class="btn_wrapper">
-				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
-			</div>
-		</form>
-	</div>
-	{% elif content.subjects == GC and user.mento_GC %}
-	<div class="l_title cate_title">답변달기</div>
-	<div class="detail_container">
-		<form method="POST">
-			{% csrf_token %}
-			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
-			<div class="file_wrapper">
-				<input type="file" name="file" id="id_file" />
-			</div>
-			<div class="btn_wrapper">
-				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
-			</div>
-		</form>
-	</div>
-	{% elif content.subjects == math and user.mento_math %}
-	<div class="l_title cate_title">답변달기</div>
-	<div class="detail_container">
-		<form method="POST">
-			{% csrf_token %}
-			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
-			<div class="file_wrapper">
-				<input type="file" name="file" id="id_file" />
-			</div>
-			<div class="btn_wrapper">
-				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
-			</div>
-		</form>
-	</div>
-	{% endif %} {% endif %}
+		<!-- 해당 과목 멘토 자격있는 사람만 답변 달 수 있음-->
+		{% if post.subjects == 'computing' and user.mento_computing %}
+		<div class="xl_title h_font cate_title">답변하기</div>
+		<div class="detail_container">
+			<form method="POST">
+				{% csrf_token %}
+				<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+				<div class="file_wrapper">
+					<input type="file" name="file" id="id_file" />
+				</div>
+				<div class="btn_wrapper">
+					<button type="submit" class="btn sign_btn w_color">답변 달기</button>
+				</div>
+			</form>
+		</div>
+		{% elif post.subjects == 'basicC' and user.mento_basicC %}
+		<div class="xl_title h_font cate_title">답변하기</div>
+		<div class="detail_container">
+			<form method="POST">
+				{% csrf_token %}
+				<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+				<div class="file_wrapper">
+					<input type="file" name="file" id="id_file" />
+				</div>
+				<div class="btn_wrapper">
+					<button type="submit" class="btn sign_btn w_color">답변 달기</button>
+				</div>
+			</form>
+		</div>
+		{% elif post.subjects == 'GC' and user.mento_GC %}
+		<div class="xl_title h_font cate_title">답변하기</div>
+		<div class="detail_container">
+			<form method="POST">
+				{% csrf_token %}
+				<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+				<div class="file_wrapper">
+					<input type="file" name="file" id="id_file" />
+				</div>
+				<div class="btn_wrapper">
+					<button type="submit" class="btn sign_btn w_color">답변 달기</button>
+				</div>
+			</form>
+		</div>
+		{% endif %} 
+	{% endif %}
 	
+	{% for answer in answer_list %} 
 	{% if user == post.writer or user == answer.writer %}
-	<div class="l_title cate_title">추가 대화 나누기</div>
+	<div class="xl_title h_font cate_title">추가 대화 나누기</div>
 	<div class="detail_container">
 		<!-- 질문자와 답변자만 대화 나눌 수 있음 -->
 			<form method="POST">
@@ -122,19 +126,22 @@
 			</form>
 
 			{% for comment in comment_list %}
-			<div class="comment_content">
-				<div class="comment_text">{{ comment.text}}</div>
-				<div class="comment_detail">
-					<span class="date s_text s_color">{{ comment.created_date }}</span>
-					{% if user == comment.writer %}
-					<a class="m_text b_text" href="{% url 'delete_comment' pk=post.pk comment_pk=comment.pk %}">댓글 삭제</a>
-					{% endif %}
-				</div>
+			<div class="comment_box">
+				<div class="writer h_font h_color b_text">{{ comment.writer }}</div>
+				<div class="comment_content">
+					<div class="comment_text">{{ comment.text}}</div>
+					<div class="comment_detail">
+						<span class="date s_text s_color">{{ comment.created_date | timesince}}</span>
+						{% if user == comment.writer %}
+						<a class="m_text b_text" href="{% url 'delete_comment' pk=post.pk comment_pk=comment.pk %}">삭제</a>
+						{% endif %}
+					</div>
+				</div>	
 			</div>
 			{% endfor %} 
 	</div>
 	{% endif %}
+	{% endfor %}
 
-</div>
 
 {% endblock %}
