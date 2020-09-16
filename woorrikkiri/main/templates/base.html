@@ -39,9 +39,11 @@
 					<div class="account_category">
 						<ul class="navbar">
 							{% if user.is_authenticated %}
-							<li class="nav-item h_color">
-								<a href="{% url 'new' %}">질문하기</a>
-							</li>
+								{% if not user.is_mento %}
+								<li class="nav-item h_color">
+									<a href="{% url 'new' %}">질문하기</a>
+								</li>
+								{% endif %}
 							<li class="nav-item">
 								<a href="{% url 'mypage' %}">마이 페이지</a>
 							</li>
@@ -79,9 +81,11 @@
 							</li>
 							<hr>
 							{% if user.is_authenticated %}
-							<li class="nav-item h_color">
-								<a href="{% url 'new' %}">질문하기</a>
-							</li>
+							{% if not user.is_mento %}
+								<li class="nav-item h_color">
+									<a href="{% url 'new' %}">질문하기</a>
+								</li>
+								{% endif %}
 							<li class="nav-item">
 								<a href="{% url 'mypage' %}">마이 페이지</a>
 							</li>

@@ -9,21 +9,32 @@
 				<a href="{% url 'new' %}" class="xl_title b_text h_font">질문하기</a>
 			</div>
 		{% endif %}
-		<ol>
-			{% for post in posts_list %}
-			<li>
-				<a href="{% url 'detail' pk=post.pk %}">
-				<div class="question_box">
-					<div class="s_color n_text">{% if post.subjects == 'computing' %} 컴퓨팅 사고력 {% elif post.subjects == 'basicC' %} 기초 C언어 {% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 {% elif post.subjects == 'math' %}
-						응용수학 {% endif %}</div>
-					<div class="question_title l_title b_text">{{ post.title }}</div>
-					<div class="question_content m_text">{{ post.body }}</div>
-					<div class="s_color n_text">{{ post.pub_date | timesince }}</div>
-				</div>
-			</a>
-			</li>
-			{% endfor %}
-		</ol>
+		<div class="no_answer">
+		</div>
+		<div class="all_q">
+			<ol>
+				{% for post in posts_list %}
+				<li>
+					<a href="{% url 'detail' pk=post.pk %}">
+					<div class="question_box">
+						<div class="s_color n_text">
+							{% if post.subjects == 'computing' %} 컴퓨팅 사고력 
+							{% elif post.subjects == 'basicC' %} 기초 C언어 
+							{% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 
+							{% elif post.subjects == 'basicEngineering' %} 기초공학설계 
+							{% elif post.subjects == 'univMath' %} 대학수학 
+							{% elif post.subjects == 'principlesodEconomics1' %} 경제학원론1 
+							{% elif post.subjects == 'principlesodEconomics2' %} 경제학원론2
+							{% endif %} 
+						<div class="question_title l_title b_text">{{ post.title }}</div>
+						<div class="question_content m_text">{{ post.body }}</div>
+						<div class="s_color n_text">{{ post.pub_date | timesince }}전</div>
+					</div>
+				</a>
+				</li>
+				{% endfor %}
+			</ol>
+		</div>
 	</div>
 </div>
 {% endblock %}

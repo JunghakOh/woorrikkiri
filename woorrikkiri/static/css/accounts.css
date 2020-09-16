@@ -80,7 +80,7 @@
 }
 .question_box .question_content {
 	padding: 10px 0;
-	height: 80px;
+	height: 65px;
 	overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
