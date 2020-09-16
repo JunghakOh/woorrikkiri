@@ -26,9 +26,13 @@ class User(AbstractUser):
     gender = models.CharField("성별", max_length=1, choices=CHOICES_GENDER)
     point = models.IntegerField("포인트", default = 0)
     mento_computing = models.BooleanField("컴퓨팅사고력 멘토", default=False)
-    mento_basicC = models.BooleanField("기초C언어 멘토", default=False)
-    mento_GC = models.BooleanField("고급응용C프로그래밍 멘토", default=False)
-    mento_math = models.BooleanField("응용수학 멘토", default=False)
+    mento_basicC = models.BooleanField("C언어 기초 멘토", default=False)
+    mento_GC = models.BooleanField("고급응용 C프로그래밍 멘토", default=False)
+    mento_basicEngineering = models.BooleanField("기초공학설계", default=False)
+    mento_univMath = models.BooleanField("대학수학", default=False)
+    mento_principlesodEconomics1 = models.BooleanField("경제학원론1", default=False)
+    mento_principlesodEconomics2 = models.BooleanField("경제학원론2", default=False)
+
 
     objects = UserManager()
 
@@ -36,9 +40,12 @@ class UserMento(models.Model):
     objects = models.Manager()
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     mento_computing = models.BooleanField("컴퓨팅사고력 멘토", default=False)
-    mento_basicC = models.BooleanField("기초C언어 멘토", default=False)
-    mento_GC = models.BooleanField("고급응용C프로그래밍 멘토", default=False)
-    mento_math = models.BooleanField("응용수학 멘토", default=False)
+    mento_basicC = models.BooleanField("C언어 기초 멘토", default=False)
+    mento_GC = models.BooleanField("고급응용 C프로그래밍 멘토", default=False)
+    mento_basicEngineering = models.BooleanField("기초공학설계", default=False)
+    mento_univMath = models.BooleanField("대학수학", default=False)
+    mento_principlesodEconomics1 = models.BooleanField("경제학원론1", default=False)
+    mento_principlesodEconomics2 = models.BooleanField("경제학원론2", default=False)
 
 class Profile(models.Model):
     objects = models.Manager()

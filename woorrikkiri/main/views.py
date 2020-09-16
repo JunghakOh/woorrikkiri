@@ -4,6 +4,7 @@ from .models import Content, Comment, FAQ, Answer, Subject, Point
 from .forms import ContentForm, CommentForm, FAQForm, AnswerForm, SubjectForm, PointForm, ApproveForm
 from django.shortcuts import get_object_or_404
 from accounts.models import User
+from accounts.forms import UserPointForm
 
 #---------------------popbill------by junghak
 # -*- coding: utf-8 -*-
@@ -101,6 +102,7 @@ def home(request):
 #     return render(request, 'private_info.html')
     
 def new(request):
+    user_point = User.objects.all
     if request.method == 'POST':
         form = ContentForm(request.POST, request.FILES)
         point_form = PointForm(request.POST)
@@ -117,13 +119,13 @@ def new(request):
                 point_post.published_date = timezone.now() #거래내역에 결제한 사람, 날짜를 기록 
                 point_post.point_user = request.user
                 #if approve_form.is_valid(): #거래가 완전히 승인되었는지 확인  
-                # request.user.point -= post.coffee * 2900 
                 point_post.save()
+                #user_point.point = (user_point.point) - (post.coffee * 2900)
                 return redirect('ask')
     else:
         form = ContentForm()
         point_form = PointForm()
-    return render(request, 'main/new.html', {'form': form, 'point_form':point_form})
+    return render(request, 'main/new.html', {'form': form, 'point_form':point_form, 'user_point':user_point})
 
 def ask(request):
     posts = Content.objects.all
