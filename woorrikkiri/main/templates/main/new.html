@@ -1,7 +1,7 @@
 {% extends 'main_base.html' %} {% block content %} {% load static %}
 <div class="page_title">질문하기</div>
 <div class="new_container">
-	<form method="POST" class="post-form" enctype="multipart/form-data">
+	<form method="POST" class="post-form" enctype="multipart/form-data" onsubmit="return check()">
 		{% csrf_token %}
 		<input type="text" class="q_title" name="title" maxlength="200" required="" id="id_title" placeholder="제목을 입력하세요" />
 		<textarea class="q_content" placeholder="내용을 입력하세요" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
@@ -17,25 +17,35 @@
 				<option value="principlesodEconomics2">경제학원론2</option>
 			</select>
 		</div>
+
+		<div class="s_color m_text">※<span class="m_text h_color"><a href="https://www.notion.so/70efa718aa6b41bfab04176d0305326b">질문 가이드라인</a></span>을 지켜서 작성해주세요 :)</div>
+
 		<div class="payment">
 			<div class="q_coffee">
-				<input type="text" name="points" />
-				<input type="text" name="coffee" />
-				<div class="b_text">질문에 사용할 커피 <span id="coffee_count">{{ content.coffee }}</span> 잔</div>
-				<div class="btn_wrapper">
-					<div class="coffee_btn w_color btn" id="plus">+</div>
+				<div class="b_text">질문에 사용할 커피:<input class="l_text b_text h_color remove_border" id="coffee_count" name="coffee" readonly value="0">잔</div>
+				<div class="buttons">
+					<div class="btn_wrapper">
+						<div class="coffee_btn w_color btn" id="plus">+</div>
+					</div>
+					<div class="btn_wrapper">
+						<div class="coffee_btn w_color btn" id="minus">-</div>
+					</div>	
 				</div>
-				<div class="btn_wrapper">
-					<div class="coffee_btn w_color btn" id="minus">-</div>
-				</div>
+				<div class="q_mark s_color m_text">커피란?
+					<span class="s_text">답변을 달아 준 멘토에게 주는 보답입니다. <br>
+					질문의 난이도와 긴급성에 따라 원하는 만큼의 잔 수를 선택할 수 있습니다. <br>
+					커피 한 잔은 2900 포인트 입니다. <br>
+					단, 최소 1잔은 선택해야 합니다.</span></div>
 			</div>
-			<div class="s_text">
+
+			<div class="m_text">
 				잔여포인트 <span id="left_point">{{ user.point }}</span>
-				(<span id="point_count">0</span> 포인트 차감)
+				(<input class="m_text remove_border" readonly value="0" type="text" name="points" id="point_count"/> 포인트 차감)
 			</div>
+			
 		</div>
 		<div class="btn_wrapper">
-			<button type="submit" class="btn sign_btn w_color">질문하기</button>
+			<button type="submit" class="btn sign_btn w_color" id="ask_btn">질문하기</button>
 		</div>
 	</form>
 </div>

@@ -206,6 +206,7 @@
 	transition: all 0.2s ease;
 	margin: 10px;
 	padding: 10px;
+	resize: none;
 }
 .new_container .q_extra,
 .new_container .q_coffee {
@@ -215,30 +216,58 @@
 	width: 30%;
 	margin: 0 auto;
 }
-.q_coffee .btn_wrapper {
-	width: 30px;
-	height: 30px;
-}
 .new_container .payment {
 	margin: 10px;
 }
 .new_container .q_coffee {
 	display: flex;
-	width: 240px;
-	justify-content: center;
+	width: 300px;
+	justify-content: space-between;
 	align-items: center;
 	margin: 0 auto;
 }
-/* agreeement: 이용약관
-.agreement_container .l_title{
-    margin:30px 0 10px;   
+.q_coffee .btn_wrapper {
+	width: 30px;
+	height: 30px;
 }
-.agreement_container .b_text{
-    padding:20px 0;
+.q_coffee .buttons{
+	display: flex;
 }
-.agreement_container .text_h{
-    margin-bottom: 30px;
-} */
+#coffee_count{
+	width:20px;
+}
+#point_count{
+	width:40px;
+}
+.remove_border{
+	border:none;
+	margin:0;
+	padding:0;
+	text-align: right;
+}
+.q_coffee .q_mark:hover{
+	cursor: help;
+	position: relative;
+}
+.q_coffee .q_mark span{
+display: none;
+}
+
+.q_coffee .q_mark:hover span{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #fefafa;
+	display: block;
+	z-index:5;
+	left:15px;
+	width:230px;
+	position: absolute;
+	top:-75px;
+	text-decoration: none;
+}
+
+
 
 /* detail */
 .detail_container {
