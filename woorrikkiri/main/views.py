@@ -117,7 +117,7 @@ def new(request):
                 point_post.published_date = timezone.now() #거래내역에 결제한 사람, 날짜를 기록 
                 point_post.point_user = request.user
                 #if approve_form.is_valid(): #거래가 완전히 승인되었는지 확인  
-                #request.user.point = post.coffee #기록 후 커피 잔 수 * 2900만큼을 user.point에 반영(뺄셈연산)
+                # request.user.point -= post.coffee * 2900 
                 point_post.save()
                 return redirect('ask')
     else:
@@ -151,6 +151,7 @@ def detail(request, pk):
             answer.published_date = timezone.now()
             answer.post = post
             answer.save()
+#           request.user.point += post.coffee * 2900
             return redirect('detail', pk=pk)
     else:
         comment_form = CommentForm()

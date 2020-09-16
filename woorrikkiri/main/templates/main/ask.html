@@ -2,27 +2,25 @@
 <link rel="stylesheet" href="{% static 'css/accounts.css' %}" />
 
 <div class="ask_container">
-	<!-- <div class="side_box"></div> -->
-	<div class="question_container">
 		<div class="page_title">질문 모두보기</div>
-		{% if user.is_authenticated %}
-		<div class="btn-wrapper h_color m_btn btn ">
-			<a href="{% url 'new' %}" class="l_title b_text">질문하기</a>
-		</div>
-		{% else %}
-		<div class="btn-wrapper h_color m_btn btn">
-			<a href="{% url 'signin' %}" class="l_title b_text">질문하기</a>
-		</div>
+		<div class="question_container">
+		{% if user.is_authenticated and not user.is_mento %}
+			<div class="btn-wrapper h_color m_btn btn ">
+				<a href="{% url 'new' %}" class="xl_title b_text h_font">질문하기</a>
+			</div>
 		{% endif %}
 		<ol>
 			{% for post in posts_list %}
 			<li>
+				<a href="{% url 'detail' pk=post.pk %}">
 				<div class="question_box">
-					<span class="question_title m_text"><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></span>
-					<span class="question_content s_text">{{ post.body }}</span>
-					<span class="s_text s_color">{{ post.pub_date }}</span>
-					<span class="s_text s_color">작성자 : {{ post.writer }}</span>
+					<div class="s_color n_text">{% if post.subjects == 'computing' %} 컴퓨팅 사고력 {% elif post.subjects == 'basicC' %} 기초 C언어 {% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 {% elif post.subjects == 'math' %}
+						응용수학 {% endif %}</div>
+					<div class="question_title l_title b_text">{{ post.title }}</div>
+					<div class="question_content m_text">{{ post.body }}</div>
+					<div class="s_color n_text">{{ post.pub_date | timesince }}</div>
 				</div>
+			</a>
 			</li>
 			{% endfor %}
 		</ol>
