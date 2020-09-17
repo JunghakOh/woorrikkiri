@@ -6,7 +6,6 @@ class ContentForm(forms.ModelForm):
         model = Content
         fields = ['title', 'subjects', 'coffee', 'body', 'file',]
 
-
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
