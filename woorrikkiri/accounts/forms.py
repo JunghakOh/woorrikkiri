@@ -15,6 +15,11 @@ class UserRegisterForm(UserCreationForm):
         model = User
         models = get_user_model()
         fields = ['username', 'name', 'email', 'school', 'phone_num', 'gender', 'is_mento',]
+
+class UserPointForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['point', ]
         
 class LoginForm(forms.ModelForm):
     class Meta:
@@ -24,4 +29,4 @@ class LoginForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['introduction', 'profile_photo',]
+        fields = ['introduction', 'profile_photo', ]
