@@ -51,9 +51,7 @@
 				<div class="q_content">{{ answer.body}}</div>
 				<div class="date s_text s_color">{{ post.pub_date | date:"Y-m-d"}} | {{ post.pub_date | timesince }}전</div>
 				{% if answer.file %}
-				<div class="img_container">
 					<img src="{{ answer.file.url }}" />
-				</div>
 				{% endif %}
 			</div>
 		</div>
