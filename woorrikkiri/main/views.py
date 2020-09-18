@@ -164,36 +164,38 @@ def detail(request, pk):
     return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer_list':answer_list, 'answer_form':answer_form, 'answer_count':answer_count})
 
 def edit(request, index):
-    post = get_object_or_404(Content and Point, pk=index)
+    post = get_object_or_404(Content, pk=index)
     #point_post = get_object_or_404(Point, pk=index)
     if request.method == "POST":
         form = ContentForm(request.POST, request.FILES, instance=post)
-        point_form = PointForm(request.POST, instance=post)
+        #point_form = PointForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = timezone.now
             post.save()
-            if point_form.is_valid():
-                point_post = point_form.save(commit=False)
-                point_post.post = get_object_or_404(Content, pk=post.pk)
+            #if point_form.is_valid():
+             #   point_post = point_form.save(commit=False)
+              #  point_post.post = get_object_or_404(Content, pk=post.pk)
                 #point_form.points = post.coffee #커피 잔 수 * 2900 만큼을 포인트 모델에 기록(거래내역 기록용)  point.points = content.coffee*2
-                point_post.published_date = timezone.now() #거래내역에 결제한 사람, 날짜를 기록 
-                point_post.point_user = request.user
+               # point_post.published_date = timezone.now() #거래내역에 결제한 사람, 날짜를 기록 
+                #point_post.point_user = request.user
                 #if approve_form.is_valid(): #거래가 완전히 승인되었는지 확인  
-                point_post.save()
+                #point_post.save()
                 #user_point.point = (user_point.point) - (post.coffee * 2900)
-                request.user.point = request.user.point - (post.coffee * 2900)
-                request.user.save()   
-                return redirect('detail', pk=post.pk)
+                #request.user.point = request.user.point - (post.coffee * 2900)
+                #request.user.save()   
+            return redirect('detail', pk=post.pk)
     else:
         form = ContentForm(instance=post)
-        point_form = PointForm(instance=post)
-    return render(request, 'main/edit.html', {'form': form, 'point_form':point_form})
+        #point_form = PointForm()
+    return render(request, 'main/edit.html', {'form': form})
 
 def delete(request, pk):
     post = get_object_or_404(Content, pk=pk)
     post.delete()
+    request.user.point = request.user.point + (post.coffee * 2900)
+    request.user.save()   
     return redirect('ask')
 
 def delete_comment(request, pk, comment_pk):
@@ -213,4 +215,13 @@ def faq(request):
     return render(request, 'main/faq.html', {'faq_list':faq})
 
 def payment(request):
-    return render(request, 'main/payment.html')
+    if request.method == 'POST':
+        coupon_form = PointForm(request.POST)
+        if coupon_form.is_valid():
+            coupon_post = coupon_form.save()
+            request.user.point = request.user.point + coupon_post.coupon
+            request.user.save() 
+        return render(request, 'main/payment.html')
+    else:
+        coupon_form = PointForm()
+    return render(request, 'main/payment.html', {'coupon_form': coupon_form})
