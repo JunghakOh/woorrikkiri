@@ -35,3 +35,8 @@ class ApproveForm(forms.ModelForm):
     class Meta:
         model = Point
         fields = ['approve', ]
+
+class CouponForm(forms.ModelForm):
+    class Meta:
+        model = Point
+        fields = ['coupon', ]

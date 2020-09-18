@@ -3,6 +3,7 @@
 <div class="new_container">
 	<form method="POST" class="post-form" enctype="multipart/form-data">
 		{% csrf_token %}
+		{{ form.as_p }}
 		<input type="text" class="q_title" name="title" maxlength="200" required="" id="id_title" placeholder="제목을 입력하세요" />
 		<textarea class="q_content" placeholder="내용을 입력하세요" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
 		<div class="q_extra">
@@ -10,9 +11,11 @@
 			<select name="subjects" required="" id="id_subjects">
 				<option value="" selected="">과목 선택하기</option>
 				<option value="computing">컴퓨팅 사고력</option>
-				<option value="basicC">기초 C언어</option>
+				<option value="basicC">C언어 기초</option>
 				<option value="GC">고급응용 C프로그래밍</option>
-				<option value="math">응용수학</option>
+				<option value="univmath">대학수학</option>
+				<option value="principlesodEconomics1">경제학원론1</option>
+				<option value="principlesodEconomics2">경제학원론2</option>
 			</select>
 		</div>
 		<div class="payment">

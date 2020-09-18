@@ -53,6 +53,7 @@ class Answer(models.Model):
     pub_date = models.DateTimeField(default=timezone.now)
     file = models.FileField(upload_to='documents/%Y, %m/', blank=True)
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = "작성자", on_delete = models.CASCADE)
+    #respondent = models.
 
 class Subject(models.Model):
     SUBJECTS_COMPUTING = 'computing'
@@ -84,3 +85,4 @@ class Point(models.Model):
     point_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name = "포인트사용자", on_delete = models.CASCADE)
     pub_date = models.DateTimeField(default=timezone.now)
     approve = models.BooleanField("결제승인", default=False)
+    coupon= models.IntegerField("커피", default = 0)
