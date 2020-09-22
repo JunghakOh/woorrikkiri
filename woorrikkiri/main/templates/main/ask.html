@@ -29,6 +29,9 @@
 						<div class="question_title l_title b_text">{{ post.title }}</div>
 						<div class="question_content m_text">{{ post.body }}</div>
 						<div class="s_color n_text">{{ post.pub_date | timesince }}전</div>
+						{% if answer_count > 0 %}
+							<div class="s_color n_text">답변이 완료된 질문입니다</div>
+						{% endif %}
 					</div>
 				</a>
 				</li>
