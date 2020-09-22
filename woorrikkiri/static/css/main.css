@@ -123,6 +123,9 @@
 	justify-content: center;
 	cursor: default;
 }
+#money_amount{
+	text-align: left;
+}
 .x_btn {
 	width: 12px;
 	cursor: pointer;

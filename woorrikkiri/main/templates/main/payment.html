@@ -2,41 +2,45 @@
 <link rel="stylesheet" href="{% static 'css/accounts.css' %}" />
 
 <div class="sign_box">
-	<div class="page_title">포인트 
-		{% if user.is_mento %} 출금하기
-		{% else %}충전하기
-		{% endif %}
-		</div>
+	<div class="page_title">포인트 {% if user.is_mento %} 출금하기 {% else %}충전하기 {% endif %}</div>
 	<div class="pay_container">
-		<span class="l_title">금액</span>
-		<div class="money_container">
-			<div class="money_box">
-				<div class="money_amount ll_text" id="money_amount">0</div>
-				<div class="x_btn" id="x_btn"><img src="{% static 'img/xbutton.png' %}" alt="취소" /></div>
+		<form method="POST" class="post-form" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			<span class="l_title">금액</span>
+			<div class="money_container">
+				<div class="money_box">
+					<div class="money_amount ll_text" >
+						<input readonly class="remove_border" id="money_amount" type="text" name="points" value="0"/>
+					</div>
+					<div class="x_btn" id="x_btn"><img src="{% static 'img/xbutton.png' %}" alt="취소" /></div>
+				</div>
+				<div class="btn-wrapper p_btn" id="plus_5000">+5,000원</div>
 			</div>
-			<div class="btn-wrapper p_btn" id="plus_5000">+5,000원</div>
-		</div>
 
-
-		<div class="pay_method">
-			{% if user.is_mento %}
-			<div>계좌번호입력하기 </div>
-			{% else %}
-				<span class="l_title">결제수단</span>
-				<div class="pay_list">무통장입금 : 입금자명은 회원가입 시 입력했던 이름과 동일해야합니다.</div>
-				<div>입금계좌번호: 000000</div>
-			{% endif %}
-		</div>
-
-		<button class="sign_btn" type="submit">
-			<div class="w_color">
+			<div class="pay_method">
 				{% if user.is_mento %}
-				신청하기
+				<div>계좌번호입력하기</div>
 				{% else %}
-				충전하기
+				<div class="l_title">결제수단</div>
+				<div>무통장입금 카카오페이</div>
+
+				<div class="l_title bank">무통장입금</div>
+				<div>
+					국민은행 457001-01-462642 <br />
+					[예금주:오정학(메티스)]
+				</div>
+				<div class="m_text s_color">
+					충전 금액을 입금하신 후 결제 버튼을 눌러주세요. <br />
+					포인트는 입금 후 수 분 내 반영됩니다.
+				</div>
 				{% endif %}
 			</div>
-		</button>
+
+			<button class="sign_btn" type="submit">
+				<span class="w_color">충전하기</span>
+			</button>
+		</form>
 	</div>
 </div>
 <script type="text/javascript" src="{% static 'js/payment.js' %}"></script>
