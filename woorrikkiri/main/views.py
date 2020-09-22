@@ -130,7 +130,7 @@ def new(request):
     return render(request, 'main/new.html', {'form': form, 'point_form':point_form})
 
 def ask(request):
-    posts = Content.objects.all
+    posts = Content.objects.all().order_by('-pub_date')
     return render(request, 'main/ask.html', {'posts_list':posts})
 
 def detail(request, pk):
