@@ -11,6 +11,7 @@
 				<option value="" selected="">과목 선택하기</option>
 				<option value="computing">컴퓨팅 사고력</option>
 				<option value="basicC">C언어 기초</option>
+				<option value="GC">고급응용 C프로그래밍</option>
 				<option value="basicEngineering">기초공학설계</option>
 				<option value="univMath">대학수학</option>
 				<option value="principlesodEconomics1">경제학원론1</option>
@@ -18,31 +19,36 @@
 			</select>
 		</div>
 
-		<div class="s_color m_text">※<span class="m_text h_color"><a href="https://www.notion.so/70efa718aa6b41bfab04176d0305326b">질문 가이드라인</a></span>을 지켜서 작성해주세요 :)</div>
+		<div class="s_color m_text">
+			※ <span class="m_text h_color"><a href="https://www.notion.so/70efa718aa6b41bfab04176d0305326b">질문 가이드라인</a></span
+			>을 지켜서 작성해주세요 :)
+		</div>
 
 		<div class="payment">
 			<div class="q_coffee">
-				<div class="b_text">질문에 사용할 커피:<input class="l_text b_text h_color remove_border" id="coffee_count" name="coffee" readonly value="0">잔</div>
+				<div class="b_text">질문에 사용할 커피:<input class="l_text b_text h_color remove_border" id="coffee_count" name="coffee" readonly value="0" />잔</div>
 				<div class="buttons">
 					<div class="btn_wrapper">
 						<div class="coffee_btn w_color btn" id="plus">+</div>
 					</div>
 					<div class="btn_wrapper">
 						<div class="coffee_btn w_color btn" id="minus">-</div>
-					</div>	
+					</div>
 				</div>
-				<div class="q_mark s_color m_text">커피란?
-					<span class="s_text">답변을 달아 준 멘토에게 주는 보답입니다. <br>
-					질문의 난이도와 긴급성에 따라 원하는 만큼의 잔 수를 선택할 수 있습니다. <br>
-					커피 한 잔은 2900 포인트 입니다. <br>
-					단, 최소 1잔은 선택해야 합니다.</span></div>
+				<div class="q_mark s_color m_text">
+					커피란?
+					<span class="s_text"
+						>답변을 달아 준 멘토에게 주는 보답입니다. <br />
+						질문의 난이도와 긴급성에 따라 원하는 만큼의 잔 수를 선택할 수 있습니다. <br />
+						커피 한 잔은 2900 포인트 입니다. <br />
+						단, 최소 1잔은 선택해야 합니다.</span
+					>
+				</div>
 			</div>
 
 			<div class="m_text">
-				잔여포인트 <span id="left_point">{{ user.point }}</span>
-				(<input class="m_text remove_border" readonly value="0" type="text" name="points" id="point_count"/> 포인트 차감)
+				잔여포인트 <span id="left_point">{{ user.point }}</span> (<input class="m_text remove_border" readonly value="0" type="text" name="points" id="point_count" /> 포인트 차감)
 			</div>
-			
 		</div>
 		<div class="btn_wrapper">
 			<button type="submit" class="btn sign_btn w_color" id="ask_btn">질문하기</button>
