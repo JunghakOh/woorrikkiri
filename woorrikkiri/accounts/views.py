@@ -56,7 +56,7 @@ def signout(request):
 
 @login_required
 def mypage(request):
-    posts = Content.objects.all
+    posts = Content.objects.all().order_by('-pub_date')
         #post_list = post.filter(name=request.user.name)            
     return render(request, 'accounts/mypage.html', {'posts_list':posts})
 
