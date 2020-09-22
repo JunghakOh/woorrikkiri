@@ -180,7 +180,7 @@ section {
 	max-width: 1200px;
 	margin: 0 auto;
 	min-height: calc(100vh - 57px);
-	min-width: 650px;
+	/* min-width: 650px; */
 }
 
 /* 이미지사이즈 */
