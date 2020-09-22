@@ -48,6 +48,19 @@
 	<div class="question_container">
 		{% if user.is_mento %}
 		<div class="page_title">내가 답변한 질문들</div>
+		<ol>
+			{% for post in posts_list %} 
+				{% if user == post.respondent %}
+				<li>
+					<div class="question_box">
+						<span class="question_title m_text"><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></span>
+						<span class="question_content s_text">{{ post.body }}</span>
+						<span class="s_text s_color">{{ post.pub_date }}</span>
+					</div>
+				</li>
+				{% endif %} 
+			{% endfor %}
+		</ol>
 		{% else %}
 		<div class="page_title">내가 한 질문들</div>
 		<ol>

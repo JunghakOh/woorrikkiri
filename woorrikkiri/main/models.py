@@ -27,11 +27,12 @@ class Content(models.Model):
     subjects = models.CharField("과목", max_length=30, choices=CHOICES_SUBJECTS)
     objects = models.Manager()
     title = models.CharField(max_length=200)
-    writer = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = "작성자", on_delete = models.CASCADE)
+    writer = models.ForeignKey(settings.AUTH_USER_MODEL, related_name ='writer', verbose_name = "작성자", on_delete = models.CASCADE)
     pub_date = models.DateTimeField(default=timezone.now)
     body = models.TextField(default='')
     coffee = models.IntegerField("커피", default = 0)
     file = models.FileField(upload_to='documents/%Y, %m/', blank=True)
+    respondent = models.ForeignKey(settings.AUTH_USER_MODEL, related_name ='respondent', verbose_name = "답변자", on_delete = models.CASCADE, null=True)
     
 class Comment(models.Model):
     objects = models.Manager()

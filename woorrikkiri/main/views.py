@@ -155,6 +155,8 @@ def detail(request, pk):
             answer.published_date = timezone.now()
             answer.post = post
             answer.save()
+            post.respondent = request.user
+            post.save()
             request.user.point = request.user.point + (post.coffee * 2900)
             request.user.save()
             return redirect('detail', pk=pk)
@@ -216,12 +218,13 @@ def faq(request):
 
 def payment(request):
     if request.method == 'POST':
-        coupon_form = PointForm(request.POST)
-        if coupon_form.is_valid():
-            coupon_post = coupon_form.save()
-            request.user.point = request.user.point + coupon_post.coupon
-            request.user.save() 
-        return render(request, 'main/payment.html')
+        point_form = PointForm(request.POST)
+        if point_form.is_valid():
+            point_post = point_form.save(commit=False)
+            point_post.published_date = timezone.now()
+            point_post.point_user = request.user
+            point_post.save()
+            return redirect('mypage')
     else:
-        coupon_form = PointForm()
-    return render(request, 'main/payment.html', {'coupon_form': coupon_form})
+        point_form = PointForm()
+    return render(request, 'main/payment.html', {'point_form':point_form})
