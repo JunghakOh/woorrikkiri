@@ -93,6 +93,9 @@
 .side_box {
 	width: 25%;
 }
+.ask_container .complete{
+	background-color: rgb(0,0,0,0.1) !important;
+}
 
 /* payment.html */
 .pay_container {

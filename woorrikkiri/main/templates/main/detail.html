@@ -2,9 +2,14 @@
 <div class="xl_title h_font cate_title">질문</div>
 <div class="detail_container">
 	<div class="subject m_text s_color">
-		{% if post.subjects == 'computing' %} 컴퓨팅 사고력 {% elif post.subjects == 'basicC' %} 기초 C언어 {% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 {% elif post.subjects ==
-		'basicEngineering' %} 기초공학설계 {% elif post.subjects == 'univMath' %} 대학수학 {% elif post.subjects == 'principlesodEconomics1' %} 경제학원론1 {% elif post.subjects ==
-		'principlesodEconomics2' %} 경제학원론2 {% endif %}
+		{% if post.subjects == 'computing' %} 컴퓨팅 사고력 
+		{% elif post.subjects == 'basicC' %} C언어 기초 
+		{% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 
+		{% elif post.subjects == 'basicEngineering' %} 기초공학설계 
+		{% elif post.subjects == 'univMath' %} 대학수학 
+		{% elif post.subjects == 'principlesodEconomics1' %} 경제학원론1 
+		{% elif post.subjects == 'principlesodEconomics2' %} 경제학원론2
+		{% endif %} 
 		<div class="coffee s_text">
 			{% if user.is_mento %} 이 질문을 통해 얻을 수 있는 커피 {% else %} 이 질문에 사용된 커피 {% endif %}
 			<span class="b_text m_text h_font h_color"> {{ post.coffee }}잔</span>

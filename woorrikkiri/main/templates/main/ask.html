@@ -2,38 +2,40 @@
 <link rel="stylesheet" href="{% static 'css/accounts.css' %}" />
 
 <div class="ask_container">
-		<div class="page_title">질문 모두보기</div>
-		<div class="question_container">
+	<div class="page_title">질문 모두보기</div> 
+	<div class="question_container">
 		{% if user.is_authenticated and not user.is_mento %}
-			<div class="btn-wrapper h_color m_btn btn ">
-				<a href="{% url 'new' %}" class="xl_title b_text h_font">질문하기</a>
-			</div>
-		{% endif %}
-		<div class="no_answer">
+		<div class="btn-wrapper h_color m_btn btn">
+			<a href="{% url 'new' %}" class="xl_title b_text h_font">질문하기</a>
 		</div>
+		{% endif %}
+		<div class="no_answer"></div>
 		<div class="all_q">
 			<ol>
 				{% for post in posts_list %}
 				<li>
 					<a href="{% url 'detail' pk=post.pk %}">
-					<div class="question_box">
-						<div class="s_color n_text">
-							{% if post.subjects == 'computing' %} 컴퓨팅 사고력 
-							{% elif post.subjects == 'basicC' %} 기초 C언어 
-							{% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 
-							{% elif post.subjects == 'basicEngineering' %} 기초공학설계 
-							{% elif post.subjects == 'univMath' %} 대학수학 
-							{% elif post.subjects == 'principlesodEconomics1' %} 경제학원론1 
-							{% elif post.subjects == 'principlesodEconomics2' %} 경제학원론2
-							{% endif %} 
-						<div class="question_title l_title b_text">{{ post.title }}</div>
-						<div class="question_content m_text">{{ post.body }}</div>
-						<div class="s_color n_text">{{ post.pub_date | timesince }}전</div>
-						{% if post.respondent %}
-							<div class="s_color n_text">답변이 완료된 질문입니다</div>
-						{% endif %}
-					</div>
-				</a>
+						<div class="question_box {% if post.respondent %}complete{% endif %}" {% if post.respondent %}title="답변이 달린 질문입니다."{% endif %}>
+							<div class="subject s_color n_text">
+								{% if post.subjects == 'computing' %} 컴퓨팅 사고력 
+								{% elif post.subjects == 'basicC' %} C언어 기초 
+								{% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 
+								{% elif post.subjects == 'basicEngineering' %} 기초공학설계 
+								{% elif post.subjects == 'univMath' %} 대학수학 
+								{% elif post.subjects == 'principlesodEconomics1' %} 경제학원론1 
+								{% elif post.subjects == 'principlesodEconomics2' %} 경제학원론2 
+								{% endif %}
+								<div class="coffee s_text">
+									{% if user.is_mento %} 이 질문을 통해 얻을 수 있는 커피 {% else %} 이 질문에 사용된 커피 {% endif %}
+									<span class="b_text m_text h_font h_color"> {{ post.coffee }}잔</span>
+								</div>
+							</div>
+
+							<div class="question_title l_title b_text">{{ post.title }}</div>
+							<div class="question_content m_text">{{ post.body }}</div>
+							<div class="s_color n_text">{{ post.pub_date | timesince }}전</div>
+						</div>
+					</a>
 				</li>
 				{% endfor %}
 			</ol>
