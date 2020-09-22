@@ -7,7 +7,7 @@ const ask_btn = document.querySelector('#ask_btn');
 
 // var c_count = parseFloat(coffee.innerText);
 var c_count = coffee.nodeValue;
-var p_count = coffee.nodeValue;
+var p_count = point.nodeValue;
 var lp = parseFloat(left_point.innerText);
 
 plus_btn.addEventListener('click', function () {
@@ -37,7 +37,8 @@ minus_btn.addEventListener('click', function () {
 
 // 제출전 커피 선택여부 확인
 function check(){ 
-    if (c_count < 1){
+    console.log(c_count);
+    if (!c_count){
         alert('커피는 최소 1잔 선택해야 합니다.');
         return false;
     }else {

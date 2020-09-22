@@ -4,10 +4,42 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<title>우리끼리</title>
+		<!-- favicon -->
+		<link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}" />
+		<link rel="apple-touch-icon" sizes="57x57" href="{% static 'favicon/apple-icon-57x57.png' %}" />
+		<link rel="apple-touch-icon" sizes="60x60" href="{% static 'favicon/apple-icon-60x60.png' %}" />
+		<link rel="apple-touch-icon" sizes="72x72" href="{% static 'favicon/apple-icon-72x72.png' %}" />
+		<link rel="apple-touch-icon" sizes="76x76" href="{% static 'favicon/apple-icon-76x76.png' %}" />
+		<link rel="apple-touch-icon" sizes="114x114" href="{% static 'favicon/apple-icon-114x114.png' %}" />
+		<link rel="apple-touch-icon" sizes="120x120" href="{% static 'favicon/apple-icon-120x120.png' %}" />
+		<link rel="apple-touch-icon" sizes="144x144" href="{% static 'favicon/apple-icon-144x144.png' %}" />
+		<link rel="apple-touch-icon" sizes="152x152" href="{% static 'favicon/apple-icon-152x152.png' %}" />
+		<link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}" />
+		<link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}" />
+		<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}" />
+		<link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}" />
+		<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}" />
+		<link rel="manifest" href="{% static 'favicon/manifest.json' %}" />
+		<meta name="msapplication-TileColor" content="#ffffff" />
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+		<meta name="theme-color" content="#ffffff" />
+		<!-- stylesheet-->
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/button.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/sprite.css' %}" />
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-178645543-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || []
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag('js', new Date())
+
+			gtag('config', 'UA-178645543-1')
+		</script>
+
 		{% block head %} {% endblock %}
 	</head>
 
@@ -38,12 +70,11 @@
 
 					<div class="account_category">
 						<ul class="navbar">
-							{% if user.is_authenticated %}
-								{% if not user.is_mento %}
-								<li class="nav-item h_color">
-									<a href="{% url 'new' %}">질문하기</a>
-								</li>
-								{% endif %}
+							{% if user.is_authenticated %} {% if not user.is_mento %}
+							<li class="nav-item h_color">
+								<a href="{% url 'new' %}">질문하기</a>
+							</li>
+							{% endif %}
 							<li class="nav-item">
 								<a href="{% url 'mypage' %}">마이 페이지</a>
 							</li>
@@ -79,13 +110,12 @@
 							<li class="nav-item">
 								<a href="{% url 'faq' %}">FAQ</a>
 							</li>
-							<hr>
-							{% if user.is_authenticated %}
-							{% if not user.is_mento %}
-								<li class="nav-item h_color">
-									<a href="{% url 'new' %}">질문하기</a>
-								</li>
-								{% endif %}
+							<hr />
+							{% if user.is_authenticated %} {% if not user.is_mento %}
+							<li class="nav-item h_color">
+								<a href="{% url 'new' %}">질문하기</a>
+							</li>
+							{% endif %}
 							<li class="nav-item">
 								<a href="{% url 'mypage' %}">마이 페이지</a>
 							</li>
@@ -118,8 +148,8 @@
 						<span class="s_text w_color">
 							사업자 메티스 | 대표 : 오정학 | 사업자등록번호 : 663-08-01510 | 주소 : 서울시 양천구 신정로7길75<br /><br />
 							CS대표(고객센터): 010 7141 5697 | 이메일 : woorrikkiri@gmail.com<br />
-							카카오톡 플러스친구 | @woorrikkiri 
-							<br /><br>
+							카카오톡 플러스친구 | @woorrikkiri
+							<br /><br />
 							Copyright & copy : 2020 Metis
 						</span>
 					</div>

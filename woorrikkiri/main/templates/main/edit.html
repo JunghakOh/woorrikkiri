@@ -3,40 +3,33 @@
 <div class="new_container">
 	<form method="POST" class="post-form" enctype="multipart/form-data">
 		{% csrf_token %}
-		{{ form.as_p }}
-		<input type="text" class="q_title" name="title" maxlength="200" required="" id="id_title" placeholder="제목을 입력하세요" />
-		<textarea class="q_content" placeholder="내용을 입력하세요" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
-		<div class="q_extra">
-			<input type="file" name="file" id="id_file" />
-			<select name="subjects" required="" id="id_subjects">
-				<option value="" selected="">과목 선택하기</option>
-				<option value="computing">컴퓨팅 사고력</option>
-				<option value="basicC">C언어 기초</option>
-				<option value="GC">고급응용 C프로그래밍</option>
-				<option value="univmath">대학수학</option>
-				<option value="principlesodEconomics1">경제학원론1</option>
-				<option value="principlesodEconomics2">경제학원론2</option>
-			</select>
+		<input type="text" class="q_title" name="title" maxlength="200" required="" id="id_title" value="{{ form.title.value }}" />
+		<textarea class="q_content" name="body" cols="40" rows="10" required="" id="id_body">{{ form.body.value }}</textarea>
+		<div class="s_color m_text edit_extra">
+			※ <span class="m_text h_color"><a href="https://www.notion.so/70efa718aa6b41bfab04176d0305326b">질문 가이드라인</a></span
+			>을 지켜서 작성해주세요 :)
 		</div>
+		<div class="q_extra">
+			<div class="file_edit_guide m_text b_text">※ 파일 수정시 확인해주세요!
+				<span class="s_text">
+					파일 삭제 시: 취소 체크 후 수정하기 버튼을 눌러주세요. <br />
+					파일 수정 시: 취소 체크 하지 않고 '파일 선택' 버튼을 눌러 파일을 변경해주세요. <br>
+				</span>
+			</div>
+			{{ form.file }}
+		</div>
+		{{ form.subjects}}
+
 		<div class="payment">
 			<div class="q_coffee">
-				<div class="b_text">질문에 사용할 커피 <span id="coffee_count">0</span> 잔</div>
-				<div class="btn_wrapper">
-					<div class="coffee_btn w_color btn" id="plus">+</div>
-				</div>
-				<div class="btn_wrapper">
-					<div class="coffee_btn w_color btn" id="minus">-</div>
-				</div>
-			</div>
-			<div class="s_text">
-				잔여포인트 <span id="left_point">{{ user.point }}</span>
-				(<span id="point_count">0</span> 포인트 차감)
+				<div class="b_text edit_coffee">질문에 사용한 커피:<input class="l_text b_text h_color remove_border" id="coffee_count" name="coffee" readonly value="{{ form.coffee.value }}" />잔</div>
 			</div>
 		</div>
 		<div class="btn_wrapper">
-			<button type="submit" class="btn sign_btn w_color">질문하기</button>
+			<button type="submit" class="btn sign_btn w_color" id="ask_btn">수정하기</button>
 		</div>
 	</form>
 </div>
 <script type="text/javascript" src="{% static 'js/new.js' %}"></script>
+
 {% endblock %}
