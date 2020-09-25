@@ -96,7 +96,10 @@
 .ask_container .complete{
 	background-color: rgb(0,0,0,0.1) !important;
 }
-
+.q_sub_info{
+	display: flex;
+	justify-content: space-between;
+}
 /* payment.html */
 .pay_container {
 	padding-top: 30px;
