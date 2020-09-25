@@ -228,3 +228,7 @@ def payment(request):
     else:
         point_form = PointForm()
     return render(request, 'main/payment.html', {'point_form':point_form})
+
+def payment_check(request):
+    payment_check = Point.objects.all
+    return render(request, 'main/payment_check.html', {'payment_check_list':payment_check})
