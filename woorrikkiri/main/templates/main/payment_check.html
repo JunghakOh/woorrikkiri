@@ -1,3 +1,5 @@
+{% extends 'accounts_base.html' %} {% block content %} {% load static %} {% if user.is_authenticated %}
+
 <h1>포인트 사용내역 확인</h1>
 
 {% for payment_check in payment_check_list %}
@@ -5,3 +7,6 @@
     <p>{{ payment_check.points }}</p>
     <p>{{ payment_check.pub_date }}</p>
 {% endfor %}
+
+{% endif %}
+{% endblock %}

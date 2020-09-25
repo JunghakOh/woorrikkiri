@@ -49,10 +49,13 @@
 	display: flex;
 	justify-content: space-between;
 }
-.mypage_container .complete{
-	background-color: rgb(0,0,0,0.1) !important;
+.mypage_container .complete {
+	background-color: rgb(0, 0, 0, 0.1) !important;
 }
-
+.mypage_container .q_sub_info {
+	display: flex;
+	justify-content: space-between;
+}
 /* 질문관련 */
 .question_container {
 	width: 100%;
@@ -88,11 +91,11 @@
 	padding: 10px 0;
 	height: 64px;
 	overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
-	margin:3px 0;
+	margin: 3px 0;
 }
 
 /* signin.html */

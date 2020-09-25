@@ -60,6 +60,32 @@
 	margin-bottom: 50px;
 	width: 100%;
 }
+.beta{
+	border: rgba(0, 0, 0, 0.1);
+	background-color:  #f4c708;
+	height: 80px;
+	position: absolute;
+	top:0px;
+	left:0px;
+	width: 100%;
+	z-index: 3;
+	text-align: left;
+}
+.beta .center_box{
+	width: 70%;
+	margin:10%;
+	height:100%;
+	margin:0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+.beta .link {
+	min-width: 150px;
+	padding: 5px;
+}
+
+
+
 .why_woorri .title {
 	text-align: center;
 	padding: 30px;
@@ -96,7 +122,7 @@
 .ask_container .complete{
 	background-color: rgb(0,0,0,0.1) !important;
 }
-.q_sub_info{
+.ask_container .q_sub_info{
 	display: flex;
 	justify-content: space-between;
 }
@@ -216,6 +242,11 @@
 	margin: 10px;
 	padding: 10px;
 	resize: none;
+}
+.file_n_guide{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 .new_container .q_extra,
 .new_container .q_coffee {

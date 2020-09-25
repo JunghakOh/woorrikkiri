@@ -4,7 +4,6 @@ const x_btn = document.querySelector('.x_container');
 const ver_cate = document.querySelector('.ver_category_box');
 const blind = document.querySelector('.blind');
 
-// vertical navbar //
 ham.addEventListener('click', function () {
     ver_cate.classList.toggle('display');
     blind.classList.toggle('display');

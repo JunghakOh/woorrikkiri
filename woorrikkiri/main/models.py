@@ -32,7 +32,7 @@ class Content(models.Model):
     body = models.TextField(default='')
     coffee = models.IntegerField("커피", default = 0)
     file = models.FileField(upload_to='documents/%Y, %m/', blank=True)
-    respondent = models.ForeignKey(settings.AUTH_USER_MODEL, related_name ='respondent', verbose_name = "답변자", on_delete = models.CASCADE, null=True)
+    respondent = models.ForeignKey(settings.AUTH_USER_MODEL, related_name ='respondent', verbose_name = "답변자", on_delete = models.CASCADE, null=True, blank=True)
     
 class Comment(models.Model):
     objects = models.Manager()

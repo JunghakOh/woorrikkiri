@@ -43,10 +43,12 @@
 					</a>
 				</div>
 			</div>
+		<a href="{% url 'payment_check' %}">포인트 사용내역 확인하기</a>
+
 		</div>
 	</div>
-	<a href="{% url 'payment_check' %}">포인트 사용내역 확인하기</a>
 	<div class="question_container">
+		<!-- 멘토 마이페이지 ------------------------------------->
 		{% if user.is_mento %}
 		<div class="page_title">내가 답변한 질문들</div>
 		<ol>
@@ -72,7 +74,10 @@
 
 						<div class="question_title l_title b_text">{{ post.title }}</div>
 						<div class="question_content m_text">{{ post.body }}</div>
-						<div class="s_color n_text">{{ post.pub_date | timesince }}전</div>
+						<div class="q_sub_info">
+							<div class="s_color n_text">{{ post.pub_date | timesince }}전</div>
+							<div class="s_color n_text">질문자: {{ post.writer }}</div>
+						</div>
 					</div>
 					</a>
 				</li>
@@ -80,6 +85,7 @@
 			{% endfor %}
 		</ol>
 		{% else %}
+		<!-- 멘티 마이페이지 ------------------------------------->
 		<div class="page_title">내가 한 질문들</div>
 		<ol>
 			{% for post in posts_list %} 
@@ -104,7 +110,10 @@
 
 						<div class="question_title l_title b_text">{{ post.title }}</div>
 						<div class="question_content m_text">{{ post.body }}</div>
-						<div class="s_color n_text">{{ post.pub_date | timesince }}전</div>
+						<div class="q_sub_info">
+							<div class="s_color n_text">{{ post.pub_date | timesince }}전</div>
+							<div class="s_color n_text">{% if post.respondent %} 답변자: {{ post.respondent }} {% endif %}</div>
+						</div>
 					</div>
 					</a>
 				</li>
