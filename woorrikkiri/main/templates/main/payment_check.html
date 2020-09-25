@@ -1,0 +1,7 @@
+<h1>포인트 사용내역 확인</h1>
+
+{% for payment_check in payment_check_list %}
+    <h3>{{ payment_check.point_user }}</h3>
+    <p>{{ payment_check.points }}</p>
+    <p>{{ payment_check.pub_date }}</p>
+{% endfor %}
