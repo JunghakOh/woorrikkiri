@@ -33,7 +33,10 @@
 
 							<div class="question_title l_title b_text">{{ post.title }}</div>
 							<div class="question_content m_text">{{ post.body }}</div>
-							<div class="s_color n_text">{{ post.pub_date | timesince }}전</div>
+							<div class="q_sub_info">
+								<div class="s_color n_text">{{ post.pub_date | timesince }}전</div>
+								<div class="s_color n_text">질문자: {{ post.writer }} {% if post.respondent %} 답변자: {{ post.respondent }} {% endif %}</div>
+							</div>
 						</div>
 					</a>
 				</li>
