@@ -4,7 +4,8 @@
 	<form method="POST" class="post-form" enctype="multipart/form-data" onsubmit="return check()">
 		{% csrf_token %}
 		<input type="text" class="q_title" name="title" maxlength="200" required="" id="id_title" placeholder="제목을 입력하세요" />
-		<textarea class="q_content" placeholder="내용을 입력하세요" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+		<textarea class="q_content" placeholder="하나. 문제는 한 번에 한 문제 씩만 질문해주세요! &#13둘. 내가 질문하는 문제가 무엇인지 명확히 명시해주세요! &#13셋. 내가 '어디까지' 풀었고 이해가지 않는 부분은 '어떤 부분'인지 적어주세요! &#13넷. 답변을 보고도 명쾌히 이해되지 않았다면, '추가 대화 나누기' 기능을 활용해 멘토에게 추가 질문이 가능해요!
+		" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
 		<div class="q_extra">
 			<input type="file" name="file" id="id_file" />
 			<select name="subjects" required="" id="id_subjects">
