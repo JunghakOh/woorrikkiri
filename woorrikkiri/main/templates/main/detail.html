@@ -66,52 +66,58 @@
 	<!-- 해당 과목 멘토 자격있는 사람만 답변 달 수 있음-->
 	<!------------------ 컴퓨팅 사고력 ------------------>
 	{% if post.subjects == 'computing' and user.mento_computing %}
-		<div class="xl_title h_font cate_title">답변하기</div>
-		<div class="detail_container">
-			<form method="post" enctype="multipart/form-data">
-				{% csrf_token %}
-				<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+	<div class="xl_title h_font cate_title">답변하기</div>
+	<div class="detail_container">
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<textarea class="answer_content" placeholder="하나. 답변에 아래 2개는 꼭 포함시켜주세요!&#13 1)멘티가 문제 풀면서 진행한 부분 중 실수하거나 누락된 사항&#13 2)질문자 문제 해결을 위해 필요한 필수 개념이나 공식에 대한 설명 &#13둘.  멘티가 추가질문을 달면 대댓글로 답변을 해주세요!  &#13셋.  멘티의 입장에서 최대한 모든 중간 과정을 포함시켜 설명해주세요!"name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_n_guide">
 				<div class="file_wrapper">
 					<input type="file" name="file" id="id_file" />
-				</div>
-				<div class="s_color m_text">
+				</div>	
+				<div class="s_color m_text guide">
 					※ <span class="m_text h_color"><a href="https://www.notion.so/5f8f7d0770354e1e8e40bcfa30d0c682">답변 가이드라인</a></span>을 지켜서 작성해주세요 :)
-				</div>
-				<div class="btn_wrapper">
-					<button type="submit" class="btn sign_btn w_color">답변 달기</button>
-				</div>
-			</form>
-		</div>
+				</div>	
+			</div>
+			<div class="btn_wrapper">
+				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
+			</div>
+		</form>
+	</div>
 	<!------------------ C언어 기초 ------------------>
 	{% elif post.subjects == 'basicC' and user.mento_basicC %}
-		<div class="xl_title h_font cate_title">답변하기</div>
-		<div class="detail_container">
-			<form method="post" enctype="multipart/form-data">
-				{% csrf_token %}
-				<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+	<div class="xl_title h_font cate_title">답변하기</div>
+	<div class="detail_container">
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<textarea class="answer_content" placeholder="하나. 답변에 아래 2개는 꼭 포함시켜주세요!&#13 1)멘티가 문제 풀면서 진행한 부분 중 실수하거나 누락된 사항&#13 2)질문자 문제 해결을 위해 필요한 필수 개념이나 공식에 대한 설명 &#13둘.  멘티가 추가질문을 달면 대댓글로 답변을 해주세요!  &#13셋.  멘티의 입장에서 최대한 모든 중간 과정을 포함시켜 설명해주세요!"name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_n_guide">
 				<div class="file_wrapper">
 					<input type="file" name="file" id="id_file" />
-				</div>
-				<div class="s_color m_text">
+				</div>	
+				<div class="s_color m_text guide">
 					※ <span class="m_text h_color"><a href="https://www.notion.so/5f8f7d0770354e1e8e40bcfa30d0c682">답변 가이드라인</a></span>을 지켜서 작성해주세요 :)
-				</div>
-				<div class="btn_wrapper">
-					<button type="submit" class="btn sign_btn w_color">답변 달기</button>
-				</div>
-			</form>
-		</div>
+				</div>	
+			</div>
+			<div class="btn_wrapper">
+				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
+			</div>
+		</form>
+	</div>
 	<!------------------ 고급응용 C프로그래밍 ------------------>
 	{% elif post.subjects == 'GC' and user.mento_GC %}
 	<div class="xl_title h_font cate_title">답변하기</div>
 	<div class="detail_container">
 		<form method="post" enctype="multipart/form-data">
 			{% csrf_token %}
-			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
-			<div class="file_wrapper">
-				<input type="file" name="file" id="id_file" />
-			</div>
-			<div class="s_color m_text">
-				※ <span class="m_text h_color"><a href="https://www.notion.so/5f8f7d0770354e1e8e40bcfa30d0c682">답변 가이드라인</a></span>을 지켜서 작성해주세요 :)
+			<textarea class="answer_content" placeholder="하나. 답변에 아래 2개는 꼭 포함시켜주세요!&#13 1)멘티가 문제 풀면서 진행한 부분 중 실수하거나 누락된 사항&#13 2)질문자 문제 해결을 위해 필요한 필수 개념이나 공식에 대한 설명 &#13둘.  멘티가 추가질문을 달면 대댓글로 답변을 해주세요!  &#13셋.  멘티의 입장에서 최대한 모든 중간 과정을 포함시켜 설명해주세요!"name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_n_guide">
+				<div class="file_wrapper">
+					<input type="file" name="file" id="id_file" />
+				</div>	
+				<div class="s_color m_text guide">
+					※ <span class="m_text h_color"><a href="https://www.notion.so/5f8f7d0770354e1e8e40bcfa30d0c682">답변 가이드라인</a></span>을 지켜서 작성해주세요 :)
+				</div>	
 			</div>
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
@@ -124,12 +130,14 @@
 	<div class="detail_container">
 		<form method="post" enctype="multipart/form-data">
 			{% csrf_token %}
-			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
-			<div class="file_wrapper">
-				<input type="file" name="file" id="id_file" />
-			</div>
-			<div class="s_color m_text">
-				※ <span class="m_text h_color"><a href="https://www.notion.so/5f8f7d0770354e1e8e40bcfa30d0c682">답변 가이드라인</a></span>을 지켜서 작성해주세요 :)
+			<textarea class="answer_content" placeholder="하나. 답변에 아래 2개는 꼭 포함시켜주세요!&#13 1)멘티가 문제 풀면서 진행한 부분 중 실수하거나 누락된 사항&#13 2)질문자 문제 해결을 위해 필요한 필수 개념이나 공식에 대한 설명 &#13둘.  멘티가 추가질문을 달면 대댓글로 답변을 해주세요!  &#13셋.  멘티의 입장에서 최대한 모든 중간 과정을 포함시켜 설명해주세요!"name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_n_guide">
+				<div class="file_wrapper">
+					<input type="file" name="file" id="id_file" />
+				</div>	
+				<div class="s_color m_text guide">
+					※ <span class="m_text h_color"><a href="https://www.notion.so/5f8f7d0770354e1e8e40bcfa30d0c682">답변 가이드라인</a></span>을 지켜서 작성해주세요 :)
+				</div>	
 			</div>
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
@@ -142,12 +150,14 @@
 	<div class="detail_container">
 		<form method="post" enctype="multipart/form-data">
 			{% csrf_token %}
-			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
-			<div class="file_wrapper">
-				<input type="file" name="file" id="id_file" />
-			</div>
-			<div class="s_color m_text">
-				※ <span class="m_text h_color"><a href="https://www.notion.so/5f8f7d0770354e1e8e40bcfa30d0c682">답변 가이드라인</a></span>을 지켜서 작성해주세요 :)
+			<textarea class="answer_content" placeholder="하나. 답변에 아래 2개는 꼭 포함시켜주세요!&#13 1)멘티가 문제 풀면서 진행한 부분 중 실수하거나 누락된 사항&#13 2)질문자 문제 해결을 위해 필요한 필수 개념이나 공식에 대한 설명 &#13둘.  멘티가 추가질문을 달면 대댓글로 답변을 해주세요!  &#13셋.  멘티의 입장에서 최대한 모든 중간 과정을 포함시켜 설명해주세요!"name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_n_guide">
+				<div class="file_wrapper">
+					<input type="file" name="file" id="id_file" />
+				</div>	
+				<div class="s_color m_text guide">
+					※ <span class="m_text h_color"><a href="https://www.notion.so/5f8f7d0770354e1e8e40bcfa30d0c682">답변 가이드라인</a></span>을 지켜서 작성해주세요 :)
+				</div>	
 			</div>
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
@@ -160,12 +170,14 @@
 	<div class="detail_container">
 		<form method="post" enctype="multipart/form-data">
 			{% csrf_token %}
-			<textarea class="answer_content" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
-			<div class="file_wrapper">
-				<input type="file" name="file" id="id_file" />
-			</div>
-			<div class="s_color m_text">
-				※ <span class="m_text h_color"><a href="https://www.notion.so/5f8f7d0770354e1e8e40bcfa30d0c682">답변 가이드라인</a></span>을 지켜서 작성해주세요 :)
+			<textarea class="answer_content" placeholder="하나. 답변에 아래 2개는 꼭 포함시켜주세요!&#13 1)멘티가 문제 풀면서 진행한 부분 중 실수하거나 누락된 사항&#13 2)질문자 문제 해결을 위해 필요한 필수 개념이나 공식에 대한 설명 &#13둘.  멘티가 추가질문을 달면 대댓글로 답변을 해주세요!  &#13셋.  멘티의 입장에서 최대한 모든 중간 과정을 포함시켜 설명해주세요!"name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+			<div class="file_n_guide">
+				<div class="file_wrapper">
+					<input type="file" name="file" id="id_file" />
+				</div>	
+				<div class="s_color m_text guide">
+					※ <span class="m_text h_color"><a href="https://www.notion.so/5f8f7d0770354e1e8e40bcfa30d0c682">답변 가이드라인</a></span>을 지켜서 작성해주세요 :)
+				</div>	
 			</div>
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
