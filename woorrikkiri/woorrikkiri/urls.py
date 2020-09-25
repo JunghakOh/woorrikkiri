@@ -26,6 +26,7 @@ urlpatterns = [
     path('accounts/signin/', accounts.views.signin, name="signin"),
     path('accounts/signout/', accounts.views.signout, name="signout"),
     path('main/payment/', main.views.payment, name="payment"),
+    path('main/payment_check/', main.views.payment_check, name="payment_check"),
     path('accounts/user_delete', accounts.views.user_delete, name="user_delete"),
     path('main/requestJob/', main.views.requestJob, name="requestJob"),#팝빌 결제 모듈 작동 여부 확인용  by Junghak
     path('main/getJobState/', main.views.getJobState, name="getJobState"),#팝빌 결제 모듈 시작  by Junghak
