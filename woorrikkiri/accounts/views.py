@@ -26,7 +26,7 @@ def signup(request):
             return redirect('home')
         else:
             # 메시지 띄우기
-            messages.error(request, "Error")
+            messages.error(request, "이미있는 아이디거나 입력한 정보가 정확하지 않습니다.")
     else:
         signup_form = UserRegisterForm()
 
