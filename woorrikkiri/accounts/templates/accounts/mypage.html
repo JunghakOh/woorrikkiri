@@ -11,11 +11,7 @@
 					{% endif %}
 				</div>
 				<!-- <a href="{% url 'profile_update' %}" class="m_text s_color edit"><img src="{% static 'img/setting.png' %}" alt="프로필편집" /></a><br /> -->
-				<div>
-					{% if user.is_mento %}멘토
-					{% else %} 멘티
-					{% endif %}
-				</div>
+				<div>{% if user.is_mento %}멘토 {% else %} 멘티 {% endif %}</div>
 			</div>
 			<div class="id_box">
 				<div class="user_id">
@@ -26,25 +22,16 @@
 				</div>
 			</div>
 		</div>
-		<div class="point_containter">
-			<div class="current_point b_text">
-				{% if user.is_mento %} 획득
-				{% else %} 잔여
-				{% endif %}
-				포인트 {{ user.point }} 포인트</div>
+		<div class="point_container">
+			<div class="current_point b_text">포인트 <br>
+				<span class="xl_title h_color h_font">{{ user.point }}</span>P
+			</div>
+			<a href="{% url 'payment_check' %}" class="n_text">포인트 사용/충전 내역 ></a>
 			<div class="point_btn_container">
 				<div class="btn-wrapper m_btn h_color">
-					<a href="{% url 'payment' %}" class="l_text">포인트 
-					{% if user.is_mento %}
-						출금하기
-					{% else %}
-					충전하기
-					{% endif %}
-					</a>
+					<a href="{% url 'payment' %}" class="l_text b_text">포인트 {% if user.is_mento %} 출금하기 {% else %} 충전하기 {% endif %} </a>
 				</div>
 			</div>
-		<a href="{% url 'payment_check' %}">포인트 사용내역 확인하기</a>
-
 		</div>
 	</div>
 	<div class="question_container">
@@ -52,20 +39,14 @@
 		{% if user.is_mento %}
 		<div class="page_title">내가 답변한 질문들</div>
 		<ol>
-			{% for post in posts_list %} 
-				{% if user == post.respondent %}
-				<li>
-					<a href="{% url 'detail' pk=post.pk %}">
+			{% for post in posts_list %} {% if user == post.respondent %}
+			<li>
+				<a href="{% url 'detail' pk=post.pk %}">
 					<div class="question_box">
 						<div class="subject s_color n_text">
-							{% if post.subjects == 'computing' %} 컴퓨팅 사고력 
-							{% elif post.subjects == 'basicC' %} C언어 기초 
-							{% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 
-							{% elif post.subjects == 'basicEngineering' %} 기초공학설계 
-							{% elif post.subjects == 'univMath' %} 대학수학 
-							{% elif post.subjects == 'principlesodEconomics1' %} 경제학원론1 
-							{% elif post.subjects == 'principlesodEconomics2' %} 경제학원론2 
-							{% endif %}
+							{% if post.subjects == 'computing' %} 컴퓨팅 사고력 {% elif post.subjects == 'basicC' %} C언어 기초 {% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 {% elif post.subjects ==
+							'basicEngineering' %} 기초공학설계 {% elif post.subjects == 'univMath' %} 대학수학 {% elif post.subjects == 'principlesodEconomics1' %} 경제학원론1 {% elif post.subjects ==
+							'principlesodEconomics2' %} 경제학원론2 {% endif %}
 							<div class="coffee s_text">
 								{% if user.is_mento %} 이 질문을 통해 얻을 수 있는 커피 {% else %} 이 질문에 사용된 커피 {% endif %}
 								<span class="b_text m_text h_font h_color"> {{ post.coffee }}잔</span>
@@ -79,32 +60,25 @@
 							<div class="s_color n_text">질문자: {{ post.writer }}</div>
 						</div>
 					</div>
-					</a>
-				</li>
-				{% endif %} 
-			{% endfor %}
+				</a>
+			</li>
+			{% endif %} {% endfor %}
 		</ol>
 		{% else %}
 		<!-- 멘티 마이페이지 ------------------------------------->
 		<div class="page_title">내가 한 질문들</div>
 		<ol>
-			{% for post in posts_list %} 
-				{% if user == post.writer %}
-				<li>
-					<a href="{% url 'detail' pk=post.pk %}">
-					<div class="question_box {% if post.respondent %}complete{% endif %}" {% if post.respondent %}title="답변이 달린 질문입니다."{% endif %}>
+			{% for post in posts_list %} {% if user == post.writer %}
+			<li>
+				<a href="{% url 'detail' pk=post.pk %}">
+					<div class="question_box {% if post.respondent %}complete{% endif %}" {% if post.respondent %}title="답변이 달린 질문입니다." {% endif %}>
 						<div class="subject s_color n_text">
-							{% if post.subjects == 'computing' %} 컴퓨팅 사고력 
-							{% elif post.subjects == 'basicC' %} C언어 기초 
-							{% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 
-							{% elif post.subjects == 'basicEngineering' %} 기초공학설계 
-							{% elif post.subjects == 'univMath' %} 대학수학 
-							{% elif post.subjects == 'principlesodEconomics1' %} 경제학원론1 
-							{% elif post.subjects == 'principlesodEconomics2' %} 경제학원론2 
-							{% endif %}
+							{% if post.subjects == 'computing' %} 컴퓨팅 사고력 {% elif post.subjects == 'basicC' %} C언어 기초 {% elif post.subjects == 'GC' %} 고급응용 C프로그래밍 {% elif post.subjects ==
+							'basicEngineering' %} 기초공학설계 {% elif post.subjects == 'univMath' %} 대학수학 {% elif post.subjects == 'principlesodEconomics1' %} 경제학원론1 {% elif post.subjects ==
+							'principlesodEconomics2' %} 경제학원론2 {% endif %}
 							<div class="coffee s_text">
 								{% if user.is_mento %} 이 질문을 통해 얻을 수 있는 커피 {% else %} 이 질문에 사용된 커피 {% endif %}
-								<span class="b_text m_text h_font h_color "> {{ post.coffee }}잔</span>
+								<span class="b_text m_text h_font h_color"> {{ post.coffee }}잔</span>
 							</div>
 						</div>
 
@@ -115,13 +89,11 @@
 							<div class="s_color n_text">{% if post.respondent %} 답변자: {{ post.respondent }} {% endif %}</div>
 						</div>
 					</div>
-					</a>
-				</li>
-				{% endif %} 
-			{% endfor %}
+				</a>
+			</li>
+			{% endif %} {% endfor %}
 		</ol>
 		{% endif %}
-		
 	</div>
 </div>
 

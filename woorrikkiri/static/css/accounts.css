@@ -10,6 +10,16 @@
 	min-width: 255px;
 	margin-bottom: 30px;
 }
+.point_container{
+	border: 0.5px solid rgba(0, 0, 0, 0.05);
+	text-align: center;
+	border-radius: 10px;
+	background: white;
+
+}
+.point_btn_container{
+	padding-top:10px;
+}
 .question_container {
 	width: 78%;
 }
@@ -19,6 +29,7 @@
 .profile_img {
 	display: flex;
 	align-items: flex-end;
+	padding-left: 10px;
 }
 .profile_img_box {
 	width: 170px;
@@ -36,6 +47,7 @@
 }
 .id_box {
 	padding-top: 10px;
+	padding-left: 20px;
 }
 .profile_intro {
 	padding-top: 10px;

@@ -126,6 +126,7 @@
 	display: flex;
 	justify-content: space-between;
 }
+
 /* payment.html */
 .pay_container {
 	padding-top: 30px;
@@ -169,6 +170,31 @@
 	padding: 10px;
 }
 
+/* payment_check.html */
+.payment_check_container .title{
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+.payment_check_container, .payment_check_container table{
+	width:100%;
+}
+.payment_check_container th{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+	background: rgb(0,0,0,0.1);
+	font-weight: normal;
+	padding:5px;
+}
+.payment_check_container td{
+	padding:5px;
+}
+.payment_check_container .date {
+	width:135px;
+}
+.payment_check_container .state, .payment_check_container .point{
+	width:110px;
+	text-align: center;
+}
 /* faq */
 .faq_container {
 	width: 80%;

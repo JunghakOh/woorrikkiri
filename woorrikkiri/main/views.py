@@ -224,7 +224,7 @@ def payment(request):
             point_post.published_date = timezone.now()
             point_post.point_user = request.user
             point_post.save()
-            return redirect('mypage')
+            return redirect('payment_check')
     else:
         point_form = PointForm()
     return render(request, 'main/payment.html', {'point_form':point_form})
