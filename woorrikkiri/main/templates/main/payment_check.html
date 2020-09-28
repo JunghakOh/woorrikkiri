@@ -13,6 +13,7 @@
         <th class="point">포인트</th>
         <th class="state">현재상태</th>
         {% for payment_check in payment_check_list %}
+        {% if payment_check.point_user == user %}
         <tr>
             <td class="date s_color">
                 {{ payment_check.pub_date | date:"Y.m.d f"}}
@@ -41,6 +42,7 @@
                 </td>
             {% endif %}
         </tr>
+        {% endif %}
         {% endfor %} 
     </table>
 
