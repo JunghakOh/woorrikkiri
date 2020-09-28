@@ -31,12 +31,12 @@ class PointForm(forms.ModelForm):
         model = Point
         fields = ['points', ]
 
+class PointPayForm(forms.ModelForm):
+    class Meta:
+        model = Point
+        fields = ['points', 'account_num', 'bank',]
+
 class ApproveForm(forms.ModelForm):
     class Meta:
         model = Point
         fields = ['approve', ]
-
-class CouponForm(forms.ModelForm):
-    class Meta:
-        model = Point
-        fields = ['coupon', ]

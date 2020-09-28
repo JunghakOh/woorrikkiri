@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Content, Comment, FAQ, Answer, Subject, Point
-from .forms import ContentForm, CommentForm, FAQForm, AnswerForm, SubjectForm, PointForm, ApproveForm
+from .forms import ContentForm, CommentForm, FAQForm, AnswerForm, SubjectForm, PointForm, ApproveForm, PointPayForm
 from django.shortcuts import get_object_or_404
 from accounts.models import User
 from accounts.forms import UserPointForm
@@ -229,7 +229,10 @@ def faq(request):
 
 def payment(request):
     if request.method == 'POST':
-        point_form = PointForm(request.POST)
+        if request.user.is_mento:
+            point_form = PointPayForm(request.POST)
+        else:
+            point_form = PointForm(request.POST)
         if point_form.is_valid():
             point_post = point_form.save(commit=False)
             point_post.published_date = timezone.now()

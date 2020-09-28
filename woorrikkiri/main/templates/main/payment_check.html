@@ -40,7 +40,7 @@
             {% else %}
                 <td>
                     {% if user.is_mento %}
-                        포인트 전환
+                        포인트 전환 | {{ payment_check.bank }} {{ payment_check.account_num }}
                     {% else %}
                         포인트 충전
                     {% endif %}
@@ -48,7 +48,7 @@
                 <td class="point">
                     <span class="h_color b_text">{{ payment_check.points }}</span></span><span class="b_text">P</span>
                     {% if user.is_mento %}
-                        전환
+                        전환 
                     {% else %}
                         충전 
                     {% endif %}
