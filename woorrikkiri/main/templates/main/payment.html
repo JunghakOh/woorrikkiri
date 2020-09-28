@@ -7,7 +7,7 @@
 		<form method="POST" class="post-form" enctype="multipart/form-data">
 			{% csrf_token %}
 
-			<span class="l_title">금액</span>
+			<span class="l_title b_text">금액</span>
 			<div class="money_container">
 				<div class="money_box">
 					<div class="money_amount ll_text" >
@@ -20,19 +20,27 @@
 
 			<div class="pay_method">
 				{% if user.is_mento %}
-				<div>계좌번호입력하기</div>
-				{% else %}
-				<div class="l_title">결제수단</div>
-				<div>무통장입금 카카오페이</div>
-
-				<div class="l_title bank">무통장입금</div>
-				<div>
-					국민은행 457001-01-462642 <br />
-					[예금주:오정학(메티스)]
+				<div class="menu">
+					<div>계좌번호입력하기</div>
 				</div>
-				<div class="m_text s_color">
-					충전 금액을 입금하신 후 결제 버튼을 눌러주세요. <br />
-					포인트는 입금 후 수 분 내 반영됩니다.
+				{% else %}
+				<div class="menu">
+					<div class="l_title b_text">결제수단</div>
+					<div class="method">
+						<div class="b_text">무통장입금</div>
+						<div class="b_text">카카오페이</div>
+					</div>
+					<div class="bank">
+						<div class="l_text b_text">무통장 입금 계좌</div>
+						<div class="account l_text b_text">
+							국민은행 457001-01-462642 <br />
+							예금주:오정학(메티스)
+						</div>
+						<div class="n_text s_color">
+							충전 금액을 입금하신 후 결제 버튼을 눌러주세요. <br />
+							포인트는 입금 후 수 분 내 반영됩니다.
+						</div>		
+					</div>
 				</div>
 				{% endif %}
 			</div>

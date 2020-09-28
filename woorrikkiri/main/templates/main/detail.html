@@ -214,6 +214,7 @@
 	{% endif %}
 <!-- 답변이 달린 경우: 추가대화 생성------------------------------------------------------------>
 {% else %} 
+
 	<!-- 질문자와 답변자만 추가 대화 나눌 수 있음 -->
 	{% if user == post.writer or user == post.respondent %}
 	<div class="xl_title h_font cate_title">추가 대화 나누기</div>
