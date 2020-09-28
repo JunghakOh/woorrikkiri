@@ -2,7 +2,7 @@
 {% if user.is_authenticated %}
 <div class="payment_check_container">
     <div class="title">
-        <div class="page_title">포인트 사용/충전 내역</div>
+        <div class="page_title">포인트 이용 내역</div>
         <div class="current_point b_text">
             <span class="xl_title h_color h_font">{{ user.point }}</span>P    
         </div>
@@ -11,7 +11,7 @@
         <th class="date">날짜</th>
         <th>내역</th>
         <th class="point">포인트</th>
-        <th class="state">현재상태</th>
+        <th class="state">상태</th>
         {% for payment_check in payment_check_list %}
         {% if payment_check.point_user == user %}
         <tr>
@@ -20,10 +20,19 @@
             </td>
             {% if payment_check.post %} 
                 <td>
-                    질문하기 | <a class="b_text" href="{% url 'detail' pk=payment_check.post.pk %}">{{ payment_check.post.title }}</a>
+                    {% if user.is_mento %}
+                        답변하기 | <a class="b_text" href="{% url 'detail' pk=payment_check.post.pk %}">{{ payment_check.post.title }}</a>
+                    {% else %}
+                        질문하기 | <a class="b_text" href="{% url 'detail' pk=payment_check.post.pk %}">{{ payment_check.post.title }}</a>
+                    {% endif %}
                 </td>
                 <td class="point">
-                    <span class="h_color b_text">{{ payment_check.points }}</span><span class="b_text">P</span> 사용 
+                    <span class="h_color b_text">{{ payment_check.points }}</span><span class="b_text">P</span> 
+                    {% if user.is_mento %}
+                        획득
+                    {% else %}
+                        사용 
+                    {% endif %}
                 </td>
                 <td class="state">
                     승인

@@ -43,10 +43,10 @@
 			</div>
 			{% if messages %}
 			{% for message in messages %}
-				{{ message}}
+			<div id="error_msg">{{ message}}</div>
 			{% endfor %}
-	
-		{% endif %}
+			{% endif %}
+			
 			<button class="sign_btn" type="submit">
 				<div class="w_color" id="button">회원가입</div>
 			</button>

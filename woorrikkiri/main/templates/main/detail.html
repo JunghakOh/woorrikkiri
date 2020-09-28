@@ -43,8 +43,8 @@
 <!--답변 목록---------------------------------------------------------------------------->
 <!-- 질문자, 답변자만 볼 수 있음-->
 {% if user == post.writer or user == post.respondent %}
+<div class="xl_title h_font cate_title">답변</div>
 	{% for answer in answer_list %}
-	<div class="xl_title h_font cate_title">답변</div>
 	<div class="detail_container">
 		<div class="answer_container">
 			<div class="l_title q_title">{{answer.writer}}멘토</div>
@@ -82,6 +82,7 @@
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
 			</div>
+			<input class="none" type="text" name="points" value="{{post.coffee}}" readonly >
 		</form>
 	</div>
 	<!------------------ C언어 기초 ------------------>
@@ -102,6 +103,7 @@
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
 			</div>
+			<input class="none" type="text" name="points" value="{{post.coffee}}" readonly >
 		</form>
 	</div>
 	<!------------------ 고급응용 C프로그래밍 ------------------>
@@ -122,6 +124,7 @@
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
 			</div>
+			<input class="none" type="text" name="points" value="{{post.coffee}}" readonly >
 		</form>
 	</div>
 	<!------------------ 기초공학설계 ------------------>
@@ -142,6 +145,7 @@
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
 			</div>
+			<input class="none" type="text" name="points" value="{{post.coffee}}" readonly >
 		</form>
 	</div>
 	<!------------------ 대학수학 ------------------>
@@ -162,6 +166,7 @@
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
 			</div>
+			<input class="none" type="text" name="points" value="{{post.coffee}}" readonly >
 		</form>
 	</div>
 	<!------------------ 경제학원론1 ------------------>
@@ -182,6 +187,7 @@
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
 			</div>
+			<input class="none" type="text" name="points" value="{{post.coffee}}" readonly >
 		</form>
 	</div>
 	<!------------------ 경제학원론2 ------------------>
@@ -202,10 +208,10 @@
 			<div class="btn_wrapper">
 				<button type="submit" class="btn sign_btn w_color">답변 달기</button>
 			</div>
+			<input class="none" type="text" name="points" value="{{post.coffee}}" readonly >
 		</form>
 	</div>
 	{% endif %}
-
 <!-- 답변이 달린 경우: 추가대화 생성------------------------------------------------------------>
 {% else %} 
 	<!-- 질문자와 답변자만 추가 대화 나눌 수 있음 -->

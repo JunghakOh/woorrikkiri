@@ -150,6 +150,9 @@
 .sign_info_box {
 	padding: 10px 0;
 }
+/* #error_msg{
+	display: none;
+} */
 
 /* 성별선택 */
 .name_gender_box {
