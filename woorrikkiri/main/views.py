@@ -150,7 +150,7 @@ def detail(request, pk):
             comment.post = post
             comment.save()
             return redirect('detail', pk=pk)
-        if answer_form.is_valid():
+        if answer_form.is_valid() and not post.respondent:
             answer = answer_form.save(commit=False)
             answer.writer = request.user
             answer.published_date = timezone.now()

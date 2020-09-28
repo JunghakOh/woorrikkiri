@@ -166,6 +166,25 @@
 .pay_method {
 	padding: 20px 0;
 }
+.pay_method .menu{
+	padding:10px;
+}
+.pay_method .method{
+	width:90%;
+	display: flex;
+	justify-content: space-between;
+}
+.pay_method .bank{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	margin:5px 0;
+	padding:5px 0;
+}
+.pay_method .bank .account{
+	background: rgba(0,0,0,0.1);
+	padding:5px 0;
+	margin:5px 0;
+}
 .pay_list {
 	padding: 10px;
 }
