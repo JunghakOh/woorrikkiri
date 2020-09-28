@@ -14,6 +14,7 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from main.models import Content, Comment, Answer, FAQ
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -56,9 +57,12 @@ def signout(request):
 
 @login_required
 def mypage(request):
-    posts = Content.objects.all().order_by('-pub_date')
+    posts_list = Content.objects.all().order_by('-pub_date')
+    paginator = Paginator(posts_list, 10)
+    page = request.GET.get('page')
+    post = paginator.get_page(page)
         #post_list = post.filter(name=request.user.name)            
-    return render(request, 'accounts/mypage.html', {'posts_list':posts})
+    return render(request, 'accounts/mypage.html', {'posts_list':post})
 
 def profile_update(request):
     if request.method == 'POST':

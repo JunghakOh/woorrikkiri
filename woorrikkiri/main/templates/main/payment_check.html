@@ -63,8 +63,17 @@
         </tr>
         {% endif %}
         {% endfor %} 
-    </table>
 
+    </table>
+    <h5> 
+        {% if payment_check_list.has_previous %} 
+        <a href='?page={{payment_check_list.number|add:-1}}'>Previous</a> 
+        {% endif %} 
+        Page {{ payment_check_list.number }} of {{ payment_check_list.paginator.num_pages }} 
+        {% if payment_check_list.has_next %} 
+        <a href='?page={{payment_check_list.number|add:+1}}'>Next</a> 
+        {% endif %} 
+    </h5>
 </div>
 {% endif %}
 {% endblock %}
