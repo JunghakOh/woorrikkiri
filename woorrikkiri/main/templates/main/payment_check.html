@@ -35,18 +35,28 @@
                     {% endif %}
                 </td>
                 <td class="state">
-                    승인
+                    완료
                 </td>
             {% else %}
                 <td>
-                    포인트 충전
+                    {% if user.is_mento %}
+                        포인트 전환
+                    {% else %}
+                        포인트 충전
+                    {% endif %}
                 </td> 
                 <td class="point">
-                    <span class="h_color b_text">{{ payment_check.points }}</span></span><span class="b_text">P</span> 충전 
+                    <span class="h_color b_text">{{ payment_check.points }}</span></span><span class="b_text">P</span>
+                    {% if user.is_mento %}
+                        전환
+                    {% else %}
+                        충전 
+                    {% endif %}
                 </td>
                 <td class="state">
-                    {% if payment_check.approve %} 입금 확인 
-                    {% else %} 입금 확인 중 
+                    {% if payment_check.approve %} 완료
+                    {% else %} 
+                        {% if user.is_mento %} 입금 진행 중 {% else %} 입금 확인 중 {% endif %}
                     {% endif %} 
                 </td>
             {% endif %}
