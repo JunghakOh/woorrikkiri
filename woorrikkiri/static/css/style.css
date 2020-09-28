@@ -11,12 +11,18 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 @font-face {
 	font-family: 'TmoneyRoundWindExtraBold';
-	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff')
+		format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
-@font-face { font-family: 'Binggrae'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff') format('woff'); font-weight: normal; font-style: normal; }
-      
+@font-face {
+	font-family: 'Binggrae';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
 /* base.html - navbar */
 header {
@@ -29,7 +35,6 @@ header .nav_container {
 	padding: 0 20px;
 	display: flex;
 	align-items: center;
-
 }
 header .logo_container {
 	width: 100px;
@@ -48,7 +53,9 @@ header .hor_category .navbar {
 header .hor_category .nav-item {
 	margin: 0 15px;
 }
-header .ham_container, header .ver_category_box, header .x_container {
+header .ham_container,
+header .ver_category_box,
+header .x_container {
 	display: none;
 }
 .blind {
@@ -103,11 +110,11 @@ footer .footer_container {
 .h_color {
 	color: #d4463b;
 }
-.sh_color{ 
+.sh_color {
 	color: #ee767a;
 }
-.b_color{
-	color:#fefafa;
+.b_color {
+	color: #fefafa;
 }
 .s_color {
 	color: #979797;
@@ -123,11 +130,11 @@ input:focus {
 }
 
 /* font 설정 */
-.h_font{
+.h_font {
 	/* font-family: 'TmoneyRoundWindExtraBold'; */
 	font-family: 'Binggrae';
 }
-.spacing{
+.spacing {
 	letter-spacing: 3px;
 }
 .xxl_title {
@@ -146,8 +153,8 @@ input:focus {
 .m_text {
 	font-size: 14px;
 }
-.n_text{
-	font-size:12px;
+.n_text {
+	font-size: 12px;
 }
 .s_text {
 	font-size: 10px;
@@ -158,7 +165,7 @@ input:focus {
 .text_h {
 	line-height: 120%;
 }
-.page_title{
+.page_title {
 	padding-bottom: 20px;
 	font-size: 30px;
 	font-family: 'Binggrae';
@@ -169,8 +176,8 @@ input:focus {
 .display {
 	display: block !important;
 }
-.none{
-	display: none;
+.none {
+	display: none !important;
 }
 section {
 	background-color: #fefafa;
@@ -184,6 +191,13 @@ section {
 	margin: 0 auto;
 	min-height: calc(100vh - 57px);
 	/* min-width: 650px; */
+}
+.no_drag {
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
 }
 
 /* 이미지사이즈 */
@@ -199,14 +213,15 @@ img {
 	header .hor_category {
 		display: none;
 	}
-	.ver_category .ham_container, .ver_category .x_container {
+	.ver_category .ham_container,
+	.ver_category .x_container {
 		width: 30px;
 		margin: 15px 20px 0 0;
 		position: absolute;
 		top: 0;
 		right: 0;
 		z-index: 10;
-    }
+	}
 	.ver_category_box {
 		width: 240px;
 		height: 100vh;
