@@ -38,7 +38,13 @@
 			</div>
 
 			<button class="sign_btn" type="submit">
-				<span class="w_color">충전하기</span>
+				<span class="w_color">
+				{% if user.is_mento %}
+					출금 신청하기
+				{% else %}
+					충전하기
+				{% endif %}
+				</span>
 			</button>
 		</form>
 	</div>

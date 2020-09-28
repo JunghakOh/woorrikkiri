@@ -11,12 +11,12 @@ var p_count = point.nodeValue;
 var lp = parseFloat(left_point.innerText);
 
 plus_btn.addEventListener('click', function () {
-    c_count += 1;
-    p_count += 2900;
-    lp -= 2900;
-    if (lp < 0){
+    if (lp-2900 < 0){
         alert('포인트가 부족합니다.');
     } else{
+        c_count += 1;
+        p_count += 2900;
+        lp -= 2900;
         coffee.value = c_count;
         point.value = p_count;
         left_point.innerHTML = lp;    
