@@ -5,6 +5,7 @@ from .forms import ContentForm, CommentForm, FAQForm, AnswerForm, SubjectForm, P
 from django.shortcuts import get_object_or_404
 from accounts.models import User
 from accounts.forms import UserPointForm
+from django.core.paginator import Paginator
 
 #---------------------popbill------by junghak
 # -*- coding: utf-8 -*-
@@ -130,8 +131,11 @@ def new(request):
     return render(request, 'main/new.html', {'form': form, 'point_form':point_form})
 
 def ask(request):
-    posts = Content.objects.all().order_by('-pub_date')
-    return render(request, 'main/ask.html', {'posts_list':posts})
+    posts_list = Content.objects.all().order_by('-pub_date')
+    paginator = Paginator(posts_list, 10)
+    page = request.GET.get('page')
+    post = paginator.get_page(page)
+    return render(request, 'main/ask.html', {'posts_list':post})
 
 def detail(request, pk):
     post = get_object_or_404(Content, pk=pk)
@@ -244,5 +248,8 @@ def payment(request):
     return render(request, 'main/payment.html', {'point_form':point_form})
 
 def payment_check(request):
-    payment_check = Point.objects.all
-    return render(request, 'main/payment_check.html', {'payment_check_list':payment_check})
+    payment_check_list = Point.objects.all().order_by('-pub_date')
+    paginator = Paginator(payment_check_list, 15)
+    page = request.GET.get('page')
+    post = paginator.get_page(page)
+    return render(request, 'main/payment_check.html', {'payment_check_list':post})

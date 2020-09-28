@@ -75,6 +75,15 @@
 					{% endif %}
 				{% endfor %}
 			</ol>
+			<h5> 
+				{% if posts_list.has_previous %} 
+				<a href='?page={{posts_list.number|add:-1}}'>Previous</a> 
+				{% endif %} 
+				Page {{ posts_list.number }} of {{ posts_list.paginator.num_pages }} 
+				{% if posts_list.has_next %} 
+				<a href='?page={{posts_list.number|add:+1}}'>Next</a> 
+				{% endif %} 
+			</h5>
 		</div>
 	</div>
 </div>
