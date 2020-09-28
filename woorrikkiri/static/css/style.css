@@ -169,6 +169,9 @@ input:focus {
 .display {
 	display: block !important;
 }
+.none{
+	display: none;
+}
 section {
 	background-color: #fefafa;
 }

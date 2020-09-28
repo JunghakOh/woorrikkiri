@@ -114,14 +114,14 @@ def new(request):
             post.save()
             if point_form.is_valid():
                 point_post = point_form.save(commit=False)
-                point_post.post = get_object_or_404(Content, pk=post.pk)
+                point_post.post = post
                 #point_form.points = post.coffee #커피 잔 수 * 2900 만큼을 포인트 모델에 기록(거래내역 기록용)  point.points = content.coffee*2
                 point_post.published_date = timezone.now() #거래내역에 결제한 사람, 날짜를 기록 
                 point_post.point_user = request.user
                 #if approve_form.is_valid(): #거래가 완전히 승인되었는지 확인  
                 point_post.save()
                 #user_point.point = (user_point.point) - (post.coffee * 2900)
-                request.user.point = request.user.point - (post.coffee * 2900)
+                request.user.point -= (post.coffee * 2900)
                 request.user.save()
                 return redirect('ask')
     else:
@@ -142,6 +142,7 @@ def detail(request, pk):
     if request.method == "POST":
         comment_form = CommentForm(request.POST) 
         answer_form = AnswerForm(request.POST, request.FILES)
+        point_form = PointForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False) 
             comment.published_date = timezone.now() 
@@ -157,8 +158,18 @@ def detail(request, pk):
             answer.save()
             post.respondent = request.user
             post.save()
-            request.user.point = request.user.point + (post.coffee * 2900)
+            # 멘토 포인트 증가
+            request.user.point += (post.coffee*2900)
             request.user.save()
+            # 포인트 객체 생성
+            if point_form.is_valid():
+                point_post = point_form.save(commit=False)
+                point_post.post = post
+                point_post.points*=2900
+                point_post.point_user = request.user
+                point_post.published_date = timezone.now()
+                point_post.approve = True
+                point_post.save()
             return redirect('detail', pk=pk)
     else:
         comment_form = CommentForm()
