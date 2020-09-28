@@ -82,8 +82,11 @@
 	align-items: center;
 }
 .beta .link {
-	min-width: 150px;
+	width: 150px;
 	padding: 5px;
+	background: white;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
 }
 
 
