@@ -5,8 +5,186 @@ from .forms import ContentForm, CommentForm, FAQForm, AnswerForm, SubjectForm, P
 from django.shortcuts import get_object_or_404
 from accounts.models import User
 from accounts.forms import UserPointForm
-from django.core.paginator import Paginator
 
+from twilio.rest import Client
+account_sid = 'AC263f1fb544950a79a42a03685d23bf31'
+auth_token = '13dbf3189a5765ebb6597a153bb6fc9d'
+
+# Create your views here.
+def home(request):
+    posts = Content.objects.all
+    return render(request, 'main/home.html', {'posts_list':posts})
+    
+# def agreement(request):
+#     return render(request, 'agreement.html')
+
+# def private_info(request):
+#     return render(request, 'private_info.html')
+    
+def new(request):
+    #user_point = User.objects.all
+    if request.method == 'POST':
+        form = ContentForm(request.POST, request.FILES)
+        point_form = PointForm(request.POST)
+        #approve_form = ApproveForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.writer = request.user
+            post.published_date = timezone.now()
+            post.save()
+            if point_form.is_valid():
+                point_post = point_form.save(commit=False)
+                point_post.post = post
+                #point_form.points = post.coffee #커피 잔 수 * 2900 만큼을 포인트 모델에 기록(거래내역 기록용)  point.points = content.coffee*2
+                point_post.published_date = timezone.now() #거래내역에 결제한 사람, 날짜를 기록 
+                point_post.point_user = request.user
+                #if approve_form.is_valid(): #거래가 완전히 승인되었는지 확인  
+                point_post.save()
+                #user_point.point = (user_point.point) - (post.coffee * 2900)
+                request.user.point -= (post.coffee * 2900)
+                request.user.save()
+                #문자 보내기 구현
+                client = Client(account_sid, auth_token)
+                message = client.messages \
+                .create(
+                     body="귀하의 질문이 정상적으로 등록되었습니다. 답변달리면 문자 보낼게요!  우리끼리 팀^_^",
+                     from_='+12052728223',
+                     to='+82'+request.user.phone_num
+                 )
+                print(message.sid)
+
+                return redirect('ask')
+    else:
+        form = ContentForm()
+        point_form = PointForm()
+    return render(request, 'main/new.html', {'form': form, 'point_form':point_form})
+
+def ask(request):
+    posts = Content.objects.all().order_by('-pub_date')
+    return render(request, 'main/ask.html', {'posts_list':posts})
+
+def detail(request, pk):
+    post = get_object_or_404(Content, pk=pk)
+    #post = super().save(Content, commit=False, pk=pk)
+    comment_list = Comment.objects.filter(post=post)
+    answer_list = Answer.objects.filter(post=post)
+    answer_count = len(answer_list)
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST) 
+        answer_form = AnswerForm(request.POST, request.FILES)
+        point_form = PointForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False) 
+            comment.published_date = timezone.now() 
+            comment.writer = request.user
+            comment.post = post
+            comment.save()
+            return redirect('detail', pk=pk)
+        if answer_form.is_valid() and not post.respondent:
+            answer = answer_form.save(commit=False)
+            answer.writer = request.user
+            answer.published_date = timezone.now()
+            answer.post = post
+            answer.save()
+            post.respondent = request.user
+            post.save()
+            # 멘토 포인트 증가
+            request.user.point += (post.coffee*2900)
+            request.user.save()
+            # 포인트 객체 생성
+            if point_form.is_valid():
+                point_post = point_form.save(commit=False)
+                point_post.post = post
+                point_post.points*=2900
+                point_post.point_user = request.user
+                point_post.published_date = timezone.now()
+                point_post.approve = True
+                point_post.save()
+                 #문자 보내기 구현
+                client = Client(account_sid, auth_token)
+                message = client.messages \
+                .create(
+                     body="귀하의 질문이 답변 달렸습니다. 확인해보세요! 우리끼리 팀^_^",
+                     from_='+12052728223',
+                     to='+82'+post.writer.phone_num
+                 )
+                print(message.sid)
+            return redirect('detail', pk=pk)
+    else:
+        comment_form = CommentForm()
+        answer_form = AnswerForm()
+    return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer_list':answer_list, 'answer_form':answer_form, 'answer_count':answer_count})
+
+def edit(request, index):
+    post = get_object_or_404(Content, pk=index)
+    #point_post = get_object_or_404(Point, pk=index)
+    if request.method == "POST":
+        form = ContentForm(request.POST, request.FILES, instance=post)
+        #point_form = PointForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now
+            post.save()
+            #if point_form.is_valid():
+             #   point_post = point_form.save(commit=False)
+              #  point_post.post = get_object_or_404(Content, pk=post.pk)
+                #point_form.points = post.coffee #커피 잔 수 * 2900 만큼을 포인트 모델에 기록(거래내역 기록용)  point.points = content.coffee*2
+               # point_post.published_date = timezone.now() #거래내역에 결제한 사람, 날짜를 기록 
+                #point_post.point_user = request.user
+                #if approve_form.is_valid(): #거래가 완전히 승인되었는지 확인  
+                #point_post.save()
+                #user_point.point = (user_point.point) - (post.coffee * 2900)
+                #request.user.point = request.user.point - (post.coffee * 2900)
+                #request.user.save()   
+            return redirect('detail', pk=post.pk)
+    else:
+        form = ContentForm(instance=post)
+        #point_form = PointForm()
+    return render(request, 'main/edit.html', {'form': form})
+
+def delete(request, pk):
+    post = get_object_or_404(Content, pk=pk)
+    post.delete()
+    request.user.point = request.user.point + (post.coffee * 2900)
+    request.user.save()   
+    return redirect('ask')
+
+def delete_comment(request, pk, comment_pk):
+    comment = get_object_or_404(Comment,pk=comment_pk)
+    comment.delete()
+    return redirect('detail', pk=pk)
+
+
+def about(request):
+    return render(request, 'main/about.html')
+
+def about_team(request):
+    return render(request, 'main/about_team.html')
+
+def faq(request):
+    faq = FAQ.objects.all
+    return render(request, 'main/faq.html', {'faq_list':faq})
+
+def payment(request):
+    if request.method == 'POST':
+        if request.user.is_mento:
+            point_form = PointPayForm(request.POST)
+        else:
+            point_form = PointForm(request.POST)
+        if point_form.is_valid():
+            point_post = point_form.save(commit=False)
+            point_post.published_date = timezone.now()
+            point_post.point_user = request.user
+            point_post.save()
+            return redirect('payment_check')
+    else:
+        point_form = PointForm()
+    return render(request, 'main/payment.html', {'point_form':point_form})
+
+def payment_check(request):
+    payment_check = Point.objects.all
+    return render(request, 'main/payment_check.html', {'payment_check_list':payment_check})
 #---------------------popbill------by junghak
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
@@ -91,165 +269,3 @@ def search(request):
     except PopbillException as PE:
         return render(request, 'main/exception.html', {'code': PE.code, 'message': PE.message})
 #-------------------------------
-# Create your views here.
-def home(request):
-    posts = Content.objects.all
-    return render(request, 'main/home.html', {'posts_list':posts})
-    
-# def agreement(request):
-#     return render(request, 'agreement.html')
-
-# def private_info(request):
-#     return render(request, 'private_info.html')
-    
-def new(request):
-    #user_point = User.objects.all
-    if request.method == 'POST':
-        form = ContentForm(request.POST, request.FILES)
-        point_form = PointForm(request.POST)
-        #approve_form = ApproveForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.writer = request.user
-            post.published_date = timezone.now()
-            post.save()
-            if point_form.is_valid():
-                point_post = point_form.save(commit=False)
-                point_post.post = post
-                #point_form.points = post.coffee #커피 잔 수 * 2900 만큼을 포인트 모델에 기록(거래내역 기록용)  point.points = content.coffee*2
-                point_post.published_date = timezone.now() #거래내역에 결제한 사람, 날짜를 기록 
-                point_post.point_user = request.user
-                #if approve_form.is_valid(): #거래가 완전히 승인되었는지 확인  
-                point_post.save()
-                #user_point.point = (user_point.point) - (post.coffee * 2900)
-                request.user.point -= (post.coffee * 2900)
-                request.user.save()
-                return redirect('ask')
-    else:
-        form = ContentForm()
-        point_form = PointForm()
-    return render(request, 'main/new.html', {'form': form, 'point_form':point_form})
-
-def ask(request):
-    posts_list = Content.objects.all().order_by('-pub_date')
-    paginator = Paginator(posts_list, 10)
-    page = request.GET.get('page')
-    post = paginator.get_page(page)
-    return render(request, 'main/ask.html', {'posts_list':post})
-
-def detail(request, pk):
-    post = get_object_or_404(Content, pk=pk)
-    #post = super().save(Content, commit=False, pk=pk)
-    comment_list = Comment.objects.filter(post=post)
-    answer_list = Answer.objects.filter(post=post)
-    answer_count = len(answer_list)
-    if request.method == "POST":
-        comment_form = CommentForm(request.POST) 
-        answer_form = AnswerForm(request.POST, request.FILES)
-        point_form = PointForm(request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False) 
-            comment.published_date = timezone.now() 
-            comment.writer = request.user
-            comment.post = post
-            comment.save()
-            return redirect('detail', pk=pk)
-        if answer_form.is_valid() and not post.respondent:
-            answer = answer_form.save(commit=False)
-            answer.writer = request.user
-            answer.published_date = timezone.now()
-            answer.post = post
-            answer.save()
-            post.respondent = request.user
-            post.save()
-            # 멘토 포인트 증가
-            request.user.point += (post.coffee*2900)
-            request.user.save()
-            # 포인트 객체 생성
-            if point_form.is_valid():
-                point_post = point_form.save(commit=False)
-                point_post.post = post
-                point_post.points*=2900
-                point_post.point_user = request.user
-                point_post.published_date = timezone.now()
-                point_post.approve = True
-                point_post.save()
-            return redirect('detail', pk=pk)
-    else:
-        comment_form = CommentForm()
-        answer_form = AnswerForm()
-    return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer_list':answer_list, 'answer_form':answer_form, 'answer_count':answer_count})
-
-def edit(request, index):
-    post = get_object_or_404(Content, pk=index)
-    #point_post = get_object_or_404(Point, pk=index)
-    if request.method == "POST":
-        form = ContentForm(request.POST, request.FILES, instance=post)
-        #point_form = PointForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now
-            post.save()
-            #if point_form.is_valid():
-             #   point_post = point_form.save(commit=False)
-              #  point_post.post = get_object_or_404(Content, pk=post.pk)
-                #point_form.points = post.coffee #커피 잔 수 * 2900 만큼을 포인트 모델에 기록(거래내역 기록용)  point.points = content.coffee*2
-               # point_post.published_date = timezone.now() #거래내역에 결제한 사람, 날짜를 기록 
-                #point_post.point_user = request.user
-                #if approve_form.is_valid(): #거래가 완전히 승인되었는지 확인  
-                #point_post.save()
-                #user_point.point = (user_point.point) - (post.coffee * 2900)
-                #request.user.point = request.user.point - (post.coffee * 2900)
-                #request.user.save()   
-            return redirect('detail', pk=post.pk)
-    else:
-        form = ContentForm(instance=post)
-        #point_form = PointForm()
-    return render(request, 'main/edit.html', {'form': form})
-
-def delete(request, pk):
-    post = get_object_or_404(Content, pk=pk)
-    post.delete()
-    request.user.point = request.user.point + (post.coffee * 2900)
-    request.user.save()   
-    return redirect('ask')
-
-def delete_comment(request, pk, comment_pk):
-    comment = get_object_or_404(Comment,pk=comment_pk)
-    comment.delete()
-    return redirect('detail', pk=pk)
-
-
-def about(request):
-    return render(request, 'main/about.html')
-
-def about_team(request):
-    return render(request, 'main/about_team.html')
-
-def faq(request):
-    faq = FAQ.objects.all
-    return render(request, 'main/faq.html', {'faq_list':faq})
-
-def payment(request):
-    if request.method == 'POST':
-        if request.user.is_mento:
-            point_form = PointPayForm(request.POST)
-        else:
-            point_form = PointForm(request.POST)
-        if point_form.is_valid():
-            point_post = point_form.save(commit=False)
-            point_post.published_date = timezone.now()
-            point_post.point_user = request.user
-            point_post.save()
-            return redirect('payment_check')
-    else:
-        point_form = PointForm()
-    return render(request, 'main/payment.html', {'point_form':point_form})
-
-def payment_check(request):
-    payment_check_list = Point.objects.all().order_by('-pub_date')
-    paginator = Paginator(payment_check_list, 15)
-    page = request.GET.get('page')
-    post = paginator.get_page(page)
-    return render(request, 'main/payment_check.html', {'payment_check_list':post})
