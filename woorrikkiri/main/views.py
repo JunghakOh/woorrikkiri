@@ -195,6 +195,10 @@ def payment_check(request):
 from django.shortcuts import render
 from popbill import EasyFinBankService, PopbillException, ContactInfo, JoinForm, CorpInfo
 from woorrikkiri import settings
+from datetime import datetime
+from django.utils.dateformat import DateFormat
+
+
 # settings.py 작성한 LinkID, SecretKey를 이용해 EasyFinBankService 서비스 객체 생성
 easyFinBankService = EasyFinBankService(settings.LinkID, settings.SecretKey)
 # 연동환경 설정값, 개발용(True), 상업용(False)
@@ -203,39 +207,6 @@ easyFinBankService.IsTest = settings.IsTest
 easyFinBankService.IPRestrictOnOff = settings.IPRestrictOnOff
 # 팝빌 API 서비스 고정 IP 사용여부(GA), true-사용, false-미사용, 기본값(false)
 easyFinBankService.UseStaticIP = settings.UseStaticIP
-def requestJob(request):
-    try:
-        CorpNum = "6630801510"
-        UserID = "metis08"
-        BankCode = "0004" 
-        AccountNumber = "45700101462642"               # 시작일자, 날짜형식(yyyyMMdd)
-        SDate = "20200820"
-        EDate = "20200821"
-        result = easyFinBankService.requestJob(CorpNum, BankCode, AccountNumber,SDate, EDate, UserID)
-        return render(request, 'main/response.html', {'result': result})
-    except PopbillException as PE:
-        return render(request, 'main/response.html', {'code': PE.code, 'message': PE.message})
-def getJobState(request):
-    """
-    수집 요청 상태를 확인합니다.
-    - https://docs.popbill.com/easyfinbank/python/api#GetJobState
-    """
-    try:
-        # 팝빌회원 사업자번호
-        CorpNum = "6630801510"
-
-        # 팝빌회원 아이디
-        UserID = "metis08"
-
-        # 수집요청(requestJob) 호출시 발급받은 작업아이디
-        jobID = "020082117000000004"
-
-        response = easyFinBankService.getJobState(CorpNum, jobID, UserID)
-
-        #return render(request, 'main/GetJobState.html', {'response': response})
-        return render(request, 'main/GetJobState.html', {'result': result})
-    except PopbillException as PE:
-        return render(request, 'main/exception.html', {'code': PE.code, 'message': PE.message})
 def search(request):
     """
     거래내역의 수집 결과를 조회합니다.
@@ -244,33 +215,35 @@ def search(request):
     try:
         # 팝빌회원 사업자번호
         CorpNum = "6630801510"
-
+        UserID = "metis08"
+        BankCode = "0004" 
+        AccountNumber = "45700101462642"              
+        # 시작일자, 날짜형식(yyyyMMdd)
+        today = DateFormat(datetime.now()).format('Ymd')
+        #today = datetime.date.today()  
+        SDate = "20200808"#today # 어제 날짜 구해서 넣어야 됨 (오늘 구하다가 에러나서 일단 넘아감, 밤 왜냐하면 11.59분에 결제하면 어제 결제확인 안될수 있음)
+        EDate = today              
         # 팝빌회원 아이디
         UserID = "metis08"
-
         # 수집요청(requestJob)시 발급받은 작업아이디
-        JobID = "020082117000000004"
-
+        JobID = easyFinBankService.requestJob(CorpNum, BankCode, AccountNumber,SDate, EDate, UserID)
         # 거래유형 배열, [I-입금 / O-출금]
-        TradeType = ["I", "O"]
-
+        TradeType = ["I"]
         # 조회 검색어, 입금/출금액, 메모, 적요 like 검색
         SearchString = ""
-
         # 페이지번호
         Page = 1
-
         # 페이지당 목록개수, 최대값 1000
         PerPage = 10
-
         # 정렬방향 [D-내림차순 / A-오름차순]
         Order = "D"
+        #response = easyFinBankService.getJobState(CorpNum, JobID, UserID)
+        response = easyFinBankService.search(CorpNum, JobID, TradeType, SearchString,Page, PerPage, Order, UserID)
 
-        response = easyFinBankService.search(CorpNum, JobID, TradeType, SearchString,
-            Page, PerPage, Order, UserID)
+        for tradeInfo in response.list:
+            print (tradeInfo.remark1,tradeInfo.accIn);
 
-        #return render(request, 'main/Search.html', {'response': response})
-        return render(request, 'main/Search.html', {'result': response})
+        return render(request, 'main/Search.html', {'response': response})
+        
     except PopbillException as PE:
         return render(request, 'main/exception.html', {'code': PE.code, 'message': PE.message})
-#-------------------------------
