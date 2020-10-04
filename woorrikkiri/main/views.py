@@ -7,8 +7,13 @@ from accounts.models import User
 from accounts.forms import UserPointForm
 
 from twilio.rest import Client
-account_sid = 'AC263f1fb544950a79a42a03685d23bf31'
-auth_token = '13dbf3189a5765ebb6597a153bb6fc9d'
+
+import environ
+env = environ.Env()
+environ.Env.read_env()
+
+account_sid = env('TWILLIO_KEY_ID')
+auth_token = env('TWILLIO_TOKEN')
 
 # Create your views here.
 def home(request):
