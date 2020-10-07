@@ -52,7 +52,7 @@ def new(request):
                 client = Client(account_sid, auth_token)
                 message = client.messages \
                 .create(
-                     body="귀하의 질문이 정상적으로 등록되었습니다. 답변달리면 문자 보낼게요!  우리끼리 팀^_^",
+                     body="귀하의 질문이 정상적으로 등록되었습니다. 답변이 달리면 다시 문자드리겠습니다! 우리끼리 팀 :)",
                      from_='+12052728223',
                      to='+82'+request.user.phone_num
                  )
@@ -109,7 +109,7 @@ def detail(request, pk):
                 client = Client(account_sid, auth_token)
                 message = client.messages \
                 .create(
-                     body="귀하의 질문이 답변 달렸습니다. 확인해보세요! 우리끼리 팀^_^",
+                     body="귀하의 질문에 답변이 달렸습니다. 지금 바로 확인해보세요! 우리끼리 팀 :)",
                      from_='+12052728223',
                      to='+82'+post.writer.phone_num
                  )
