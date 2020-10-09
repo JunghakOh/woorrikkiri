@@ -19,7 +19,7 @@ money_x_btn.addEventListener('click', function () {
 
 // 제출전 금액 확인
 function check(){ 
-    var bank = money_amount.nodeValue;
+    var bank =  document.querySelector('#bank').nodeValue;
     var account = money_amount.nodeValue;
     console.log(bank);
 
