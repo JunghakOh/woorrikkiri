@@ -67,7 +67,7 @@ def new(request):
 
 def ask(request):
     posts_list = Content.objects.all().order_by('respondent', '-pub_date')
-    paginator = Paginator(posts_list, 3)
+    paginator = Paginator(posts_list, 12)
     page = request.GET.get('page')
     post = paginator.get_page(page)
     return render(request, 'main/ask.html', {'posts_list':post})
