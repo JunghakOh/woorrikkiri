@@ -57,7 +57,7 @@ def signout(request):
 
 @login_required
 def mypage(request):
-    posts_list = Content.objects.all().order_by('-pub_date')
+    posts_list = Content.objects.all().order_by('respondent', '-pub_date')
     paginator = Paginator(posts_list, 10)
     page = request.GET.get('page')
     post = paginator.get_page(page)
