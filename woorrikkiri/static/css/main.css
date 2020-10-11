@@ -131,6 +131,10 @@
 	display: flex;
 	justify-content: space-between;
 }
+.ask_container .pages{
+	display: flex;
+	justify-content: space-between;
+}
 
 /* payment.html */
 .pay_container {

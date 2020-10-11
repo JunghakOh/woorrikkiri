@@ -19,16 +19,17 @@ money_x_btn.addEventListener('click', function () {
 
 // 제출전 금액 확인
 function check(){ 
-    var bank =  document.querySelector('#bank').nodeValue;
-    var account = money_amount.nodeValue;
+    var bank =  bank_input.nodeValue;
+    var account = account_input.nodeValue;
     console.log(bank);
 
-    account = money_amount.nodeValue;
     if (!money){
         alert('금액을 선택해주세요.');
         return false;
     }
     if (user === 'mentor'){
+        console.log('은행');
+        conosole.loge(bank);
         if (!bank){
             alert('은행을 입력해주세요.');
             return false;
