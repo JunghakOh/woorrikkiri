@@ -78,6 +78,10 @@ def detail(request, pk):
     comment_list = Comment.objects.filter(post=post)
     answer_list = Answer.objects.filter(post=post)
     answer_count = len(answer_list)
+    file_img = False
+    file_info = post.file.url.lower()
+    if '.jpg' in file_info or '.png' in file_info or '.jpeg' in file_info:
+        file_img = True
     if request.method == "POST":
         comment_form = CommentForm(request.POST) 
         answer_form = AnswerForm(request.POST, request.FILES)
@@ -122,7 +126,7 @@ def detail(request, pk):
     else:
         comment_form = CommentForm()
         answer_form = AnswerForm()
-    return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer_list':answer_list, 'answer_form':answer_form, 'answer_count':answer_count})
+    return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer_list':answer_list, 'answer_form':answer_form, 'answer_count':answer_count, 'file_img':file_img})
 
 def edit(request, index):
     post = get_object_or_404(Content, pk=index)

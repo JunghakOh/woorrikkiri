@@ -19,10 +19,14 @@
 	</div>
 	<div class="l_title q_title">Q. {{ post.title }}</div>
 	<div class="q_content">
-		{{ post.body}} 
+		{{ post.body }} 
 		{% if post.file %}
-		<img src="{{post.file.url}}" />
-		<!-- 이미지 다운: <a href="{{ post.file.url }}" download>{{ post.file.name }}</a> -->
+			{% if file_img %}
+				<img src="{{post.file.url}}" />
+			{% else %}
+			<br>
+				<a href="{{ post.file.url }}" download class="h_color b_text">첨부파일 다운로드</a>
+			{% endif %}
 		{% endif %}
 	</div>
 	<div class="content_detail">
@@ -51,7 +55,8 @@
 			<div class="q_content">{{ answer.body}}</div>
 			<div class="date s_text s_color">{{ post.pub_date | date:"Y-m-d"}} | {{ post.pub_date | timesince }}전</div>
 			{% if answer.file %}
-			<img src="{{ answer.file.url }}" />
+				<img src="{{ answer.file.url }}" />
+				<a href="{{ answer.file.url }}" download class="h_color b_text">첨부파일 다운로드</a>
 			{% endif %}
 		</div>
 	</div>
