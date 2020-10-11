@@ -82,7 +82,7 @@ class Point(models.Model):
     objects = models.Manager()
     post = models.ForeignKey('Content', on_delete=models.CASCADE, null=True, blank=True)
     points = models.IntegerField("포인트", default = 0)
-    account_num = models.IntegerField("계좌번호", null=True, blank=True)
+    account_num = models.CharField("계좌번호", max_length=200, null=True, blank=True)
     bank = models.CharField("은행", default = '', max_length=200, null=True, blank=True)
     point_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name = "포인트사용자", on_delete = models.CASCADE)
     pub_date = models.DateTimeField(default=timezone.now)

@@ -38,5 +38,5 @@ function check(){
             return false;
         }
     }
-    return false;
+    return true;
 }
