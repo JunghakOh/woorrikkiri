@@ -192,8 +192,8 @@ def payment(request):
     return render(request, 'main/payment.html', {'point_form':point_form})
 
 def payment_check(request):
-    payment_check_list = Point.objects.all().order_by('-pub_date')
-    paginator = Paginator(payment_check_list, 15)
+    payment_check_list = Point.objects.filter(point_user=request.user).order_by('-pub_date')
+    paginator = Paginator(payment_check_list, 50)
     page = request.GET.get('page')
     post = paginator.get_page(page)
     return render(request, 'main/payment_check.html', {'payment_check_list':post})
