@@ -13,7 +13,6 @@
         <th class="point">포인트</th>
         <th class="state">상태</th>
         {% for payment_check in payment_check_list %}
-        {% if payment_check.point_user == user %}
         <tr>
             <td class="date s_color">
                 {{ payment_check.pub_date | date:"Y.m.d f"}}
@@ -61,20 +60,19 @@
                 </td>
             {% endif %}
         </tr>
-        {% endif %}
         {% endfor %} 
 
     </table>
     <div class="b_text pages">
-        {% if posts_list %} 
+        {% if payment_check_list %} 
         <div>
-            <a {% if posts_list.has_previous %} href='?page={{posts_list.number|add:-1}}' {% else %} class="s_color" {% endif %}>이전페이지</a> 
+            <a {% if payment_check_list.has_previous %} href='?page={{payment_check_list.number|add:-1}}' {% else %} class="s_color" {% endif %}>이전페이지</a> 
         </div>
         <div>
-            {{ posts_list.number }} / {{ posts_list.paginator.num_pages }} <br>
+            {{ payment_check_list.number }} / {{ payment_check_list.paginator.num_pages }} <br>
         </div>
         <div>
-            <a {% if posts_list.has_next %} href='?page={{posts_list.number|add:+1}}' {% else %} class="s_color" {% endif %}>다음페이지</a> 
+            <a {% if payment_check_list.has_next %} href='?page={{payment_check_list.number|add:+1}}' {% else %} class="s_color" {% endif %}>다음페이지</a> 
         </div>
         {% endif %}
     </div>

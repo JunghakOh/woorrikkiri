@@ -18,10 +18,17 @@ class ContentAdmin(admin.ModelAdmin):
         'writer',
         'respondent'
     )
+    list_per_page = 20
+    list_filter = (
+        'writer',
+        'respondent'
+    )
+
 
 @admin.register(models.Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = (
+        'pk',
         'post',
         'text',
         'writer',
@@ -32,20 +39,28 @@ class CommentAdmin(admin.ModelAdmin):
         'text',
         'writer'
     )
+    list_per_page = 20
+    list_filter = (
+        'writer',
+    )
 
 @admin.register(models.FAQ)
 class FAQAdmin(admin.ModelAdmin):
     list_display = (
+        'pk',
         'title',
         'body',
     )
     list_display_links = (
         'title',
     )
+    list_per_page = 20
+
 
 @admin.register(models.Answer)
 class AnswerAdmin(admin.ModelAdmin):
     list_display = (
+        'pk',
         'body',
         'post',
         'writer',
@@ -56,10 +71,15 @@ class AnswerAdmin(admin.ModelAdmin):
         'post',
         'writer'
     )
+    list_per_page = 20
+    list_filter = (
+        'writer',
+    )
 
 @admin.register(models.Point)
 class PointAdmin(admin.ModelAdmin):
     list_display = (
+        'pk',
         'post',
         'points',
         'point_user',
@@ -71,6 +91,12 @@ class PointAdmin(admin.ModelAdmin):
         'post',
         'points',
         'point_user'
+    )
+    list_per_page = 20
+    list_filter = (
+        'point_user',
+        'post',
+        'approve'
     )
 # admin.site.register(Content)
 # admin.site.register(Comment)
