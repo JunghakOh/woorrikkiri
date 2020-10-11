@@ -66,7 +66,7 @@ def new(request):
     return render(request, 'main/new.html', {'form': form, 'point_form':point_form})
 
 def ask(request):
-    posts_list = Content.objects.all().order_by('respondent', '-pub_date')
+    posts_list = Content.objects.all().order_by('-respondent', '-pub_date')
     paginator = Paginator(posts_list, 12)
     page = request.GET.get('page')
     post = paginator.get_page(page)
