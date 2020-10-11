@@ -104,15 +104,17 @@
 			{% endif %} {% endfor %}
 		</ol>
 		{% endif %}
-		<h5> 
-			{% if posts_list.has_previous %} 
-			<a href='?page={{posts_list.number|add:-1}}'>Previous</a> 
-			{% endif %} 
-			Page {{ posts_list.number }} of {{ posts_list.paginator.num_pages }} 
-			{% if posts_list.has_next %} 
-			<a href='?page={{posts_list.number|add:+1}}'>Next</a> 
-			{% endif %} 
-		</h5>
+		<div class="b_text pages">
+			<div>
+				<a {% if posts_list.has_previous %} href='?page={{posts_list.number|add:-1}}' {% else %} class="s_color" {% endif %}>이전페이지</a> 
+			</div> 
+			<div>
+				{{ posts_list.number }} / {{ posts_list.paginator.num_pages }} <br>
+			</div>
+			<div>
+				<a {% if posts_list.has_next %} href='?page={{posts_list.number|add:+1}}' {% else %} class="s_color" {% endif %}>다음페이지</a> 
+			</div>
+		</div>
 	</div>
 </div>
 

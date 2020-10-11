@@ -68,6 +68,10 @@
 	display: flex;
 	justify-content: space-between;
 }
+.mypage_container .pages{
+	display: flex;
+	justify-content: space-between;
+}
 /* 질문관련 */
 .question_container {
 	width: 100%;

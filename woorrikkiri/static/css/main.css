@@ -240,6 +240,10 @@
 	width:110px;
 	text-align: center;
 }
+.payment_check_container .pages{
+	display: flex;
+	justify-content: space-between;
+}
 /* faq */
 .faq_container {
 	width: 80%;
