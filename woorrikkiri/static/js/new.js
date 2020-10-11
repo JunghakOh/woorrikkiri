@@ -5,7 +5,6 @@ const plus_btn = document.querySelector('#plus');
 const minus_btn = document.querySelector('#minus');
 const ask_btn = document.querySelector('#ask_btn');
 
-// var c_count = parseFloat(coffee.innerText);
 var c_count = coffee.nodeValue;
 var p_count = point.nodeValue;
 var lp = parseFloat(left_point.innerText);

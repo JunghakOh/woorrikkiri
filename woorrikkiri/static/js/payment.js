@@ -16,30 +16,27 @@ money_x_btn.addEventListener('click', function () {
     money = 0;
 });
 
+
 // 제출전 금액 확인
 function check(){ 
-    console.log(money);
-    if (!money){
-        alert('금액을 설정해주세요.');
-        return false;
-    }else if (user == "mentor") {
-        alert('멘토');
-        bank = bank_input.nodeValue;
-        account = account_input.nodeValue;
-        alert(bank)
-        alert(acoount)
+    var bank =  bank_input.nodeValue;
+    var account = account_input.nodeValue;
+    console.log(bank);
 
-        if (!bank){
-            alert('은행명을 입력하세요.');
-            return false;
-        }else if (!account){
-            alert('계좌번호를 입력하세요.');
-            return false;
-        }else{
-            return false;
-        };
-    }else {
-        alert('ㅎ');
+    if (!money){
+        alert('금액을 선택해주세요.');
         return false;
     }
+    if (user === 'mentor'){
+        console.log('은행');
+        conosole.loge(bank);
+        if (!bank){
+            alert('은행을 입력해주세요.');
+            return false;
+        } else if(!account){
+            alert('계좌번호를 입력해주세요.');
+            return false;
+        }
+    }
+    return false;
 }
