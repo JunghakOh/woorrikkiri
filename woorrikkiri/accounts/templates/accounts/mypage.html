@@ -39,7 +39,8 @@
 		{% if user.is_mento %}
 		<div class="page_title">내가 답변한 질문들</div>
 		<ol>
-			{% for post in posts_list %} {% if user == post.respondent %}
+			{% for post in posts_list %} 
+			{% if user == post.respondent %}
 			<li>
 				<a href="{% url 'detail' pk=post.pk %}">
 					<div class="question_box">
@@ -67,13 +68,15 @@
 					</div>
 				</a>
 			</li>
-			{% endif %} {% endfor %}
+			{% endif %} 
+			{% endfor %}
 		</ol>
 		{% else %}
 		<!-- 멘티 마이페이지 ------------------------------------->
 		<div class="page_title">내가 한 질문들</div>
 		<ol>
-			{% for post in posts_list %} {% if user == post.writer %}
+			{% for post in posts_list %} 
+			{% if user == post.writer %}
 			<li>
 				<a href="{% url 'detail' pk=post.pk %}">
 					<div class="question_box {% if post.respondent %}complete{% endif %}" {% if post.respondent %}title="답변이 달린 질문입니다." {% endif %}>
@@ -101,20 +104,10 @@
 					</div>
 				</a>
 			</li>
-			{% endif %} {% endfor %}
+			{% endif %} 
+			{% endfor %}
 		</ol>
 		{% endif %}
-		<div class="b_text pages">
-			<div>
-				<a {% if posts_list.has_previous %} href='?page={{posts_list.number|add:-1}}' {% else %} class="s_color" {% endif %}>이전페이지</a> 
-			</div> 
-			<div>
-				{{ posts_list.number }} / {{ posts_list.paginator.num_pages }} <br>
-			</div>
-			<div>
-				<a {% if posts_list.has_next %} href='?page={{posts_list.number|add:+1}}' {% else %} class="s_color" {% endif %}>다음페이지</a> 
-			</div>
-		</div>
 	</div>
 </div>
 
