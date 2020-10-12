@@ -47,7 +47,7 @@
 <!--답변 목록---------------------------------------------------------------------------->
 <!-- 질문자, 답변자만 볼 수 있음-->
 {% if post.respondent %}
-	{% if user == post.writer or user == post.respondent or user.is_superuser %}
+	{% if user == post.writer or user == post.respondent or user.is_staff %}
 		<div class="xl_title h_font cate_title">답변</div>
 			<div class="detail_container">
 				<div class="answer_container">
