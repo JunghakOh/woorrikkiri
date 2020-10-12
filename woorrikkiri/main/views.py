@@ -76,8 +76,24 @@ def detail(request, pk):
     post = get_object_or_404(Content, pk=pk)
     #post = super().save(Content, commit=False, pk=pk)
     comment_list = Comment.objects.filter(post=post)
-    answer_list = Answer.objects.filter(post=post)
-    answer_count = len(answer_list)
+
+    # 질문파일 이미지 여부 확인
+    post_file_img = False
+    if post.file:
+        post_file_info = post.file.url.lower()
+        if '.jpg' in post_file_info or '.png' in post_file_info or '.jpeg' in post_file_info:
+            post_file_img = True
+    # 답변 여부 확인
+    answer_file_img = False
+    if post.respondent:
+        answer = Answer.objects.get(post=post)
+        if answer.file:
+            answer_file_info = answer.file.url.lower()
+            if '.jpg' in answer_file_info or '.png' in answer_file_info or '.jpeg' in answer_file_info:
+                answer_file_img = True
+    else:
+        answer = ''
+
     if request.method == "POST":
         comment_form = CommentForm(request.POST) 
         answer_form = AnswerForm(request.POST, request.FILES)
@@ -122,7 +138,7 @@ def detail(request, pk):
     else:
         comment_form = CommentForm()
         answer_form = AnswerForm()
-    return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer_list':answer_list, 'answer_form':answer_form, 'answer_count':answer_count})
+    return render(request, 'main/detail.html', {'post': post, 'comment_list': comment_list, 'comment_form': comment_form, 'answer':answer, 'answer_form':answer_form, 'post_file_img':post_file_img, 'answer_file_img':answer_file_img})
 
 def edit(request, index):
     post = get_object_or_404(Content, pk=index)

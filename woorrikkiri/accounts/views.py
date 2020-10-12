@@ -58,11 +58,11 @@ def signout(request):
 @login_required
 def mypage(request):
     posts_list = Content.objects.all().order_by('-respondent', '-pub_date')
-    paginator = Paginator(posts_list, 10)
-    page = request.GET.get('page')
-    post = paginator.get_page(page)
+    # paginator = Paginator(posts_list, 30)
+    # page = request.GET.get('page')
+    # post = paginator.get_page(page)
         #post_list = post.filter(name=request.user.name)            
-    return render(request, 'accounts/mypage.html', {'posts_list':post})
+    return render(request, 'accounts/mypage.html', {'posts_list':posts_list})
 
 def profile_update(request):
     if request.method == 'POST':
