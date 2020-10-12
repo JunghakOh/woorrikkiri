@@ -35,7 +35,7 @@
 				{{ post.pub_date | date:"Y-m-d"}} | {{ post.pub_date | timesince }}전 
 			{% endif %}</div>
 		<!-- 질문자가 답변이 없을 때만 질문 수정/삭제 가능-->
-		{% if user == post.writer and answer_count == 0 %}
+		{% if user == post.writer and not post.respondent %}
 		<div class="content_editor m_text b_text">
 			<a href="{% url 'edit' index=post.pk %}">수정하기</a>
 			<a href="{% url 'delete' pk=post.pk %}">삭제하기</a>
