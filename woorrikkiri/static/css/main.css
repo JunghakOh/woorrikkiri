@@ -429,6 +429,7 @@
 }
 .detail_container .q_content {
 	margin-bottom: 10px;
+	white-space: pre-line;
 }
 .detail_container .content_detail {
 	text-align: right;
