@@ -1,173 +1,249 @@
 {% load static %}
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<!-- OG태그 -->
-		<meta property="og:url"                content="https://woorrikkiri.com/" />
-		<meta property="og:type"               content="website" />
-		<meta property="og:title"              content="대학생 지식공유 플랫폼 | 우리끼리" />
-		<meta property="og:description"        content="대학생은 질문 어디서 해? 우리끼리 하면 되지!" />
-		<meta property="og:image"              content="{% static 'img/ogimage.png' %}" />
-		<title>우리끼리 beta</title>
-		<!-- favicon -->
-		<link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}" />
-		<link rel="apple-touch-icon" sizes="57x57" href="{% static 'favicon/apple-icon-57x57.png' %}" />
-		<link rel="apple-touch-icon" sizes="60x60" href="{% static 'favicon/apple-icon-60x60.png' %}" />
-		<link rel="apple-touch-icon" sizes="72x72" href="{% static 'favicon/apple-icon-72x72.png' %}" />
-		<link rel="apple-touch-icon" sizes="76x76" href="{% static 'favicon/apple-icon-76x76.png' %}" />
-		<link rel="apple-touch-icon" sizes="114x114" href="{% static 'favicon/apple-icon-114x114.png' %}" />
-		<link rel="apple-touch-icon" sizes="120x120" href="{% static 'favicon/apple-icon-120x120.png' %}" />
-		<link rel="apple-touch-icon" sizes="144x144" href="{% static 'favicon/apple-icon-144x144.png' %}" />
-		<link rel="apple-touch-icon" sizes="152x152" href="{% static 'favicon/apple-icon-152x152.png' %}" />
-		<link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}" />
-		<link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}" />
-		<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}" />
-		<link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}" />
-		<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}" />
-		<link rel="manifest" href="{% static 'favicon/manifest.json' %}" />
-		<meta name="msapplication-TileColor" content="#ffffff" />
-		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-		<meta name="theme-color" content="#ffffff" />
-		<!-- stylesheet-->
-		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/button.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/sprite.css' %}" />
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-178645543-1"></script>
-		<script>
-			window.dataLayer = window.dataLayer || []
-			function gtag() {
-				dataLayer.push(arguments)
-			}
-			gtag('js', new Date())
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- OG태그 -->
+    <meta property="og:url" content="https://woorrikkiri.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="대학생 지식공유 플랫폼 | 우리끼리" />
+    <meta
+      property="og:description"
+      content="대학생은 질문 어디서 해? 우리끼리 하면 되지!"
+    />
+    <meta property="og:image" content="{% static 'img/ogimage.png' %}" />
+    <title>우리끼리</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="{% static 'favicon/apple-icon-57x57.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="{% static 'favicon/apple-icon-60x60.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="{% static 'favicon/apple-icon-72x72.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="{% static 'favicon/apple-icon-76x76.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="{% static 'favicon/apple-icon-114x114.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="{% static 'favicon/apple-icon-120x120.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="{% static 'favicon/apple-icon-144x144.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="{% static 'favicon/apple-icon-152x152.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'favicon/apple-icon-180x180.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="{% static 'favicon/android-icon-192x192.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'favicon/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="{% static 'favicon/favicon-96x96.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'favicon/favicon-16x16.png' %}"
+    />
+    <link rel="manifest" href="{% static 'favicon/manifest.json' %}" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/button.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/sprite.css' %}" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-178645543-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-			gtag('config', 'UA-178645543-1')
-		</script>
+      gtag("config", "UA-178645543-1");
+    </script>
 
-		{% block head %} {% endblock %}
-	</head>
+    {% block head %} {% endblock %}
+  </head>
 
-	<body>
-		<div class="mobile_block">
-			<div class="xxl_title">화면 너비가 좁습니다! <br>
-				넓은 화면에서 이용해주세요:)</div>
-			<img src="{% static 'img/main_logo.png' %}">
-		</div>
-		<div class="blind"></div>
-		<header>
-			<div class="nav_container b_text">
-				<a href="{% url 'home' %}">
-					<div class="logo_container"><img src="{% static 'img/nav_logo.png' %}" alt="우리끼리" /></div>
-				</a>
-				<div class="hor_category l_text">
-					<div class="main_category">
-						<ul class="navbar">
-							<li class="nav-item">
-								<a href="{% url 'about' %}">서비스 소개</a>
-							</li>
-							<li class="nav-item">
-								<a href="{% url 'ask' %}">질문 모두보기</a>
-							</li>
-							<li class="nav-item">
-								<a href="{% url 'about_team' %}">팀 소개</a>
-							</li>
-							<li class="nav-item">
-								<a href="{% url 'faq' %}">FAQ</a>
-							</li>
-						</ul>
-					</div>
+  <body>
+    <div class="blind"></div>
+    <header>
+      <div class="nav_container b_text">
+        <a href="{% url 'home' %}">
+          <div class="logo_container">
+            <img src="{% static 'img/nav_logo.png' %}" alt="우리끼리" />
+          </div>
+        </a>
+        <div class="hor_category l_text">
+          <div class="main_category">
+            <ul class="navbar">
+              <li class="nav-item">
+                <a href="{% url 'about' %}">서비스 소개</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'ask' %}">질문 모두보기</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'about_team' %}">팀 소개</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'faq' %}">FAQ</a>
+              </li>
+            </ul>
+          </div>
 
-					<div class="account_category">
-						<ul class="navbar">
-							{% if user.is_authenticated %} {% if not user.is_mento %}
-							<li class="nav-item h_color">
-								<a href="{% url 'new' %}">질문하기</a>
-							</li>
-							{% endif %}
-							<li class="nav-item">
-								<a href="{% url 'mypage' %}">마이 페이지</a>
-							</li>
-							<li class="nav-item">
-								<a href="{% url 'signout' %}">로그아웃</a>
-							</li>
-							{% else %}
-							<li class="nav-item">
-								<a href="{% url 'signin' %}">로그인</a>
-							</li>
-							<li class="nav-item">
-								<a href="{% url 'signup' %}">회원가입</a>
-							</li>
-							{% endif %}
-						</ul>
-					</div>
-				</div>
+          <div class="account_category">
+            <ul class="navbar">
+              {% if user.is_authenticated %} {% if not user.is_mento %}
+              <li class="nav-item h_color">
+                <a href="{% url 'new' %}">질문하기</a>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a href="{% url 'mypage' %}">마이 페이지</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'signout' %}">로그아웃</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'signin' %}">로그인</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'signup' %}">회원가입</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
 
-				<div class="ver_category l_text">
-					<div class="ham_container"><img src="{% static 'img/ham_btn.png' %}" alt="메뉴" /></div>
-					<div class="x_container"><img src="{% static 'img/xbutton.png' %}" alt="메뉴" /></div>
-					<div class="ver_category_box">
-						<ul class="navbar">
-							<li class="nav-item">
-								<a href="{% url 'about' %}">서비스 소개</a>
-							</li>
-							<li class="nav-item">
-								<a href="{% url 'ask' %}">질문 모두보기</a>
-							</li>
-							<li class="nav-item">
-								<a href="{% url 'about_team' %}">팀 소개</a>
-							</li>
-							<li class="nav-item">
-								<a href="{% url 'faq' %}">FAQ</a>
-							</li>
-							<hr />
-							{% if user.is_authenticated %} {% if not user.is_mento %}
-							<li class="nav-item h_color">
-								<a href="{% url 'new' %}">질문하기</a>
-							</li>
-							{% endif %}
-							<li class="nav-item">
-								<a href="{% url 'mypage' %}">마이 페이지</a>
-							</li>
-							<li class="nav-item">
-								<a href="{% url 'signout' %}">로그아웃</a>
-							</li>
-							{% else %}
-							<li class="nav-item">
-								<a href="{% url 'signin' %}">로그인</a>
-							</li>
-							<li class="nav-item">
-								<a href="{% url 'signup' %}">회원가입</a>
-							</li>
-							{% endif %}
-						</ul>
-					</div>
-				</div>
-			</div>
-		</header>
+        <div class="ver_category l_text">
+          <div class="ham_container">
+            <img src="{% static 'img/ham_btn.png' %}" alt="메뉴" />
+          </div>
+          <div class="x_container">
+            <img src="{% static 'img/xbutton.png' %}" alt="메뉴" />
+          </div>
+          <div class="ver_category_box">
+            <ul class="navbar">
+              <li class="nav-item">
+                <a href="{% url 'about' %}">서비스 소개</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'ask' %}">질문 모두보기</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'about_team' %}">팀 소개</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'faq' %}">FAQ</a>
+              </li>
+              <hr />
+              {% if user.is_authenticated %} {% if not user.is_mento %}
+              <li class="nav-item h_color">
+                <a href="{% url 'new' %}">질문하기</a>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a href="{% url 'mypage' %}">마이 페이지</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'signout' %}">로그아웃</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'signin' %}">로그인</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'signup' %}">회원가입</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
 
-		<section>
-			<div class="main_container">{% block content %} {% endblock %}</div>
-			<footer>
-				<div class="footer_container">
-					<div class="info_box">
-						<span class="m_text w_color"><a href="https://www.notion.so/ef00bf513c92447791f0cd540694ff3b">이용약관</a></span>
-						<span class="m_text w_color"><a href="https://www.notion.so/871797c0071a41a3a187f46ea7de3e0d">개인정보처리방침</a></span>
-					</div>
-					<div class="main_box">
-						<span class="s_text w_color">
-							사업자 메티스 | 대표 : 오정학 | 사업자등록번호 : 663-08-01510 | 주소 : 서울시 양천구 신정로7길75<br /><br />
-							CS대표(고객센터): 010 7141 5697 | 이메일 : woorrikkiri@gmail.com<br />
-							카카오톡 플러스친구 | @woorrikkiri
-							<br /><br />
-							Copyright & copy : 2020 Metis
-						</span>
-					</div>
-				</div>
-			</footer>
-		</section>
-		<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-		<script type="text/javascript" src="{% static 'js/select.js' %}"></script>
-	</body>
+    <section>
+      <div class="main_container">{% block content %} {% endblock %}</div>
+      <footer>
+        <div class="footer_container">
+          <div class="info_box">
+            <span class="m_text w_color"
+              ><a href="https://www.notion.so/ef00bf513c92447791f0cd540694ff3b"
+                >이용약관</a
+              ></span
+            >
+            <span class="m_text w_color"
+              ><a href="https://www.notion.so/871797c0071a41a3a187f46ea7de3e0d"
+                >개인정보처리방침</a
+              ></span
+            >
+          </div>
+          <div class="main_box">
+            <span class="s_text w_color">
+              사업자 메티스 | 대표 : 오정학 | 사업자등록번호 : 663-08-01510 |
+              주소 : 서울시 양천구 신정로7길75<br /><br />
+              CS대표(고객센터): 010 7141 5697 | 이메일 :
+              woorrikkiri@gmail.com<br />
+              카카오톡 플러스친구 | @woorrikkiri
+              <br /><br />
+              Copyright & copy : 2020 Metis
+            </span>
+          </div>
+        </div>
+      </footer>
+    </section>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/select.js' %}"></script>
+  </body>
 </html>
