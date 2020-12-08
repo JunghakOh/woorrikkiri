@@ -99,6 +99,7 @@
   height: 60px;
   background: #f3949756;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  padding: 0 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -174,6 +175,7 @@
   }
   .service-subjects {
     top: 465px;
+    padding: 0;
   }
 }
 
