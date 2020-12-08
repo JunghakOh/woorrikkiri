@@ -124,7 +124,6 @@ input:focus {
 
 /* font 설정 */
 .h_font {
-  /* font-family: 'TmoneyRoundWindExtraBold'; */
   font-family: "Binggrae";
 }
 .spacing {
@@ -235,11 +234,11 @@ img {
 
 @media (max-width: 420px) {
   .xxl_title {
-    font-size: 33px;
+    font-size: 27px;
     font-weight: 600;
   }
   .xl_title {
-    font-size: 25px;
+    font-size: 24px;
   }
   .l_title {
     font-size: 20px;
