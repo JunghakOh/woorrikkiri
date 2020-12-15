@@ -488,6 +488,10 @@
   top: -75px;
   text-decoration: none;
 }
+
+@media (max-width: 550px) {
+}
+
 /* edit */
 .edit_extra {
   margin-bottom: 10px;
