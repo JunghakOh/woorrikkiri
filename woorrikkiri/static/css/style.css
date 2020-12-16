@@ -70,7 +70,9 @@ header .x_container {
   background: rgba(0, 0, 0, 0.3);
   display: none;
 }
-
+.hidden {
+  overflow: hidden;
+}
 /* footer */
 footer {
   width: 100%;
