@@ -6,6 +6,15 @@
   line-height: 130%;
 }
 
+@media screen and (max-width: 350px) {
+  html,
+  body,
+  header,
+  .nav_container {
+    min-width: 350px;
+  }
+}
+
 /* font */
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
@@ -61,7 +70,9 @@ header .x_container {
   background: rgba(0, 0, 0, 0.3);
   display: none;
 }
-
+.hidden {
+  overflow: hidden;
+}
 /* footer */
 footer {
   width: 100%;
@@ -263,5 +274,8 @@ img {
     font-size: 25px;
     font-family: "Binggrae";
     font-weight: bold;
+  }
+  .main_container {
+    padding: 30px 3%;
   }
 }
