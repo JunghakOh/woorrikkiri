@@ -321,6 +321,12 @@
   padding: 10px;
 }
 
+@media (max-width: 600px) {
+  .p_btn {
+    font-size: 14px;
+  }
+}
+
 /* payment_check.html */
 .payment_check_container .title {
   display: flex;
@@ -655,6 +661,9 @@
 }
 
 /* about_team */
+.about_team_container {
+  width: 100%;
+}
 .about_team_container .page_title {
   text-align: center;
   margin: 60px;
@@ -665,6 +674,7 @@
 .team_member {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .team_member .mem {
   text-align: center;
@@ -672,6 +682,8 @@
   flex-direction: column;
   align-items: center;
   width: 23%;
+  min-width: 300px;
+  margin: 0 auto;
 }
 .profile_img {
   width: 170px;
